@@ -1,15 +1,12 @@
 import { redirect } from '@sveltejs/kit'
 
-export function load({ cookies }) {
-	const user = cookies.get('user')
-    cookies.set('isLogged', 'true', { path: '/' })
-
+export function load({ locals }) {
+	const user = locals.user
+    
     if(!user){
         throw redirect(307, '/login')
     }
 
-    return {
-        user
-    }
+    return {user}
     
 }

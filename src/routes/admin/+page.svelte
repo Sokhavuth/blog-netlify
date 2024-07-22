@@ -2,4 +2,4 @@
 	export let data
 </script>
 
-Admin
+USER ID: {data.user.userId}
