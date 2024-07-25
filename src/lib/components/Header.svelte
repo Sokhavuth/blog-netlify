@@ -5,7 +5,7 @@
             <a href='/'><img src='/images/siteLogo.png' alt='' /></a>
             <a href='/'>ដំណឹង​ល្អ</a>
         </div>
-        <form class='search' action="/search" method="get">
+        <form class='search' method="post">
             <select name='category'>
                 <option>ទាំងអស់</option>
                 <option>រឿងខ្មែរ</option>
@@ -14,6 +14,7 @@
                 <option>រឿងកូរ៉េ</option>
                 <option>ដើរ​​លេង</option>
                 <option>ព័ត៌មាន</option>
+                <option>ឯកសារ</option>
             </select>
             <input type='text' name='q' placeholder='សរសេរ​ពាក្យ​ត្រូវ​ស្វែងរក...' required />
             <input type='submit' value='ស្វែងរក' /> 
@@ -60,7 +61,6 @@
     .wrapper .login{
         text-align: right;
         color: white;
-        font-size: 20px;
     }
     .wrapper .login a{
         color: white;
@@ -77,6 +77,7 @@
         }
         .wrapper .login{
             text-align: center;
+            padding: 10px 0;
         }
     }
 </style>

@@ -3,7 +3,7 @@ export let data = {}
 </script>
 
 <section class='Login'>
-    <div class='title'>ចុះ​ឈ្មោះ​ចូល​ទំព័រ​គ្រប់គ្រង</div>
+    <div class='title'>ចុះ​ឈ្មោះ​ចូល​ផ្នែក​​គ្រប់គ្រង</div>
  
     <form method='post' >
         <span>Email:</span><input type='email' name='email' required />

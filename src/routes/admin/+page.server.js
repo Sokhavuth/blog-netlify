@@ -7,6 +7,6 @@ export function load({ locals }) {
         throw redirect(307, '/login')
     }
 
-    return {user}
+    return {user: user}
     
 }

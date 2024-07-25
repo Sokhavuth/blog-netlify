@@ -1,5 +1,10 @@
 <script>
+	import Layout from "$lib/components/admin/Layout.svelte"
 	export let data
 </script>
 
-USER ID: {data.user.userId}
+<Layout {data} >
+	<div slot="editor">
+		Latest posts
+	</div>
+</Layout>

@@ -32,7 +32,7 @@ model Post {
   thumb String
   date String
   videos String
-  userid String
+  author String
 }
 
 model Category {

@@ -25,7 +25,7 @@ class User{
     }
 
     async checkUser(req){
-        return await req.prisma.user.findUnique({ where: {email: req.email }})
+        return await req.prisma.user.findUnique({ where: {email: req.body.email }})
     }
 
     async getUsers(req, amount){

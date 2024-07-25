@@ -7,14 +7,15 @@ import { redirect } from '@sveltejs/kit'
 export const actions = {
 	default: async ({ cookies, request, locals }) => {
 		const data = await request.formData()
-        
-        locals.email = data.get('email')
-        locals.password = data.get('password')
-        
+
+        const email = data.get('email')
+        const password = data.get('password')
+
+        locals.body = {email, password}
         const user = await userDb.checkUser(locals)
         
         if(user){
-            if(bcrypt.compareSync(locals.password, user.password)){
+            if(bcrypt.compareSync(password, user.password)){
                 const data = {userId: user.id, userRole: user.role, userName: user.title}
                 const token = jwt.sign(data, SECRET_KEY, {expiresIn: "12h"})
                 cookies.set('access_token', token, { path: '/' })
