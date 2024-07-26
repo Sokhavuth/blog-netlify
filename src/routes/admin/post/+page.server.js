@@ -1,19 +1,18 @@
-import { redirect } from '@sveltejs/kit'
 import { error } from '@sveltejs/kit'
 import postDb from "$lib/db/post.js"
 import { setFlash } from 'sveltekit-flash-message/server'
-import { page } from '$app/stores'
+import { redirect } from 'sveltekit-flash-message/server'
 
 export async function load({ locals }) {
 	const user = locals.user
+    if(!user){
+        throw redirect(307, '/login')
+    }
+
     const count = await postDb.count(locals) 
     const settings = await locals.settings()
     const pageNumber = Math.ceil(count/settings.dItemLimit)
     const items = await postDb.getPosts(locals, settings.dItemLimit)
-
-    if(!user){
-        throw redirect(307, '/login')
-    }
 
     return {user, count, items, info:"ការផ្សាយ", type:"post", pageNumber}
 }

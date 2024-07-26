@@ -29,6 +29,7 @@
 	"type": "module",
 	"dependencies": {
 		"@prisma/client": "^5.17.0",
+		"@sveltejs/adapter-vercel": "^5.4.1",
 		"bcryptjs": "^2.4.3",
 		"ckeditor5": "^42.0.1",
 		"jquery": "^3.7.1",

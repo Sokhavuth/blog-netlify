@@ -1,7 +1,12 @@
 import postDb from "$lib/db/post.js"
-import { redirect } from 'sveltekit-flash-message/server';
+import { redirect } from 'sveltekit-flash-message/server'
 
 export async function GET({ locals, params, cookies }){
+    const user = locals.user
+    if(!user){
+        throw redirect(307, '/login')
+    }
+    
     locals.params = params
 
     const post = await postDb.getPost(locals)
