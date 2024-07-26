@@ -1,0 +1,51 @@
+<script>
+    import Layout from '$lib/components/admin/Layout.svelte'
+    import Items from '$lib/components/admin/Items.svelte'
+    export let data
+    import { getFlash } from 'sveltekit-flash-message'
+    import { page } from '$app/stores'
+    const flash = getFlash(page)
+</script>
+
+<Layout {data}>
+    <section class="category" slot="editor">
+        <form method="post" action="/admin/category?/create" >
+            <span>ឈ្មោះ​ជំពូកៈ</span><input type="text" name="label" required />
+            <span>រូប​សញ្ញាៈ</span><input type="text" name="thumb" required />
+            <span>ពេល​បង្កើតៈ</span><input type="datetime-local" step="1" name="datetime" required />
+            <span></span><input type="submit" value="បញ្ជូន" />
+            <span></span>
+            {#if $flash}
+                {@const bg = $flash.type == 'success' ? '#3D9970' : '#FF4136'}
+                <div style:background-color={bg} class="flash">{$flash.message}</div>
+            {/if}
+        </form>
+    </section>
+    <Items slot="items" {data} />
+</Layout>
+
+<style>
+    .category{
+        padding: 20px;
+        background: rgb(241, 198, 198);
+        height: 100%;
+    }
+    .category form{
+        display: grid;
+        grid-template-columns: 80px 300px;
+        grid-gap: 5px 2px;
+        align-items: center;
+    }
+    .category form span{
+        text-align: right;
+    }
+    .category form input{
+        font: var(--body-font);
+        padding: 2px 5px
+    }
+    .category .flash{
+        text-align: center;
+        color: white;
+        padding: 5px;
+    }
+</style>

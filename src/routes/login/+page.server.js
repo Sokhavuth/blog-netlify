@@ -16,7 +16,7 @@ export const actions = {
         
         if(user){
             if(bcrypt.compareSync(password, user.password)){
-                const data = {userId: user.id, userRole: user.role, userName: user.title}
+                const data = {id: user.id, role: user.role, name: user.title}
                 const token = jwt.sign(data, SECRET_KEY, {expiresIn: "12h"})
                 cookies.set('access_token', token, { path: '/' })
                 throw redirect(303, '/admin')

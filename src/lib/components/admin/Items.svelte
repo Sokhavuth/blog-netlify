@@ -1,7 +1,7 @@
 <script>
     export let data
 	async function paginate(e){
-		const response = await fetch(`/admin/post/paginate/${e.target.value}`)
+		const response = await fetch(`/admin/${data.type}/paginate/${e.target.value}`)
 		data.items = await response.json()
 	}
 </script>
@@ -13,7 +13,7 @@
         <div class="item">
             <a class="thumb" href="/{data.type}/{item.id}">
                 <img src={item.thumb} alt='' />
-                {#if item.videos.length}
+                {#if item.videos?.length}
                 <img class="play" src="/images/play.png" alt='' />
                 {/if}
             </a>
@@ -50,7 +50,7 @@
 	}
 	footer .items{
 		display: grid;
-		grid-template-columns: auto auto;
+		grid-template-columns: calc(50% - 5px ) calc(50% - 5px );
 		grid-gap: 10px;
 		margin-top: 10px;
 	}
@@ -80,6 +80,11 @@
     	left: 50%;
 		min-height: auto;
 		transform: translate(-50%,-50%);
+	}
+	footer .items .item .title{
+		white-space: nowrap;
+        overflow: hidden;
+    	text-overflow: ellipsis;
 	}
 	footer .items .item .edit{
     	text-align: right;

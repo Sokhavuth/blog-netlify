@@ -1,6 +1,5 @@
 
-export function load({ cookies }) {
-    //cookies.delete("access_token", { path: "/" })
+export function load({ }) {
     
     return {
         message: "Index page"

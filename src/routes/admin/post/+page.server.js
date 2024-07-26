@@ -1,5 +1,6 @@
 import { error } from '@sveltejs/kit'
 import postDb from "$lib/db/post.js"
+import categoryDB from "$lib/db/category.js"
 import { setFlash } from 'sveltekit-flash-message/server'
 import { redirect } from 'sveltekit-flash-message/server'
 
@@ -13,8 +14,9 @@ export async function load({ locals }) {
     const settings = await locals.settings()
     const pageNumber = Math.ceil(count/settings.dItemLimit)
     const items = await postDb.getPosts(locals, settings.dItemLimit)
+    const categories = await categoryDB.getAllItems(locals)
 
-    return {user, count, items, info:"ការផ្សាយ", type:"post", pageNumber}
+    return {user, count, items, categories, info:"ការផ្សាយ", type:"post", pageNumber}
 }
 
 export const actions = {
@@ -40,8 +42,6 @@ export const actions = {
 		if(validate){
             locals.body = {title, content, categories, thumb, datetime, videos}
             await postDb.createPost(locals)
-            const token = {}
-            token.message = 'ការផ្សាយ​មួយ​ត្រូវ​បាន​បង្កើត​ឡើង!'
             setFlash({ type: 'success', message: 'ការផ្សាយ​មួយ​ត្រូវ​បាន​បង្កើត​ឡើង!' }, cookies)
         }else{
             throw error(420, "ទិន្នន័យ​បញ្ជូន​មក​មិន​ត្រឹមត្រូវ​ទេ!")
@@ -55,9 +55,11 @@ export const actions = {
         params.id = data.get('id')
         locals.params = params
 
-        if(data.get('author') !== locals.user.userId){
-            setFlash({ type: 'error', message: 'អ្នក​មិន​អាច​កែប្រែ​ការផ្សាយ​របស់អ្នក​ដទៃ​បាន​ឡើយ!' }, cookies)
-            return
+        if(locals.user.role !== 'Admin'){
+            if(data.get('author') !== locals.user.id){
+                setFlash({ type: 'error', message: 'អ្នក​មិន​អាច​កែប្រែ​ការផ្សាយ​របស់អ្នក​ដទៃ​បាន​ឡើយ!' }, cookies)
+                return
+            }
         }
 
         const title = data.get('title')

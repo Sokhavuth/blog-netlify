@@ -13,10 +13,10 @@
 				<div class='inner'>
 				<a href="/amin/post"><img src="/images/movie.png" alt='' /></a>
 					<a href="/admin/post">ការផ្សាយ</a>
-					<a href="/amin/page"><img src="/images/page.png" alt=''/></a>
-					<a href="/admin/page">ទំព័រ​ស្តាទិក</a>
 					<a href="/amin/category"><img src="/images/category.png" alt='' /></a>
 					<a href="/admin/category">ជំពូក</a>
+					<a href="/amin/page"><img src="/images/page.png" alt=''/></a>
+					<a href="/admin/page">ទំព័រ​ស្តាទិក</a>
 					<a href="/amin/upload"><img src="/images/upload.png" alt='' /></a>
 					<a href="/admin/upload">Upload</a>
 					<a href="/amin/user"><img src="/images/users.png" alt='' /></a>

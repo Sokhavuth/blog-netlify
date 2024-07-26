@@ -79,8 +79,9 @@
             <div class="frame">
                 <select name="category" bind:value={category} on:change={getCategory} >
                     <option disabled selected>ជ្រើសរើស​យក​ជំពូក</option>
-                    <option>ព័តមាន</option>
-                    <option>ភាពយន្ត</option>
+                    {#each data.categories as category}
+                    <option>{category.title}</option>
+                    {/each}
                 </select>
                 <input type="text" name="thumb" required placeholder="រូប​​តំណាង" />
                 <input type="datetime-local" step="1" name="datetime" required />

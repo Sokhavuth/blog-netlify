@@ -2,7 +2,6 @@ import { PrismaClient } from '@prisma/client'
 import jwt from "jsonwebtoken"
 import { SECRET_KEY } from '$env/static/private'
 import settings from "$lib/settings.js"
-import { redirect } from '@sveltejs/kit'
 
 export async function handle({ event, resolve }) {
     const prisma = new PrismaClient()
