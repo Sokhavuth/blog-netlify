@@ -8,15 +8,22 @@
 
 <Layout {data}>
     <div class="Editor" slot="editor">
-        <form action="/admin/page?/create" method="post">
-            <input type="text" name="title" requred placeholder="ចំណងជើង" />
+        <form action="?/create" method="post">
+            <input type="text" name="title" requried placeholder="ឈ្មោះ" />
             <div class="wrapper">
                 <textarea name="content" id="editor"></textarea>
             </div>
             <div class="frame">
+                <select name="role" required >
+                    <option>Author</option>
+                    <option>Editor</option>
+                    <option>Admin</option>
+                </select>
+                <input type="email" name="email" required placeholder="Email" />
+                <input type="password" name="password" required />
                 <input type="text" name="thumb" required placeholder="រូប​​តំណាង" />
                 <input type="datetime-local" step="1" name="datetime" required />
-                <input type="submit" value="ចុះ​ផ្សាយ" />
+                <input type="submit" value="បញ្ចូល" />
             </div>
             {#if browser}
                 <script src="/scripts/ckeditor/config.js"></script>
@@ -43,9 +50,15 @@
     }
     .Editor .frame{
         display: grid;
-        grid-template-columns: 45% auto 15%;
+        grid-template-columns: 8% auto auto auto 23% 10%;
         position: absolute;
         bottom: 0;
         width: 100%;
+    }
+
+    @media only screen and (max-width: 600px){
+        .Editor .frame{
+            grid-template-columns: 100%
+        }
     }
 </style>

@@ -18,7 +18,7 @@ class User{
                 role: "Admin",
                 thumb: "",
                 content: "",
-                date: ""
+                date: "",
             }
         })
         
@@ -58,10 +58,11 @@ class User{
 
     async updateUser(req){
         const user = await this.getUser(req)
+        let hashedPassword
         if(req.body.password !== user.password){
-            var hashedPassword = bcrypt.hashSync(req.body.password, 10)
+            hashedPassword = bcrypt.hashSync(req.body.password, 10)
         }else{
-            var hashedPassword = req.body.password
+            hashedPassword = req.body.password
         }
 
         const newUser = {

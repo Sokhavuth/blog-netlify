@@ -2,20 +2,22 @@
     import Layout from "$lib/components/admin/Layout.svelte"
     import Items from "$lib/components/admin/Items.svelte"
     import { browser } from '$app/environment'
+    import {activePage} from "$lib/stores/page.js"
 
     export let data
 </script>
 
 <Layout {data}>
     <div class="Editor" slot="editor">
-        <form action="/admin/page?/create" method="post">
-            <input type="text" name="title" requred placeholder="ចំណងជើង" />
+        <form action={`?/update&p=${$activePage}`} method="post">
+            <input type="hidden" name="id" value={data.page.id} />
+            <input type="text" name="title" value={data.page.title} requred placeholder="ចំណងជើង" />
             <div class="wrapper">
-                <textarea name="content" id="editor"></textarea>
+                <textarea name="content" id="editor">{data.page.content}</textarea>
             </div>
             <div class="frame">
-                <input type="text" name="thumb" required placeholder="រូប​​តំណាង" />
-                <input type="datetime-local" step="1" name="datetime" required />
+                <input type="text" name="thumb" value={data.page.thumb} required placeholder="រូប​​តំណាង" />
+                <input type="datetime-local" step="1" value={data.page.date} name="datetime" required />
                 <input type="submit" value="ចុះ​ផ្សាយ" />
             </div>
             {#if browser}

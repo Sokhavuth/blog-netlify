@@ -3,15 +3,15 @@ import { redirect } from 'sveltekit-flash-message/server'
 
 export async function GET({ locals, params, cookies }){
     const user = locals.user
-    if(!user){
-        throw redirect(307, '/login')
-    }
+    if(!user){throw redirect(307, '/login')}
     
     locals.params = params
 
     const post = await postDb.getPost(locals)
-    if(post.author !== locals.user.userId){
-        redirect('/admin/post', { type: 'error', message: 'អ្នក​​មិន​អាច​លុប​ការផ្សាយ​របស់​អ្នក​ដទៃ​បាន​ឡើយ' }, cookies)
+    if(user.role !== "Admin"){
+        if(post.author !== locals.user.id){
+            redirect('/admin/post', { type: 'error', message: 'អ្នក​​មិន​អាច​លុប​ការផ្សាយ​របស់​អ្នក​ដទៃ​បាន​ឡើយ' }, cookies)
+        }
     }
     
     await postDb.deletePost(locals)

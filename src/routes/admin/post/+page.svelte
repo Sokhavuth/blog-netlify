@@ -3,9 +3,6 @@
     import Items from "$lib/components/admin/Items.svelte"
     import { browser } from '$app/environment'
     import jq from 'jquery'
-    import { getFlash } from 'sveltekit-flash-message'
-    import { page } from '$app/stores'
-    const flash = getFlash(page)
 
     export let data
     let category
@@ -109,10 +106,6 @@
             </select>
             <input on:click={genJson} type="button" value="បញ្ចូលវីដេអូ" />
         </div>
-        {#if $flash}
-            {@const bg = $flash.type == 'success' ? '#3D9970' : '#FF4136'}
-            <div style:background-color={bg} class="flash">{$flash.message}</div>
-        {/if}
         <div class='viddata'>
             <div>
                 {#if videos.length}

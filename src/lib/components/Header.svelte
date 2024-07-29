@@ -20,7 +20,7 @@
             <input type='submit' value='ស្វែងរក' /> 
         </form>
         <div class='login'>
-            <a href="/admin">ចូល​ក្នុង</a> | <a href="users">ចុះ​ឈ្មោះ</a>
+            <a href="/admin">ចូល​ក្នុង</a> | <a href="/admin/user">ចុះ​ឈ្មោះ</a>
         </div>
     </header>
 </section>

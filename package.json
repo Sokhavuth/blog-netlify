@@ -28,8 +28,11 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@libsql/client": "^0.6.2",
+		"@prisma/adapter-libsql": "^5.17.0",
 		"@prisma/client": "^5.17.0",
 		"@sveltejs/adapter-vercel": "^5.4.1",
+		"@xata.io/client": "^0.0.0-next.v64f10283eb9a098c575590d3ea17600e350321c9",
 		"bcryptjs": "^2.4.3",
 		"ckeditor5": "^42.0.1",
 		"jquery": "^3.7.1",

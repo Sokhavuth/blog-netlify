@@ -6,6 +6,7 @@ class Post{
     }
 
     async createPost(req){
+        /*
         let categories = []
 
         if(req.body.categories.includes(',')){
@@ -14,15 +15,15 @@ class Post{
         }else{
             categories = [req.body.categories]
         }
-        
+        */
         const new_post = {
             title: req.body.title,
             content: req.body.content,
-            categories: categories,
+            categories: req.body.categories,
             thumb: req.body.thumb,
             date: req.body.datetime,
             videos: req.body.videos,
-            author: req.user.userId,
+            author: req.user.id,
         }
         
         await req.prisma.post.create({ data: new_post })
@@ -61,6 +62,7 @@ class Post{
     }
 
     async updatePost(req){
+        /*
         let categories = []
 
         if(req.body.categories.includes(',')){
@@ -69,11 +71,11 @@ class Post{
         }else{
             categories = [req.body.categories]
         }
-
+        */
         let newvalue = {
             title: req.body.title,
             content: req.body.content,
-            categories: categories,
+            categories: req.body.categories,
             thumb: req.body.thumb,
             date: req.body.datetime,
             videos: req.body.videos
@@ -87,10 +89,11 @@ class Post{
     }
 
     async paginatePosts(req, amount){
+        let page
         if(req.body.page){
-            var page = parseInt(req.body.page)
+            page = parseInt(req.body.page)
         }else if(req.query.page){
-            var page = parseInt(req.query.page)-1
+            page = parseInt(req.query.page)-1
         }
         
         const posts = await req.prisma.post.findMany({ 

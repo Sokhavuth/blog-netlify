@@ -6,9 +6,7 @@ import { redirect } from 'sveltekit-flash-message/server'
 
 export async function load({ locals }) {
 	const user = locals.user
-    if(!user){
-        throw redirect(307, '/login')
-    }
+    if(!user){throw redirect(307, '/login')}
 
     const count = await postDb.count(locals) 
     const settings = await locals.settings()
@@ -16,7 +14,7 @@ export async function load({ locals }) {
     const items = await postDb.getPosts(locals, settings.dItemLimit)
     const categories = await categoryDB.getAllItems(locals)
 
-    return {user, count, items, categories, info:"ការផ្សាយ", type:"post", pageNumber}
+    return {user, count, items, categories, info:"ការផ្សាយ", type:"post", pageNumber }
 }
 
 export const actions = {
@@ -46,45 +44,5 @@ export const actions = {
         }else{
             throw error(420, "ទិន្នន័យ​បញ្ជូន​មក​មិន​ត្រឹមត្រូវ​ទេ!")
         }
-	},
-
-    update: async ({ request, locals, cookies }) => {
-        const data = await request.formData()
-
-        const params = {}
-        params.id = data.get('id')
-        locals.params = params
-
-        if(locals.user.role !== 'Admin'){
-            if(data.get('author') !== locals.user.id){
-                setFlash({ type: 'error', message: 'អ្នក​មិន​អាច​កែប្រែ​ការផ្សាយ​របស់អ្នក​ដទៃ​បាន​ឡើយ!' }, cookies)
-                return
-            }
-        }
-
-        const title = data.get('title')
-        const content = data.get('content')
-        const categories = data.get('categories')
-        const thumb = data.get("thumb")
-        const datetime = data.get("datetime")
-        const videos = data.get("videos")
-
-        const validate = (
-            typeof title === 'string' &&
-            typeof content === 'string' &&
-            typeof categories === 'string' &&
-            typeof thumb === 'string' &&
-            typeof datetime === 'string' &&
-            typeof videos === 'string'
-        )
-        
-	    if(validate){
-            locals.body = {title, content, categories, thumb, datetime, videos}
-            await postDb.updatePost(locals)
-            setFlash({ type: 'success', message: 'ការ​កែប្រែ​​សំរេច​បាន​ដោយ​ជោគជ័យ' }, cookies)
-        }else{
-            throw error(420, "ទិន្នន័យ​បញ្ជូន​មក​មិន​ត្រឹមត្រូវ​ទេ!")
-        }
-    }
-
+	}
 }

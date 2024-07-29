@@ -3,9 +3,10 @@
     import Items from "$lib/components/admin/Items.svelte"
     import { browser } from '$app/environment'
     import jq from 'jquery'
+    import {activePage} from "$lib/stores/page.js"
     export let data
     let category
-    $: categories = data.post.categories.join(', ')
+    $: categories = data.post.categories
     $: json = data.post.videos
     let type, id, status
     let videos = []
@@ -72,7 +73,7 @@
 
 <Layout {data}>
     <div class="Editor" slot="editor">
-        <form action="/admin/post?/update" method="post" on:submit={submitForm}>
+        <form action={`?/update&p=${$activePage}`} method="post" on:submit={submitForm}>
             <input type="hidden" name="id" value={data.post.id} />
             <input type="hidden" name="author" value={data.post.author} />
             <input type="text" name="title" value={data.post.title} requred placeholder="ចំណងជើង" />

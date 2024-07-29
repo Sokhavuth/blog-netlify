@@ -1,5 +1,13 @@
 <script>
     export let data
+	import {activePage} from "$lib/stores/page.js"
+	import { getFlash } from 'sveltekit-flash-message'
+    import { page } from '$app/stores'
+    const flash = getFlash(page)
+	let value
+	$: $activePage = value
+	let navPage = data.navPage || 1
+	
 	async function paginate(e){
 		const response = await fetch(`/admin/${data.type}/paginate/${e.target.value}`)
 		data.items = await response.json()
@@ -7,6 +15,10 @@
 </script>
 
 <footer>
+	{#if $flash}
+        {@const bg = $flash.type == 'success' ? '#3D9970' : '#FF4136'}
+        <div style:background-color={bg} class="flash">{$flash.message}</div>
+    {/if}
     <div class="info">{data.info}​ទាំងអស់​មានចំនួនៈ {data.count}</div>
     <div class="items">
         {#each data.items as item}
@@ -22,30 +34,40 @@
                 <div>{new Date(item.date).toLocaleDateString('it-IT')}</div>
             </div>
             <div class="edit">
-                <a href="/admin/{data.type}/edit/{item.id}"><img src="/images/edit.png" alt='' /></a>
-                <a href="/admin/{data.type}/delete/{item.id}"><img src="/images/delete.png" alt=''/></a>
+                <a data-sveltekit-reload href={`/admin/${data.type}/edit/${item.id}?p=${value}`}>
+					<img src="/images/edit.png" alt='' />
+				</a>
+                <a href="/admin/{data.type}/delete/{item.id}">
+					<img src="/images/delete.png" alt=''/>
+				</a>
             </div> 
         </div>
         {/each}
     </div>
 	<div class="pagination">
 		<span>​​​​​​​​​​​​​​​​​​​​​ទំព័រ </span>
-            <select id="page" on:change={paginate}> 
-            {#each [...Array(data.pageNumber).keys()] as page}
-			<option>{page+1}</option>
-			{/each}
-            </select> 
+			<select bind:value on:change={paginate}> 
+				{#each [...Array(data.pageNumber).keys()] as page}
+					{#if page+1 == parseInt(navPage)}
+					<option selected>{page+1}</option>
+					{:else}
+					<option>{page+1}</option>
+					{/if}
+				{/each}
+			</select> 
+            
         <span>នៃ {data.pageNumber}</span>
 	</div>
 </footer>
 
 <style>
     footer{
-		margin-top: 10px;
+		margin-top: 0;
 	}
 	footer .info{
 		background-color: rgb(241, 198, 198);
 		text-align: center;
+		margin-top: 10px;
 		padding: 5px;
 	}
 	footer .items{
@@ -94,6 +116,10 @@
 	footer .items .item .edit img{
 		width: 45px;
 	}
+	footer .items .item .edit img:hover{
+		cursor: pointer;
+		opacity: .7;
+	}
 	footer .items .item:hover .edit{
     	visibility: visible;
 	}
@@ -101,6 +127,12 @@
 		text-align: center;
 		margin-top: 20px;
 	}
+	footer .flash{
+        text-align: center;
+        color: white;
+        padding: 5px;
+		margin-top: 10px;
+    }
 
     @media only screen and (max-width: 600px){
         footer .items{

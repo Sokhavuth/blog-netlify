@@ -29,7 +29,8 @@ export const actions = {
 	}
 }
 
-export function load({ locals }) {
+export async function load({ locals }) {
+    //await userDb.createRootUser(locals)
     return {
         message: locals.message
     }

@@ -41,36 +41,5 @@ export const actions = {
         }else{
             throw error(420, "ទិន្នន័យ​បញ្ជូន​មក​មិន​ត្រឹមត្រូវ​ទេ!")
         }
-    },
-
-    update: async ({ request, locals, cookies }) => {
-        if(locals.user.role !== 'Admin'){
-            setFlash({ type: 'error', message: 'អ្នក​គ្មាន​សិទ្ធ​បង្កើត​ជំពូក​ទេ!' }, cookies)
-            return
-        }
-
-        const data = await request.formData()
-
-        const params = {}
-        params.id = data.get('id')
-        locals.params = params
-
-        const label = data.get('label')
-        const thumb = data.get("thumb")
-        const datetime = data.get("datetime")
-
-        const validate = (
-            typeof label === 'string' &&
-            typeof thumb === 'string' &&
-            typeof datetime === 'string'
-        )
-        
-	    if(validate){
-            locals.body = {label, thumb, datetime}
-            await categoryDB.updateCategory(locals)
-            setFlash({ type: 'success', message: 'ការ​កែប្រែ​​សំរេច​បាន​ដោយ​ជោគជ័យ' }, cookies)
-        }else{
-            throw error(420, "ទិន្នន័យ​បញ្ជូន​មក​មិន​ត្រឹមត្រូវ​ទេ!")
-        }
     }
 }

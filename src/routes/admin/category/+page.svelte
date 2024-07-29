@@ -2,9 +2,6 @@
     import Layout from '$lib/components/admin/Layout.svelte'
     import Items from '$lib/components/admin/Items.svelte'
     export let data
-    import { getFlash } from 'sveltekit-flash-message'
-    import { page } from '$app/stores'
-    const flash = getFlash(page)
 </script>
 
 <Layout {data}>
@@ -15,10 +12,6 @@
             <span>ពេល​បង្កើតៈ</span><input type="datetime-local" step="1" name="datetime" required />
             <span></span><input type="submit" value="បញ្ជូន" />
             <span></span>
-            {#if $flash}
-                {@const bg = $flash.type == 'success' ? '#3D9970' : '#FF4136'}
-                <div style:background-color={bg} class="flash">{$flash.message}</div>
-            {/if}
         </form>
     </section>
     <Items slot="items" {data} />
