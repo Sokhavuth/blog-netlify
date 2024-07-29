@@ -6,16 +6,6 @@ class Post{
     }
 
     async createPost(req){
-        /*
-        let categories = []
-
-        if(req.body.categories.includes(',')){
-            let str = req.body.categories.replace(/\s+/g, "")
-            categories = str.split(',')
-        }else{
-            categories = [req.body.categories]
-        }
-        */
         const new_post = {
             title: req.body.title,
             content: req.body.content,
@@ -62,16 +52,6 @@ class Post{
     }
 
     async updatePost(req){
-        /*
-        let categories = []
-
-        if(req.body.categories.includes(',')){
-            let str = req.body.categories.replace(/\s+/g, "")
-            categories = str.split(',')
-        }else{
-            categories = [req.body.categories]
-        }
-        */
         let newvalue = {
             title: req.body.title,
             content: req.body.content,

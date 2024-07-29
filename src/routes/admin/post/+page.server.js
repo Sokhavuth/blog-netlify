@@ -9,7 +9,7 @@ export async function load({ locals }) {
     if(!user){throw redirect(307, '/login')}
 
     const count = await postDb.count(locals) 
-    const settings = await locals.settings()
+    const settings = await locals.settings(locals)
     const pageNumber = Math.ceil(count/settings.dItemLimit)
     const items = await postDb.getPosts(locals, settings.dItemLimit)
     const categories = await categoryDB.getAllItems(locals)

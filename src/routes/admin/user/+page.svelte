@@ -30,7 +30,6 @@
             {/if}
         </form>
     </div>
-    
     <Items slot="items" {data} />
 </Layout>
 

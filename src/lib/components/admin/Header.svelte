@@ -23,7 +23,7 @@
             <input type='submit' value='ស្វែងរក' /> 
         </form>
         <div class='login'>
-            <a href={`/user/${user.id}`}>{user.name}</a> | <a href="/admin/logout">ចេញ​ក្រៅ</a> | <a href="/">ទំព័រ​មុខ</a>
+            <a href={`/user/${user.id}`}>{user.name}</a> | <a href="/">ទំព័រ​មុខ</a> | <a href="/admin/logout">ចេញ​ក្រៅ</a>
         </div>
     </header>
 </section>

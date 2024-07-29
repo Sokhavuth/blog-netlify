@@ -1,8 +1,9 @@
 <script>
     import Layout from '$lib/components/admin/Layout.svelte'
     import Items from '$lib/components/admin/Items.svelte'
-    export let data
     import {activePage} from "$lib/stores/page.js"
+    export let data
+    
 </script>
 
 <Layout {data}>

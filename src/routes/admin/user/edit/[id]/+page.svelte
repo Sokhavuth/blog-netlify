@@ -9,7 +9,7 @@
 
 <Layout {data}>
     <div class="Editor" slot="editor">
-        <form action={`?/edit&p=${$activePage}`} method="post">
+        <form action={`?/update&p=${$activePage}`} method="post">
             <input type="hidden" name="id" value={data.author.id} />
             <input type="text" name="title" value={data.author.title} required placeholder="ឈ្មោះ" />
             <div class="wrapper">
@@ -28,7 +28,7 @@
                 <input type="email" name="email" value={data.author.email} required placeholder="Email" />
                 <input type="password" name="password" value={data.author.password} required />
                 <input type="text" name="thumb" value={data.author.thumb} required placeholder="រូប​​តំណាង" />
-                <input type="datetime-local" step="1" name="datetime" required />
+                <input type="datetime-local" step="1" value={data.author.date} name="datetime" required />
                 <input type="submit" value="បញ្ចូល" />
             </div>
             {#if browser}

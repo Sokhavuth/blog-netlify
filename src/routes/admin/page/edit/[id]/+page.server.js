@@ -12,7 +12,7 @@ export async function load({ locals, params, url }){
     locals.body = {page:navPage}
 
     const count = await pageDb.count(locals) 
-    const settings = await locals.settings()
+    const settings = await locals.settings(locals)
     const pageNumber = Math.ceil(count/settings.dItemLimit)
     const page = await pageDb.getPage(locals)
     const items = await pageDb.paginatePages(locals, settings.dItemLimit)

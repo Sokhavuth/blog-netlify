@@ -84,7 +84,7 @@ class User{
     async paginateUsers(req, amount){
         const users = await req.prisma.user.findMany({ 
             orderBy: [{ date: "desc" }, { id: "desc" }],
-            skip: amount * parseInt(req.body.page),
+            skip: amount * (parseInt(req.body.page)-1),
             take: amount
         })
 
