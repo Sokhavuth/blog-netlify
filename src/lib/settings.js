@@ -2,7 +2,7 @@
 
 async function setup(req){
     const module = await import('$lib/db/setting.js')
-    let set = await module.default.getSettings(req,20)
+    let set = await module.default.getSettings(req, 1)
     let setting = set[0]
     let settings = {}
 

@@ -1,11 +1,11 @@
 import { redirect } from '@sveltejs/kit'
+import postDb from "$lib/db/post.js"
 
-export function load({ locals }) {
+export async function load({ locals }) {
 	const user = locals.user
-    if(!user){
-        throw redirect(307, '/login')//
-    }
+    if(!user){throw redirect(307, '/login')}
 
-    return {user: user}
-    
+    const posts = await postDb.getPosts(locals, 14)
+
+    return {user, posts}
 }

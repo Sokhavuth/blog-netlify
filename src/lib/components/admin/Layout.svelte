@@ -17,8 +17,8 @@
 					<a href="/admin/category">ជំពូក</a>
 					<a href="/amin/page"><img src="/images/page.png" alt=''/></a>
 					<a href="/admin/page">ទំព័រ​ស្តាទិក</a>
-					<a href="/amin/upload"><img src="/images/upload.png" alt='' /></a>
-					<a href="/admin/upload">Upload</a>
+					<a><img src="/images/upload.png" alt='' /></a>
+					<a>Upload</a>
 					<a href="/amin/user"><img src="/images/users.png" alt='' /></a>
 					<a href="/admin/user">អ្នក​និពន្ធ</a>
 					<a href="/amin/setting"><img src="/images/setting.png" alt='' /></a>
