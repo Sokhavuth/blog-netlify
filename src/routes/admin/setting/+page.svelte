@@ -7,11 +7,11 @@
 <Layout {data}>
     <section class="setting" slot="editor">
         <form method="post" action='?/create' >
-            <span>ចំណង​ជើងៈ</span><input type="text" name="title" required />
-            <span>សេចក្តីពណ៌នាៈ</span><input type="text" name="description" required />
-            <span>​ការផ្សាយខាងក្នុងៈ</span><input type="number"  name="dashboard" required />
-            <span>​ការផ្សាយខាងក្រៅៈ</span><input type="number" name="frontend" required />
-            <span>​ជំពូក​ខាងក្រៅៈ</span><input type="number" name="categories" required />
+            <span>គេហទំព័រៈ</span><input type="text" name="title" required />
+            <span>​ខ្លឹមសារៈ</span><input type="text" name="description" required />
+            <span>​ទំព័រ​ក្នុងៈ</span><input type="number"  name="dashboard" required />
+            <span>ទំព័រ​មុខៈ</span><input type="number" name="frontend" required />
+            <span>​ទំព័រ​ជំពូកៈ</span><input type="number" name="categories" required />
             <span>រូប​​តំណាងៈ</span><input type="text" name="thumb" required />
             <span>ពេល​បង្កើតៈ</span><input type="datetime-local" step="1" name="datetime" required />
             <span></span><input type="submit" value="បញ្ជូន" />

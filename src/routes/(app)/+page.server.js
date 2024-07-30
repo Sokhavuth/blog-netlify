@@ -1,10 +1,13 @@
+import postDb from '$lib/db/post.js'
 
-export function load({ }) {
-    
-    return {
-        message: "Index page"
-    }
-    
+export async function load({ locals }) {
+    const count = await postDb.count(locals)
+    const settings = await locals.settings(locals)
+    const posts = await postDb.getPosts(locals, settings.indexPostLimit)
+    const categories = ['Khmer', 'Thai', 'Chinese', 'Korean', 'travel']
+    const postsByCategory = await postDb.getfirstPostByCategory(locals, categories)
+
+    return {posts, count, settings, postsByCategory}
 }
 
 export const actions = {

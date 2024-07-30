@@ -21,7 +21,7 @@
                 <input type="submit" value="ចុះ​ផ្សាយ" />
             </div>
             {#if browser}
-                <script src="/scripts/ckeditor/config.js"></script>
+                <script src="/scripts/ckeditor/config-page.js"></script>
             {/if}
         </form>
     </div>

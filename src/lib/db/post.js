@@ -20,6 +20,12 @@ class Post{
     }
 
     async getPosts(req, amount){
+        if(amount === "all"){
+            return await req.prisma.post.findMany({ 
+                orderBy: [{ date: "desc" }, { id: "desc" }]
+            })
+        }
+        
         return await req.prisma.post.findMany({ 
             take: amount, 
             orderBy: [{ date: "desc" }, { id: "desc" }]
@@ -93,6 +99,18 @@ class Post{
             take: amount
         })
 
+        return posts
+    }
+
+    async getfirstPostByCategory(req, categories){
+        const posts = []
+        for(let category of categories){
+            posts.push(await req.prisma.post.findFirst({
+                where: { categories: { contains: category } },
+                orderBy: [{ date: "desc" }]
+            }))
+        }
+    
         return posts
     }
 }

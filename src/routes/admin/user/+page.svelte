@@ -26,7 +26,7 @@
                 <input type="submit" value="បញ្ចូល" />
             </div>
             {#if browser}
-                <script src="/scripts/ckeditor/config.js"></script>
+                <script src="/scripts/ckeditor/config-user.js"></script>
             {/if}
         </form>
     </div>

@@ -68,7 +68,7 @@
 <Layout {data}>
     <div class="Editor" slot="editor">
         <form action="/admin/post?/create" method="post" on:submit={submitForm}>
-            <input type="text" name="title" requred placeholder="ចំណងជើង" />
+            <input type="text" name="title" required placeholder="ចំណងជើង" />
             <div class="wrapper">
                 <textarea name="content" id="editor"></textarea>
             </div>
@@ -126,6 +126,7 @@
 </Layout>
 
 <style>
+    
     .Editor{
         background-color: white;
         height: 100%;
@@ -141,7 +142,7 @@
     }
     .Editor .frame, .Editor .form, .Editor .viddata div{
         display: grid;
-        grid-template-columns: 20% 32.5% 32.5% 15%;;
+        grid-template-columns: 20% 32.5% 32.5% 15%;
     }
     .Editor .viddata div{
         width: 100%;
