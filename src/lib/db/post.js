@@ -83,7 +83,7 @@ class Post{
         }
         
         const posts = await req.prisma.post.findMany({ 
-            orderBy: [{ date: "desc" }, { id: "desc" }],
+            orderBy: [{ date: "desc" }],
             skip: amount * (page-1),
             take: amount
         })
@@ -93,9 +93,9 @@ class Post{
 
     async paginatePostsByCategory(req, amount){
         const posts = await req.prisma.post.findMany({ 
-            where: { categories: { has: req.params.category } },
-            orderBy: [{ date: "desc" }, { id: "desc" }],
-            skip: amount * (parseInt(req.query.page)-1),
+            where: { categories: { contains: req.params.category } },
+            orderBy: [{ date: "desc" }],
+            skip: amount * (parseInt(req.params.page)-1),
             take: amount
         })
 

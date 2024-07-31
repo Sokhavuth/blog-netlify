@@ -1,9 +1,13 @@
 <!--src/layouts/Header.astro-->
+<script>
+    export let data
+</script>
+
 <section class="header">
     <header class='wrapper region'>
         <div class='logo'>
             <a href='/'><img src='/images/siteLogo.png' alt='' /></a>
-            <a href='/'>ដំណឹង​ល្អ</a>
+            <a href='/'>{data.settings.siteTitle}</a>
         </div>
         <form class='search' method="post">
             <select name='category'>

@@ -1,21 +1,26 @@
 <!--src/layouts/Menu.astro-->
 <script>
-export let pageURL = "/"
+export let data
 let isresponsive = false
 
 let home = ''
 let news = ''
+let movie = ''
 let travel = ''
 let contact = ''
 let about = ''
 
-if(pageURL === '/'){
+if(data.pageURL === '/'){
     home = 'active'
-}else if(pageURL === 'news'){
+}else if(data.pageURL === 'news'){
     news = 'active'
-}else if(pageURL === 'contact'){
+}else if(data.pageURL === 'movie'){
+    movie = 'active'
+}else if(data.pageURL === 'trvel'){
+    travel = 'active'
+}else if(data.pageURL === 'contact'){
     contact = 'active'
-}else if(pageURL === 'about'){
+}else if(data.pageURL === 'about'){
     about = 'active'
 }
 
@@ -30,19 +35,19 @@ function myFunction() {
         <div class="region">
             <div class="topnav" class:responsive={isresponsive} id="myTopnav">
                 <a href="/" class={`home ${home}`}>ទំព័រ​ដើម</a>
-                <a href="/news" class={`news ${news}`}>ព័ត៌មាន</a>
+                <a href="/news/1" class={`news ${news}`}>ព័ត៌មាន</a>
                 <div class="dropdown">
-                  <button class="dropbtn">ភាពយន្ត
+                  <button class={`dropbtn ${movie}`}>ភាពយន្ត
                     <i class="fa fa-caret-down"></i>
                   </button>
                   <div class="dropdown-content">
-                    <a href="/movie/Khmer">រឿង​ខ្មែរ</a>
-                    <a href="/movie/Thai">រឿង​ថៃ</a>
-                    <a href="/movie/Chinese">រឿង​ចិន</a>
-                    <a href="/movie/Korean">រឿង​កូរ៉េ</a>
+                    <a href="/Khmer/1">រឿង​ខ្មែរ</a>
+                    <a href="/Thai/1">រឿង​ថៃ</a>
+                    <a href="/Chinese/1">រឿង​ចិន</a>
+                    <a href="/Korean/1">រឿង​កូរ៉េ</a>
                   </div>
                 </div>
-                <a href="/travel" class={`travel ${travel}`}>ដើរ​លេង</a>
+                <a href="/travel/1" class={`travel ${travel}`}>ដើរ​លេង</a>
                 <a href="/page/contact" class={`contact ${contact}`}>ទំនាក់ទំនង</a>
                 <a href="/page/about" class={`about ${about}`}>អំពីយើង​ខ្ញុំ</a>
                 <a href="javascript:void(0);" class="icon" on:click={myFunction}>

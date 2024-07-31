@@ -79,9 +79,12 @@
 	footer .items .item{
 		background-color: rgb(241, 198, 198);
 		display: grid;
-		grid-template-columns: 25% auto 20%;
+		grid-template-columns: 25% auto;
 		grid-gap: 10px;
 		align-items: center;
+	}
+	footer .items .item{
+		grid-template-columns: 25% auto 20%;
 	}
 	footer .items .item .thumb{
 		position: relative;
@@ -111,7 +114,7 @@
 	footer .items .item .edit{
     	text-align: right;
     	padding-right: 10px;
-   		visibility: hidden;
+		visibility: hidden;
 	}
 	footer .items .item .edit img{
 		width: 45px;

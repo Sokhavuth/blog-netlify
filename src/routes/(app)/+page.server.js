@@ -6,8 +6,9 @@ export async function load({ locals }) {
     const posts = await postDb.getPosts(locals, settings.indexPostLimit)
     const categories = ['Khmer', 'Thai', 'Chinese', 'Korean', 'travel']
     const postsByCategory = await postDb.getfirstPostByCategory(locals, categories)
+    const pageURL = '/'
 
-    return {posts, count, settings, postsByCategory}
+    return {posts, count, settings, postsByCategory, pageURL}
 }
 
 export const actions = {
