@@ -54,7 +54,7 @@
         />
         <span class="fb-share-button" data-href={`https://khmerweb-blog.netlify.app/post/${post.id}`} data-layout="" data-size=""><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=https://khmerweb-blog.netlify.app/post/${post.id}%2F&amp;src=sdkpreparse`} class="fb-xfbml-parse-ignore">Share</a></span>
         </div>
-        <Comments identifier={post.id} />
+        <div class="fb-comments" data-href={`https://sokhavuth.github.io/post/${post.slug}`} data-width="100%" data-numposts="5"></div>
     </div>
     <div class="sidebar">
         {#each data.randomPosts as post}
