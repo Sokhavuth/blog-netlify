@@ -1,9 +1,9 @@
 <script>    
+    import { onMount } from "svelte"
     import Layout from "$lib/components/Layout.svelte"
     import Video from "$lib/components/Video.svelte"
     import { browser } from '$app/environment'
     import { FacebookLink } from "svelte-social-links"
-    import Comments from "disqus-svelte"; // You can use any alias
     export let data
     $: post = data.post
     const Categories = {
@@ -16,8 +16,8 @@
         movie: 'ភាពយន្ត'
     }
 
-    const postCategories = data.post.categories.split(",")
-    const categories = postCategories.map((category)=>Categories[category])
+    $: postCategories = data.post.categories.split(",")
+    $: categories = postCategories.map((category)=>Categories[category.trim()])
 </script>
 
 <div id="fb-root"></div>
@@ -50,7 +50,7 @@
         <div class="social-media">
         <FacebookLink
 	        url={`https://khmerweb-blog.netlify.app/post/${post.id}`}
-	        hashtag="movie"
+	        hashtag=""
         />
         <span class="fb-share-button" data-href={`https://khmerweb-blog.netlify.app/post/${post.id}`} data-layout="" data-size=""><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=https://khmerweb-blog.netlify.app/post/${post.id}%2F&amp;src=sdkpreparse`} class="fb-xfbml-parse-ignore">Share</a></span>
         </div>

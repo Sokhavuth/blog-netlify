@@ -1,6 +1,7 @@
 <script>
     import Layout from "$lib/components/Layout.svelte"
     export let data
+    
 </script>
 
 <Layout {data} >
@@ -30,7 +31,7 @@
         <span>ទំព័រ </span>
         <select on:change={(event)=>document.location = `/${data.category}/${event.target.value}`}>
             {#each [...Array(data.lastPage).keys()] as pageNumber}
-                {#if pageNumber+1 === data.currentPage}
+                {#if pageNumber+1 == data.currentPage}
                 <option selected>{pageNumber+1}</option>
                 {:else}
                 <option>{pageNumber+1}</option>

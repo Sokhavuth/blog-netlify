@@ -2,7 +2,10 @@
 <section class="Footer">
     <footer class="wrapper">
         <p>Copyright &copy;2024 Khmer Web</p>
-        <p>Powered by <a target="_blank" href="https://kit.svelte.dev/">Sveltekit</a></p>
+        <p>Blog Application version 2</p>
+        <p>Powered by <a target="_blank" href="https://kit.svelte.dev/">Sveltekit</a> 
+            & <a target="_blank" href="https://turso.tech/">libSQL</a>
+        </p>
     </footer>
 </section>
 

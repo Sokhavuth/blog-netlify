@@ -1,6 +1,5 @@
 <script>
 import { onMount } from "svelte"
-import { browser } from '$app/environment'
 export let data = ''
 $: videos = JSON.parse(data.post.videos)
 $: title = data.post.title
