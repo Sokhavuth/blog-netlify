@@ -5,11 +5,11 @@
 
 <section class="Category region">
     <div class="wrapper">
-        <a href="/movie/Khmer"><img src={ posts[0].thumb } alt='' /><span>Khmer</span></a>
-        <a href="/movie/Thai"><img src={ posts[1].thumb } alt='' /><span>Thai</span></a>
-        <a href="/movie/Chinese"><img src={ posts[2].thumb } alt='' /><span>Chinese</span></a>
-        <a href="/movie/Korean"><img src={ posts[3].thumb } alt='' /><span>Korean</span></a>
-        <a href="/travel"><img src={ posts[4].thumb } alt='' /><span>Travel</span></a>
+        <a href="/Khmer/1"><img src={ posts[0].thumb } alt='' /><span>Khmer</span></a>
+        <a href="/Thai/1"><img src={ posts[1].thumb } alt='' /><span>Thai</span></a>
+        <a href="/Chinese/1"><img src={ posts[2].thumb } alt='' /><span>Chinese</span></a>
+        <a href="/Korean/1"><img src={ posts[3].thumb } alt='' /><span>Korean</span></a>
+        <a href="/travel/1"><img src={ posts[4].thumb } alt='' /><span>Travel</span></a>
     </div>
 </section>  
 
