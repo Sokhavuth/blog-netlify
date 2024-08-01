@@ -10,6 +10,18 @@ export async function load({ locals, params }){
     const currentPge = params.page
     const category = params.category
     const lastPage = Math.ceil(count/settings.categoryPostLimit)
+    let pageURL
+    if(params.category === 'news'){
+        pageURL = 'news'
+    }else if(params.category === 'Khmer'){
+        pageURL = 'movie'
+    }else if(params.category === 'Thai'){
+        pageURL = 'movie'
+    }else if(params.category === 'Chinese'){
+        pageURL = 'movie'
+    }else if(params.category === 'Korean'){
+        pageURL = 'movie'
+    }
 
-    return {count, settings, posts, category, currentPge, lastPage}
+    return {count, settings, posts, category, currentPge, lastPage, pageURL}
 }

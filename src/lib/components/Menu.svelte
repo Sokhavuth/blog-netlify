@@ -9,7 +9,7 @@ let movie = ''
 let travel = ''
 let contact = ''
 let about = ''
-
+console.log(movie)
 if(data.pageURL === '/'){
     home = 'active'
 }else if(data.pageURL === 'news'){
@@ -33,11 +33,11 @@ function myFunction() {
     <nav class="nav">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <div class="region">
-            <div class="topnav" class:responsive={isresponsive} id="myTopnav">
+            <div data-sveltekit-reload class="topnav" class:responsive={isresponsive} id="myTopnav">
                 <a href="/" class={`home ${home}`}>ទំព័រ​ដើម</a>
                 <a href="/news/1" class={`news ${news}`}>ព័ត៌មាន</a>
-                <div class="dropdown">
-                  <button class={`dropbtn ${movie}`}>ភាពយន្ត
+                <div class={`dropdown ${movie}`}>
+                  <button class={`dropbtn `}>ភាពយន្ត
                     <i class="fa fa-caret-down"></i>
                   </button>
                   <div class="dropdown-content">
@@ -79,7 +79,7 @@ nav{
     background-color: var(--background-dark);
     color: white;
   }
-  .topnav a.active {
+  .topnav a.active, div.active {
     background-color: var(--background-dark);
     color: white;
   }
