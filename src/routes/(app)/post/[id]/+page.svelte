@@ -3,8 +3,9 @@
     import Video from "$lib/components/Video.svelte"
     import { browser } from '$app/environment'
     import { FacebookLink } from "svelte-social-links"
+    import Comments from "disqus-svelte"; // You can use any alias
     export let data
-    const post = data.post
+    $: post = data.post
     const Categories = {
         Khmer: 'រឿងខ្មែរ',
         Thai: 'រឿងថៃ',
@@ -53,26 +54,11 @@
         />
         <span class="fb-share-button" data-href={`https://khmerweb-blog.netlify.app/post/${post.id}`} data-layout="" data-size=""><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=https://khmerweb-blog.netlify.app/post/${post.id}%2F&amp;src=sdkpreparse`} class="fb-xfbml-parse-ignore">Share</a></span>
         </div>
-        {#if browser}
-        <div id="disqus_thread"></div>
-        <script>
-            var disqus_config = function () {
-                this.page.url = `https://khmerweb-blog.netlify.app/post/${post.id}`;  // Replace PAGE_URL with your page's canonical URL variable
-                this.page.identifier = post.id; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-            }
-            (function() { // DON'T EDIT BELOW THIS LINE
-                var d = document, s = d.createElement('script');
-                s.src = 'https://EXAMPLE.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        {/if}    
+        <Comments identifier={post.id} />
     </div>
     <div class="sidebar">
         {#each data.randomPosts as post}
-            <a data-sveltekit-reload href={`/post/${post.id}`}>
+            <a  href={`/post/${post.id}`}>
                 <img src={post.thumb} alt=''/>
                 {#if post.videos.length}
                 <img class="play-icon" src="/images/play.png" alt=''/>

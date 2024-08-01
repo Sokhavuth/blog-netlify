@@ -1,8 +1,9 @@
 <script>
 import { onMount } from "svelte"
-export let data
-const videos = JSON.parse(data.post.videos)
-const title = data.post.title
+import { browser } from '$app/environment'
+export let data = ''
+$: videos = JSON.parse(data.post.videos)
+$: title = data.post.title
 let clicked = 0
 let myElement
 let url
@@ -24,19 +25,21 @@ function setScreen(video,id,click){
     }else if(video['type'] === "Dailymotion"){
         url = `https://www.dailymotion.com/embed/video/${video['id']}`
     }
-    
-    if(click){
-        myElement = document.getElementById("part"+clicked)
-        myElement.classList.remove('clickedPart')
-    }
-
-    myElement = document.getElementById("part"+id)
-    myElement.classList.add('clickedPart')
-    clicked = id
 }
 
+function onClick(video,id,click){
+    let myElement = document.getElementById("part"+clicked)
+    myElement.classList.remove('clickedPart')
+    let myElement2 = document.getElementById("part"+id)
+    myElement2.classList.add('clickedPart')
+    clicked = id
+    setScreen(video,id,click)
+}
+
+$: title, setScreen(videos[0],0,false)
 onMount(() => {
-    setScreen(videos[0],0,false)
+    myElement = document.getElementById("part0")
+    myElement.classList.add('clickedPart')
 })
 </script>
 
@@ -52,11 +55,11 @@ onMount(() => {
     <div class="playlist">
     {#each videos as item, index }
         {#if index === videos.length-1}
-        <div class="part" class:clickedPart={clickedPart} id="part{index}"  on:click={() => setScreen(videos[index], index,true)}>
+        <div class="part" class:clickedPart={clickedPart} id="part{index}"  on:click={() => onClick(videos[index], index,true)}>
             { title } ភាគ { index+1 } { videos[index].status }
         </div>
         {:else}
-        <div class="part" class:clickedPart={clickedPart} id="part{index}" on:click={() => setScreen(videos[index], index,true)}>
+        <div class="part" class:clickedPart={clickedPart} id="part{index}" on:click={() => onClick(videos[index], index,true)}>
             { title } ភាគ { index+1 }
         </div>
         {/if}
