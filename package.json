@@ -24,6 +24,7 @@
 		"prettier-plugin-svelte": "^3.1.2",
 		"prisma": "^5.17.0",
 		"svelte": "^4.2.7",
+		"svelte-social-links": "^2.0.2",
 		"sveltekit-flash-message": "^2.4.4",
 		"vite": "^5.0.3"
 	},
@@ -36,7 +37,6 @@
 		"bcryptjs": "^2.4.3",
 		"ckeditor5": "^42.0.1",
 		"jquery": "^3.7.1",
-		"jsonwebtoken": "^9.0.2",
-		"svelte-share-buttons-component": "^3.0.0"
+		"jsonwebtoken": "^9.0.2"
 	}
 }

@@ -7,5 +7,6 @@
 
 <Header {data} />
 <Menu {data} />
+<img style='display:none;' src={data.thumb} alt='' />
 <slot />
 <Footer />

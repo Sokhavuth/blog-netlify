@@ -2,6 +2,7 @@
     import Layout from "$lib/components/Layout.svelte"
     import Video from "$lib/components/Video.svelte"
     import { browser } from '$app/environment'
+    import { FacebookLink } from "svelte-social-links"
     export let data
     const post = data.post
     const Categories = {
@@ -45,8 +46,13 @@
         <div class="content">
             {@html post.content}
         </div>
-        
-        <div class="fb-share-button" data-href={`https://khmerweb-blog.netlify.app/post/${post.id}`} data-layout="" data-size=""><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=https://khmerweb-blog.netlify.app%2F&amp;src=sdkpreparse`} class="fb-xfbml-parse-ignore">Share</a></div>
+        <div class="social-media">
+        <FacebookLink
+	        url={`https://khmerweb-blog.netlify.app/post/${post.id}`}
+	        hashtag="movie"
+        />
+        <span class="fb-share-button" data-href={`https://khmerweb-blog.netlify.app/post/${post.id}`} data-layout="" data-size=""><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=https://khmerweb-blog.netlify.app/post/${post.id}%2F&amp;src=sdkpreparse`} class="fb-xfbml-parse-ignore">Share</a></span>
+        </div>
         <div class="fb-comments" data-href={`https://khmerweb-blog.netlify.app/post/${post.id}`} data-width="100%" data-numposts="5"></div>
         
     </div>
@@ -133,6 +139,13 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.Post .main .social-media{
+    width: 50px;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 5px;
+    align-items: center;
 }
 
 @media only screen and (max-width:600px){

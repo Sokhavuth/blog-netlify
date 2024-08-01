@@ -9,6 +9,7 @@ export async function load({ locals, params }){
     locals.params.id = post.author
     const author = await userDb.getUser(locals)
     const randomPosts = []
+    const thumb = post.thumb
     
-    return {post, randomPosts, settings, author}
+    return {post, randomPosts, settings, author, thumb}
 }
