@@ -41,7 +41,7 @@ class Post{
         return await req.prisma.post.findMany({ 
             where: { OR: query },
             take: amount,
-            orderBy: [{ date: "desc" }, { id: "desc" }]
+            orderBy: [{ date: "desc" }]
         })
     }
 
@@ -49,7 +49,7 @@ class Post{
         return await req.prisma.post.findMany({ 
             where: { categories: { has: req.params.category } },
             take: amount, 
-            orderBy: [{ date: "desc" }, { id: "desc" }]
+            orderBy: [{ date: "desc" }]
         })
     }
 
@@ -112,6 +112,20 @@ class Post{
         }
     
         return posts
+    }
+
+    async getRandomPosts(req, amount, post){
+        let sql = ''
+        if(post.categories.includes('news')){
+            sql = `SELECT * FROM "Post" WHERE ID != "${post.id}" AND categories like "%news%" 
+                   ORDER BY DATE desc LIMIT ${amount}`
+        }else{
+            sql = `SELECT * FROM "Post" WHERE ID != "${post.id}" AND categories not like "%news%" 
+                   ORDER BY RANDOM() LIMIT ${amount}`
+        }
+        const results = await req.prisma.$queryRawUnsafe(sql)
+
+        return results
     }
 }
 

@@ -58,7 +58,7 @@
     </div>
     <div class="sidebar">
         {#each data.randomPosts as post}
-            <a href={`/post/${post.id}`}>
+            <a data-sveltekit-reload href={`/post/${post.id}`}>
                 <img src={post.thumb} alt=''/>
                 {#if post.videos.length}
                 <img class="play-icon" src="/images/play.png" alt=''/>
@@ -76,7 +76,7 @@
     display: grid;
     grid-template-columns: repeat(2, auto);
     grid-gap: 10px;
-    padding-top: 0;
+    padding-top: 10px;
 }
 .Ad img{
     width: 100%;
