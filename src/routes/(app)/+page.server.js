@@ -7,8 +7,9 @@ export async function load({ locals }) {
     const categories = ['Khmer', 'Thai', 'Chinese', 'Korean', 'travel']
     const postsByCategory = await postDb.getfirstPostByCategory(locals, categories)
     const pageURL = '/'
+    const title = 'ទំព័រដើម'
 
-    return {posts, count, settings, postsByCategory, pageURL}
+    return {posts, count, settings, postsByCategory, pageURL, title}
 }
 
 export const actions = {

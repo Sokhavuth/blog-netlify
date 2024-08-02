@@ -3,6 +3,10 @@
     export let data
 </script>
 
+<svelte:head>
+    <title>{data.title}</title>
+</svelte:head>
+
 <section class="header">
     <header class='wrapper region'>
         <div class='logo'>

@@ -8,6 +8,7 @@ export async function load({ locals, params }) {
     const currentPage = parseInt(params.page)
     const lastPage = Math.ceil(count/settings.categoryPostLimit)
     const pageURL = '/page'
+    const title = settings.siteTitle
 
-    return {posts, count, settings, currentPage, lastPage, pageURL}
+    return {posts, count, settings, currentPage, lastPage, pageURL, title}
 }
