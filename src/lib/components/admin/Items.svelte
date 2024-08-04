@@ -34,7 +34,7 @@
                 <div>{new Date(item.date).toLocaleDateString('it-IT')}</div>
             </div>
             <div class="edit">
-                <a data-sveltekit-reload href={`/admin/${data.type}/edit/${item.id}?p=${value}`}>
+                <a href={`/admin/${data.type}/edit/${item.id}?p=${value}`}>
 					<img src="/images/edit.png" alt='' />
 				</a>
                 <a href="/admin/{data.type}/delete/{item.id}">

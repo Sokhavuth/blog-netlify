@@ -1,8 +1,8 @@
 <script>    
-    import { onMount } from "svelte"
+    //import { onMount } from "svelte"
     import Layout from "$lib/components/Layout.svelte"
     import Video from "$lib/components/Video.svelte"
-    import { browser } from '$app/environment'
+    //import { browser } from '$app/environment'
     import { FacebookLink } from "svelte-social-links"
     export let data
     $: post = data.post
@@ -18,21 +18,6 @@
 
     $: postCategories = data.post.categories.split(",")
     $: categories = postCategories.map((category)=>Categories[category.trim()])
-
-    let FB;
-onMount(
-   ()=> {
-    const windowRef = window
-    
-    if(typeof windowRef.FB !== 'undefined'){
-      FB = windowRef.FB;
-    }
-
-    //... you could also do this:
-    const global = globalThis; // if using Typescript
-    setTimeout( ()=>  FB = global.FB, 0)
-    }
-)
 </script>
 
 <div id="fb-root"></div>
@@ -67,9 +52,7 @@ onMount(
         />
         <span class="fb-share-button" data-href={`https://khmerweb-blog.netlify.app/post/${post.id}`} data-layout="" data-size=""><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=https://khmerweb-blog.netlify.app/post/${post.id}%2F&amp;src=sdkpreparse`} class="fb-xfbml-parse-ignore">Share</a></span>
         </div>
-        {#if browser}
         <div class="fb-comments" data-href={`https://sokhavuth.github.io/post/${post.id}`} data-width="100%" data-numposts="5"></div>
-        {/if}
     </div>
     <div class="sidebar">
         {#each data.randomPosts as post}
