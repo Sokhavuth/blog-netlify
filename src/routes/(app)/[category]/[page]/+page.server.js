@@ -7,6 +7,8 @@ export async function load({ locals, params }){
     const count = await postDb.count(locals, query)
     const settings = await locals.settings(locals)
     const posts = await postDb.paginatePostsByCategory(locals, settings.categoryPostLimit)
+    const categories = ['Khmer', 'Thai', 'Chinese', 'Korean', 'travel']
+    const postsByCategory = await postDb.getfirstPostByCategory(locals, categories)
     const currentPage = params.page
     const category = params.category
     const lastPage = Math.ceil(count/settings.categoryPostLimit)
@@ -24,5 +26,5 @@ export async function load({ locals, params }){
         pageURL = 'movie'
     }
 
-    return {count, settings, posts, category, currentPage, lastPage, pageURL, title}
+    return {count, settings, posts, postsByCategory, category, currentPage, lastPage, pageURL, title}
 }
