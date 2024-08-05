@@ -1,21 +1,7 @@
 <script>    
     import Layout from "$lib/components/Layout.svelte"
-    import Video from "$lib/components/Video.svelte"
-    import { FacebookLink } from "svelte-social-links"
     export let data
-    $: post = data.post
-    const Categories = {
-        Khmer: 'រឿងខ្មែរ',
-        Thai: 'រឿងថៃ',
-        Chinese: 'រឿងចិន',
-        Korean: 'រឿងកូរ៉េ',
-        travel: 'ដើរ​លេង',
-        news: 'ព័ត៌មាន',
-        movie: 'ភាពយន្ត'
-    }
-
-    $: postCategories = data.post.categories.split(",")
-    $: categories = postCategories.map((category)=>Categories[category.trim()])
+    let page = data.page
 </script>
 
 <Layout {data}>
@@ -26,28 +12,10 @@
 
 <section class="Post region">
     <div class="main">
-        <h3 class="title">{post.title}</h3>
-        <div class="categories">
-            <span>​​​​​​​​​ជំពូកៈ {categories.join(', ')}</span>
-            <span>{(new Date(post.date)).toLocaleDateString('it-IT')}</span>
-        </div>
-        <div class="author">
-            <span>អ្នក​​​​​​​​​​រៀបរៀងៈ {data.authorName}</span>
-        </div>
-        
-        <Video {data} />
-        
+        <h3 class="title">{page.title}</h3>
         <div class="content">
-            {@html post.content}
+            {@html page.content}
         </div>
-        <div class="social-media">
-        <FacebookLink
-	        url={`https://khmerweb-blog.netlify.app/post/${post.id}`}
-	        hashtag=""
-        />
-        <span class="fb-share-button" data-href={`https://khmerweb-blog.netlify.app/post/${post.id}`} data-layout="" data-size=""><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=https://khmerweb-blog.netlify.app/post/${post.id}%2F&amp;src=sdkpreparse`} class="fb-xfbml-parse-ignore">Share</a></span>
-        </div>
-        <div class="fb-comments" data-href={`https://sokhavuth.github.io/post/${post.id}`} data-width="100%" data-numposts="5"></div>
     </div>
     <div class="sidebar">
         {#each data.randomPosts as post}
@@ -89,12 +57,6 @@
     font: 18px/1.5 Oswald, Koulen;
     margin-bottom: 20px;
 }
-.Post .main .categories span:nth-child(2){
-    float: right;
-}
-.Post .main .author{
-    margin-bottom: 30px;
-}
 .Post .sidebar a{
     display: block;
     color: white;
@@ -132,13 +94,6 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-.Post .main .social-media{
-    width: 50px;
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 5px;
-    align-items: center;
 }
 
 @media only screen and (max-width:600px){

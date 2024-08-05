@@ -48,8 +48,8 @@ function myFunction() {
                   </div>
                 </div>
                 <a href="/travel/1" class={`travel ${travel}`}>ដើរ​លេង</a>
-                <a href="/page/contact" class={`contact ${contact}`}>ទំនាក់ទំនង</a>
-                <a href="/page/about" class={`about ${about}`}>អំពីយើង​ខ្ញុំ</a>
+                <a href="/page/1b93fb18-bfa7-466b-bf78-66d0e0a0e8d0" class={`contact ${contact}`}>ទំនាក់ទំនង</a>
+                <a href="/page/6be44d51-9d45-453f-b747-d7155a68d3b8" class={`about ${about}`}>អំពីយើង​ខ្ញុំ</a>
                 <a href="javascript:void(0);" class="icon" on:click={myFunction}>
                     <i class="fa fa-bars"></i>
                 </a>

@@ -13,7 +13,7 @@
             <a href='/'><img src='/images/siteLogo.png' alt='' /></a>
             <a href='/'>{data.settings.siteTitle}</a>
         </div>
-        <form class='search' method="post">
+        <form class='search' action="/search?/search" method="post">
             <select name='category'>
                 <option>ទាំងអស់</option>
                 <option>រឿងខ្មែរ</option>

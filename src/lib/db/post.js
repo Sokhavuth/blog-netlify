@@ -33,13 +33,20 @@ class Post{
     }
 
     async searchPosts(req, amount){
-        const query = [
-            { title: { contains: req.body.q } },
-            { content: { contains: req.body.q } },
-            { categories: { has: req.body.q } },
-        ]
+        let query
+        if(req.body.category){
+            query = [
+                { title: { contains: req.body.q } },
+                { categories: { contains: req.body.category } }
+            ]
+        }else{
+            query = [
+                { title: { contains: req.body.q } }
+            ]
+        }
+        
         return await req.prisma.post.findMany({ 
-            where: { OR: query },
+            where: { AND: query },
             take: amount,
             orderBy: [{ date: "desc" }]
         })
