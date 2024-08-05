@@ -20,9 +20,6 @@
     $: categories = postCategories.map((category)=>Categories[category.trim()])
 </script>
 
-<div id="fb-root"></div>
-
-
 <Layout {data}>
 <section class="Ad region">
     <img src="/images/ad.jpg" alt=''/>
