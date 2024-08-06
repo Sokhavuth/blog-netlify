@@ -1,18 +1,10 @@
 import { PrismaClient } from '@prisma/client'
-import { PrismaLibSQL } from '@prisma/adapter-libsql'
-import { createClient } from '@libsql/client'
 import jwt from "jsonwebtoken"
 import { SECRET_KEY } from '$env/static/private'
 import settings from "$lib/settings.js"
 
 export async function handle({ event, resolve }) {
-    const libsql = createClient({
-        url: `${process.env.TURSO_DATABASE_URL}`,
-        authToken: `${process.env.TURSO_AUTH_TOKEN}`,
-    })
-
-    const adapter = new PrismaLibSQL(libsql)
-    const prisma = new PrismaClient({ adapter })
+    const prisma = new PrismaClient()
 
     event.locals.prisma = prisma
     event.locals.settings = settings

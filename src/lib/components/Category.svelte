@@ -3,6 +3,7 @@
     const posts = data.postsByCategory
 </script>
 
+{#if posts.length >= 5}
 <section class="Category region">
     <div class="wrapper">
         <a href="/Khmer/1"><img src={ posts[0].thumb } alt='' /><span>Khmer</span></a>
@@ -12,6 +13,7 @@
         <a href="/travel/1"><img src={ posts[4].thumb } alt='' /><span>Travel</span></a>
     </div>
 </section>  
+{/if}
 
 <style>
     .Category .wrapper{

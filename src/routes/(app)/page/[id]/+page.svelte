@@ -19,7 +19,7 @@
     </div>
     <div class="sidebar">
         {#each data.randomPosts as post}
-            <a  href={`/post/${post.id}`}>
+            <a  href={`/post/${post._id.$oid}`}>
                 <img src={post.thumb} alt=''/>
                 {#if post.videos.length}
                 <img class="play-icon" src="/images/play.png" alt=''/>

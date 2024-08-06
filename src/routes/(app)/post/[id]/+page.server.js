@@ -3,6 +3,7 @@ import userDb from "$lib/db/user.js"
 
 export async function load({ locals, params }){
     locals.params = params
+    const user = locals.user
 
     const settings = await locals.settings(locals)
     const post = await postDb.getPost(locals)
@@ -15,5 +16,5 @@ export async function load({ locals, params }){
     const thumb = post.thumb
     const title = post.title
     
-    return {post, randomPosts, postsByCategory, settings, authorName, thumb, title}
+    return {post, user, randomPosts, postsByCategory, settings, authorName, thumb, title}
 }

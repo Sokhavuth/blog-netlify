@@ -122,16 +122,17 @@ class Post{
     }
 
     async getRandomPosts(req, amount, post){
-        let sql = ''
+        let results
         if(post.categories.includes('news')){
-            sql = `SELECT * FROM "Post" WHERE ID != "${post.id}" AND categories like "%news%" 
-                   ORDER BY DATE desc LIMIT ${amount}`
+            results = await req.prisma.post.aggregateRaw({
+                pipeline: [{ $match : { categories:{ $regex: "news" }, _id: {$ne: {$oid: post.id}}}}, { $sample:{ size: amount }}]
+            })
         }else{
-            sql = `SELECT * FROM "Post" WHERE ID != "${post.id}" AND categories not like "%news%" 
-                   ORDER BY RANDOM() LIMIT ${amount}`
+            results = await req.prisma.post.aggregateRaw({
+                pipeline: [{ $match : {categories : {$not:{ $regex: "news" }}, _id: {$ne: {$oid: post.id}}} }, { $sample:{ size: amount }}]
+            })
         }
-        const results = await req.prisma.$queryRawUnsafe(sql)
-
+       
         return results
     }
 }

@@ -34,24 +34,32 @@
         <div class="author">
             <span>អ្នក​​​​​​​​​​រៀបរៀងៈ {data.authorName}</span>
         </div>
-        
-        <Video {data} />
-        
+        {#if post.videos.length > 0}
+            <Video {data} />
+        {/if}
         <div class="content">
             {@html post.content}
         </div>
-        <div class="social-media">
-        <FacebookLink
-	        url={`https://khmerweb-blog.netlify.app/post/${post.id}`}
-	        hashtag=""
-        />
-        <span class="fb-share-button" data-href={`https://khmerweb-blog.netlify.app/post/${post.id}`} data-layout="" data-size=""><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=https://khmerweb-blog.netlify.app/post/${post.id}%2F&amp;src=sdkpreparse`} class="fb-xfbml-parse-ignore">Share</a></span>
+        <div class='post-bottom'>
+            <div class="social-media">
+                <FacebookLink
+	                url={`https://khmerweb-blog.netlify.app/post/${post.id}`}
+	                hashtag=""
+                />
+                <span class="fb-share-button" data-href={`https://khmerweb-blog.netlify.app/post/${post.id}`} data-layout="" data-size=""><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=https://khmerweb-blog.netlify.app/post/${post.id}%2F&amp;src=sdkpreparse`} class="fb-xfbml-parse-ignore">Share</a></span>
+            </div>
+            {#if data.user}
+            <div class='edit'>
+                <a href={`/admin/post/edit/${post.id}`}><img src="/images/edit.png" alt=''/></a>
+                <a href={`/admin/post/delete/${post.id}`}><img src="/images/delete.png" alt=''/></a>
+            </div>
+            {/if}
         </div>
         <div class="fb-comments" data-href={`https://sokhavuth.github.io/post/${post.id}`} data-width="100%" data-numposts="5"></div>
     </div>
     <div class="sidebar">
         {#each data.randomPosts as post}
-            <a  href={`/post/${post.id}`}>
+            <a  href={`/post/${post._id.$oid}`}>
                 <img src={post.thumb} alt=''/>
                 {#if post.videos.length}
                 <img class="play-icon" src="/images/play.png" alt=''/>
@@ -132,6 +140,16 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.Post .main .post-bottom{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.Post .main .post-bottom .edit{
+    text-align: right; 
+}
+.Post .main .post-bottom .edit img{
+    width: 30px;
 }
 .Post .main .social-media{
     width: 50px;

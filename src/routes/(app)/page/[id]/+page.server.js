@@ -13,9 +13,9 @@ export async function load({ locals, params }){
     const title = page.title
 
     let pageURL
-    if(page.id === '1b93fb18-bfa7-466b-bf78-66d0e0a0e8d0'){
+    if(page.id === '66b17b1e944f187d47506cda'){
         pageURL = 'contact'
-    }else if(page.id === '6be44d51-9d45-453f-b747-d7155a68d3b8'){
+    }else if(page.id === '66b17b48944f187d47506cdc'){
         pageURL = 'about'
     }
     

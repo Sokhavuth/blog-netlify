@@ -18,7 +18,7 @@ async function setup(req){
         settings = {
             siteTitle: "ផ្នែក​ខាង​ក្នុង",
             description: "",
-            dItemLimit: 2,
+            dItemLimit: 10,
             indexPostLimit: 20,
             categoryPostLimit: 20,
             pageTitle: "Home",
