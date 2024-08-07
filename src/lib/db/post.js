@@ -125,7 +125,7 @@ class Post{
         let results
         if(post.categories.includes('news')){
             results = await req.prisma.post.aggregateRaw({
-                pipeline: [{ $match : { categories:{ $regex: "news" }, _id: {$ne: {$oid: post.id}}}}, { $sample:{ size: amount }}]
+                pipeline: [{ $match : { categories:{ $regex: "news" }, _id: {$ne: {$oid: post.id}}}}, { $sort: { date : -1 } }, { $limit: amount }]
             })
         }else{
             results = await req.prisma.post.aggregateRaw({
