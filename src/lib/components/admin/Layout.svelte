@@ -12,17 +12,17 @@
 			<aside>
 				<div class='inner'>
 				<a href="/amin/post"><img src="/images/movie.png" alt='' /></a>
-					<a href="/admin/post">ការផ្សាយ</a>
+					<span><a href="/admin/post">ការផ្សាយ</a></span>
 					<a href="/amin/category"><img src="/images/category.png" alt='' /></a>
-					<a href="/admin/category">ជំពូក</a>
+					<span><a href="/admin/category">ជំពូក</a></span>
 					<a href="/amin/page"><img src="/images/page.png" alt=''/></a>
-					<a href="/admin/page">ទំព័រ​ស្តាទិក</a>
-					<a><img src="/images/upload.png" alt='' /></a>
-					<a>Upload</a>
+					<span><a href="/admin/page">ទំព័រ​ស្តាទិក</a></span>
+					<a href='/admin/upload'><img src="/images/upload.png" alt='' /></a>
+					<span><a href="/admin/upload">Upload</a></span>
 					<a href="/amin/user"><img src="/images/users.png" alt='' /></a>
-					<a href="/admin/user">អ្នក​និពន្ធ</a>
+					<span><a href="/admin/user">អ្នក​និពន្ធ</a></span>
 					<a href="/amin/setting"><img src="/images/setting.png" alt='' /></a>
-					<a href="/admin/setting">Setting</a>
+					<span><a href="/admin/setting">Setting</a></span>
 				</div>
 			</aside>
 			<div>
@@ -51,7 +51,7 @@
 	}
 	.Admin main .wrapper aside .inner{
 		display: grid;
-		grid-template-columns: 20% auto;
+		grid-template-columns: 50px auto;
 		align-items: center;
 		grid-gap: 20px 10px;
 		padding: 15px;

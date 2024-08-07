@@ -34,11 +34,11 @@
                 <div>{new Date(item.date).toLocaleDateString('it-IT')}</div>
             </div>
             <div class="edit">
-                <a href={`/admin/${data.type}/edit/${item.id}?p=${value}`}>
-					<img src="/images/edit.png" alt='' />
-				</a>
-                <a href="/admin/{data.type}/delete/{item.id}">
+				<a href="/admin/{data.type}/delete/{item.id}">
 					<img src="/images/delete.png" alt=''/>
+				</a>
+                <a style="padding-right:5px;" href={`/admin/${data.type}/edit/${item.id}?p=${value}`}>
+					<img src="/images/edit.png" alt='' />
 				</a>
             </div> 
         </div>
@@ -79,12 +79,13 @@
 	footer .items .item{
 		background-color: rgb(241, 198, 198);
 		display: grid;
-		grid-template-columns: 25% auto;
+		grid-template-columns: 130px auto;
 		grid-gap: 10px;
 		align-items: center;
+		padding-right: 10px;
 	}
-	footer .items .item{
-		grid-template-columns: 25% auto 20%;
+	footer .items .item:hover{
+		grid-template-columns: 130px auto 75px;
 	}
 	footer .items .item .thumb{
 		position: relative;
@@ -113,18 +114,22 @@
 	}
 	footer .items .item .edit{
     	text-align: right;
-    	padding-right: 10px;
-		visibility: hidden;
+		display: none;
+	}
+	footer .items .item .edit a{
+    	float: right;
 	}
 	footer .items .item .edit img{
-		width: 45px;
+		width: 30px;
 	}
 	footer .items .item .edit img:hover{
 		cursor: pointer;
 		opacity: .7;
 	}
 	footer .items .item:hover .edit{
-    	visibility: visible;
+    	display: block;
+		dispaly: grid;
+		grid-template-columns: auto auto;
 	}
 	footer .pagination{
 		text-align: center;

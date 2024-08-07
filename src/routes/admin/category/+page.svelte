@@ -36,9 +36,5 @@
         font: var(--body-font);
         padding: 2px 5px
     }
-    .category .flash{
-        text-align: center;
-        color: white;
-        padding: 5px;
-    }
+    
 </style>

@@ -29,7 +29,7 @@ export const actions = {
         const videos = data.get("videos")
 
         const validate = (
-            typeof title === 'string' &&
+            typeof title === 'string' && title !== '' &&
             typeof content === 'string' &&
             typeof categories === 'string' &&
             typeof thumb === 'string' &&
