@@ -11,7 +11,9 @@
         Korean: 'រឿងកូរ៉េ',
         travel: 'ដើរ​លេង',
         news: 'ព័ត៌មាន',
-        movie: 'ភាពយន្ត'
+        movie: 'ភាពយន្ត',
+        game: 'ល្បែង​កំព្យូទ័រ',
+        world: 'រឿង​​បរទេស'
     }
 
     $: postCategories = data.post.categories.split(",")
@@ -28,7 +30,7 @@
     <div class="main">
         <h3 class="title">{post.title}</h3>
         <div class="categories">
-            <span>​​​​​​​​​ជំពូកៈ {categories.join(', ')}</span>
+            <span>​​​​​​​​​ជំពូកៈ {(categories.filter(Boolean)).join(', ')}</span>
             <span>{(new Date(post.date)).toLocaleDateString('it-IT')}</span>
         </div>
         <div class="author">
