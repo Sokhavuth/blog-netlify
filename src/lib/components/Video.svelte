@@ -1,7 +1,7 @@
 <script>
 import { onMount } from "svelte"
 export let data = ''
-$: videos = JSON.parse(data.post.videos)
+$: videos = JSON.parse(data.post.videos).reverse()
 $: title = data.post.title
 let clicked = 0
 let myElement
