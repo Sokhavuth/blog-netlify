@@ -9,6 +9,8 @@ let movie = ''
 let travel = ''
 let contact = ''
 let about = ''
+let game = ''
+
 console.log(movie)
 if(data.pageURL === '/'){
     home = 'active'
@@ -22,6 +24,10 @@ if(data.pageURL === '/'){
     contact = 'active'
 }else if(data.pageURL === 'about'){
     about = 'active'
+}else if(data.pageURL === 'travel'){
+    travel = 'active'
+}else if(data.pageURL === 'game'){
+    game = 'active'
 }
 
 function myFunction() {
@@ -45,9 +51,11 @@ function myFunction() {
                     <a href="/Thai/1">រឿង​ថៃ</a>
                     <a href="/Chinese/1">រឿង​ចិន</a>
                     <a href="/Korean/1">រឿង​កូរ៉េ</a>
+                    <a href="/world/1">​ផ្សេង​ទៀត</a>
                   </div>
                 </div>
                 <a href="/travel/1" class={`travel ${travel}`}>ដើរ​លេង</a>
+                <a href="/game/1" class={`game ${game}`}>ល្បែង​កំព្យូទ័រ</a>
                 <a href="/page/66b17b1e944f187d47506cda" class={`contact ${contact}`}>ទំនាក់ទំនង</a>
                 <a href="/page/66b17b48944f187d47506cdc" class={`about ${about}`}>អំពីយើង​ខ្ញុំ</a>
                 <a href="javascript:void(0);" class="icon" on:click={myFunction}>

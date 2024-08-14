@@ -1,7 +1,7 @@
 <!--src/components/Home.astro-->
 <script>
     export let data
-    const posts = data.posts.slice(5)
+    const posts = data.posts
     const pageAmount = Math.ceil(data.count/data.settings.categoryPostLimit)
 </script>
 

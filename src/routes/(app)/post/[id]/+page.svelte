@@ -55,7 +55,7 @@
             </div>
             {/if}
         </div>
-        <div class="fb-comments" data-href={`https://sokhavuth.github.io/post/${post.id}`} data-width="100%" data-numposts="5"></div>
+        <div class="fb-comments" data-href={`https://khmerweb-live.netlify.app/post/${post.id}`} data-width="100%" data-numposts="5"></div>
     </div>
     <div class="sidebar">
         {#each data.randomPosts as post}
@@ -77,7 +77,7 @@
     display: grid;
     grid-template-columns: repeat(2, auto);
     grid-gap: 10px;
-    padding-top: 0px;
+    padding-top: 10px;
 }
 .Ad img{
     width: 100%;

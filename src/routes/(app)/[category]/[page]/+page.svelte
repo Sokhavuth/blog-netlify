@@ -48,7 +48,7 @@
     display: grid;
     grid-template-columns: repeat(2, auto);
     grid-gap: 10px;
-    padding-top: 0px;
+    padding-top: 10px;
 }
 .Ad img{
     width: 100%;

@@ -6,9 +6,9 @@ export async function load({ locals, params }){
 
     const settings = await locals.settings(locals)
     const page = await pageDb.getPage(locals)
-    const categories = ['Khmer', 'Thai', 'Chinese', 'Korean', 'travel']
-    const postsByCategory = await postDb.getfirstPostByCategory(locals, categories)
-    const randomPosts = await postDb.getRandomPosts(locals, 3, postsByCategory[0])
+    const categories = ['Khmer']
+    const postsByCategory = await postDb.getLatestPostByCategory(locals, categories, 1)
+    const randomPosts = await postDb.getRandomPosts(locals, 3, postsByCategory[0][0])
     const thumb = page.thumb
     const title = page.title
 

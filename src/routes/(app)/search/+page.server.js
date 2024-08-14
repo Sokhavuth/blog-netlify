@@ -2,12 +2,10 @@ import postDb from "$lib/db/post.js"
 
 export async function load({ locals }){
     const settings = await locals.settings(locals)
-    const categories = ['Khmer', 'Thai', 'Chinese', 'Korean', 'travel']
-    const postsByCategory = await postDb.getfirstPostByCategory(locals, categories)
     const title = 'ទំព័រ​ស្វែង​រក'
     const posts = locals.posts
     
-    return {posts, postsByCategory, settings, title}
+    return {posts, settings, title}
 }
 
 export const actions = {

@@ -109,12 +109,21 @@ class Post{
         return posts
     }
 
-    async getfirstPostByCategory(req, categories){
+    async getLatestPosts(req, amount){    
+        return await req.prisma.post.findMany({ 
+            where: {NOT: {categories: { contains: "unavailable" }}},
+            take: amount, 
+            orderBy: [{ date: "desc" }]
+        })
+    }
+
+    async getLatestPostByCategory(req, categories, amount){
         const posts = []
         for(let category of categories){
-            posts.push(await req.prisma.post.findFirst({
-                where: { categories: { contains: category } },
-                orderBy: [{ date: "desc" }]
+            posts.push(await req.prisma.post.findMany({
+                where: {AND: [{ categories: { contains: category } }, {NOT: {categories: { contains: "unavailable" }}}]},
+                orderBy: [{ date: "desc" }],
+                take: amount
             }))
         }
     
