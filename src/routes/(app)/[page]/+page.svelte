@@ -96,7 +96,7 @@
 @media only screen and (max-width:600px){
     .Ad{
         grid-template-columns: 100%;
-        padding: 0 10px;
+        padding: 10px 10px 0;
     }
     .Home .container{
         grid-template-columns: 100%;
