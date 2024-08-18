@@ -22,13 +22,15 @@ class Post{
     async getPosts(req, amount){
         if(amount === "all"){
             return await req.prisma.post.findMany({ 
-                orderBy: [{ date: "desc" }, { id: "desc" }]
+                orderBy: [{ date: "desc" }, { id: "desc" }],
+                cacheStrategy: { ttl: 60 },
             })
         }
         
         return await req.prisma.post.findMany({ 
             take: amount, 
-            orderBy: [{ date: "desc" }, { id: "desc" }]
+            orderBy: [{ date: "desc" }, { id: "desc" }],
+            cacheStrategy: { ttl: 60 },
         })
     }
 
@@ -48,7 +50,8 @@ class Post{
         return await req.prisma.post.findMany({ 
             where: { AND: query },
             take: amount,
-            orderBy: [{ date: "desc" }]
+            orderBy: [{ date: "desc" }],
+            cacheStrategy: { ttl: 60 },
         })
     }
 
@@ -56,7 +59,8 @@ class Post{
         return await req.prisma.post.findMany({ 
             where: { categories: { has: req.params.category } },
             take: amount, 
-            orderBy: [{ date: "desc" }]
+            orderBy: [{ date: "desc" }],
+            cacheStrategy: { ttl: 60 },
         })
     }
 
@@ -92,7 +96,8 @@ class Post{
         const posts = await req.prisma.post.findMany({ 
             orderBy: [{ date: "desc" }],
             skip: amount * (page-1),
-            take: amount
+            take: amount,
+            cacheStrategy: { ttl: 60 },
         })
 
         return posts
@@ -103,7 +108,8 @@ class Post{
             where: { categories: { contains: req.params.category } },
             orderBy: [{ date: "desc" }],
             skip: amount * (parseInt(req.params.page)-1),
-            take: amount
+            take: amount,
+            cacheStrategy: { ttl: 60 },
         })
 
         return posts
@@ -113,7 +119,8 @@ class Post{
         return await req.prisma.post.findMany({ 
             where: {NOT: {categories: { contains: "unavailable" }}},
             take: amount, 
-            orderBy: [{ date: "desc" }]
+            orderBy: [{ date: "desc" }],
+            cacheStrategy: { ttl: 60 },
         })
     }
 
@@ -123,7 +130,8 @@ class Post{
             posts.push(await req.prisma.post.findMany({
                 where: {AND: [{ categories: { contains: category } }, {NOT: {categories: { contains: "unavailable" }}}]},
                 orderBy: [{ date: "desc" }],
-                take: amount
+                take: amount,
+                cacheStrategy: { ttl: 60 },
             }))
         }
     
