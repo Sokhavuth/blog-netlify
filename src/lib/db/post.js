@@ -23,14 +23,12 @@ class Post{
         if(amount === "all"){
             return await req.prisma.post.findMany({ 
                 orderBy: [{ date: "desc" }, { id: "desc" }],
-                cacheStrategy: { ttl: 60 },
             })
         }
         
         return await req.prisma.post.findMany({ 
             take: amount, 
             orderBy: [{ date: "desc" }, { id: "desc" }],
-            cacheStrategy: { ttl: 60 },
         })
     }
 
@@ -51,7 +49,6 @@ class Post{
             where: { AND: query },
             take: amount,
             orderBy: [{ date: "desc" }],
-            cacheStrategy: { ttl: 60 },
         })
     }
 
@@ -60,7 +57,6 @@ class Post{
             where: { categories: { has: req.params.category } },
             take: amount, 
             orderBy: [{ date: "desc" }],
-            cacheStrategy: { ttl: 60 },
         })
     }
 
@@ -97,7 +93,6 @@ class Post{
             orderBy: [{ date: "desc" }],
             skip: amount * (page-1),
             take: amount,
-            cacheStrategy: { ttl: 60 },
         })
 
         return posts
@@ -109,7 +104,6 @@ class Post{
             orderBy: [{ date: "desc" }],
             skip: amount * (parseInt(req.params.page)-1),
             take: amount,
-            cacheStrategy: { ttl: 60 },
         })
 
         return posts
@@ -120,7 +114,6 @@ class Post{
             where: {NOT: {categories: { contains: "unavailable" }}},
             take: amount, 
             orderBy: [{ date: "desc" }],
-            cacheStrategy: { ttl: 60 },
         })
     }
 
@@ -131,7 +124,6 @@ class Post{
                 where: {AND: [{ categories: { contains: category } }, {NOT: {categories: { contains: "unavailable" }}}]},
                 orderBy: [{ date: "desc" }],
                 take: amount,
-                cacheStrategy: { ttl: 60 },
             }))
         }
     

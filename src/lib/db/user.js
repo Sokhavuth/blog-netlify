@@ -32,7 +32,6 @@ class User{
         return await req.prisma.user.findMany({ 
             take: amount, 
             orderBy: [{ date: "desc" }, { id: "desc" }],
-            cacheStrategy: { ttl: 60 },
         })
     }
 
@@ -87,7 +86,6 @@ class User{
             orderBy: [{ date: "desc" }, { id: "desc" }],
             skip: amount * (parseInt(req.body.page)-1),
             take: amount,
-            cacheStrategy: { ttl: 60 },
         })
 
         return users
