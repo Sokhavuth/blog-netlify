@@ -4,9 +4,9 @@ export async function load({ locals }) {
     const count = await postDb.count(locals)
     const settings = await locals.settings(locals)
     const posts = await postDb.getPosts(locals, settings.indexPostLimit)
-    const latestPosts = await postDb.getLatestPosts(locals, 20)
+    const latestPosts = await postDb.getLatestPosts(locals, 10)
     const categories = ['Khmer', 'Thai', 'Chinese', 'Korean', 'travel']
-    const postsByCategory = await postDb.getLatestPostByCategory(locals, categories, 20)
+    const postsByCategory = await postDb.getLatestPostByCategory(locals, categories, 10)
     const pageURL = '/'
     const title = 'ទំព័រដើម'
 
