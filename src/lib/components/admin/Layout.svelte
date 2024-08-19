@@ -1,12 +1,11 @@
 <script>
-	import { onMount } from 'svelte'
 	import Header from "$lib/components/admin/Header.svelte"
 	import Footer from "$lib/components/Footer.svelte"
 	export let data
 </script>
 
 <section class="Admin">
-	<Header user={data.user} />
+	<Header {data} />
 	<main class="region">
 		<div class="wrapper">
 			<aside>

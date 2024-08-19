@@ -17,7 +17,7 @@ export async function load({ locals, params, url }){
     const page = await pageDb.getPage(locals)
     const items = await pageDb.paginatePages(locals, settings.dItemLimit)
 
-    return {user, count, page, items, info:"ទំព័រ​ស្តាទិក", type:"page", pageNumber, navPage}
+    return {user, count, settings, page, items, info:"ទំព័រ​ស្តាទិក", type:"page", pageNumber, navPage}
 }
 
 export const actions = {

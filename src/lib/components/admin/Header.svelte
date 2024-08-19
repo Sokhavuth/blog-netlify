@@ -1,12 +1,12 @@
 <script>
-    export let user
+    export let data
 </script>
 
 <section class="header">
     <header class='wrapper region'>
         <div class='logo'>
             <a href='/admin'><img src='/images/siteLogo.png' alt='' /></a>
-            <a href='/admin'>ដំណឹង​ល្អ</a>
+            <a href='/admin'>{data.settings.siteTitle}</a>
         </div>
         <form class='search' action="/admin/search?/search" method="post">
             <select name='category'>
@@ -17,13 +17,12 @@
                 <option>រឿងកូរ៉េ</option>
                 <option>ដើរ​​លេង</option>
                 <option>ព័ត៌មាន</option>
-                <option>ឯកសារ</option>
             </select>
             <input type='text' name='q' placeholder='សរសេរ​ពាក្យ​ត្រូវ​ស្វែងរក...' required />
             <input type='submit' value='ស្វែងរក' /> 
         </form>
         <div class='login'>
-            <a href={`/user/${user.id}`}>{user.name}</a> | <a href="/">ទំព័រ​មុខ</a> | <a href="/admin/logout">ចេញ​ក្រៅ</a>
+            <a href={`/user/${data.user.id}`}>{data.user.name}</a> | <a href="/">ទំព័រ​មុខ</a> | <a href="/admin/logout">ចេញ​ក្រៅ</a>
         </div>
     </header>
 </section>

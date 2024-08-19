@@ -18,7 +18,7 @@ export async function load({ params, locals, url }){
     const items = await postDb.paginatePosts(locals, settings.dItemLimit) 
     const categories = await categoryDB.getAllItems(locals)
 
-    return {user, count, post, items, categories, info:"ការផ្សាយ", type:"post", pageNumber, navPage}
+    return {user, count, settings, post, items, categories, info:"ការផ្សាយ", type:"post", pageNumber, navPage}
 }
 
 export const actions = {

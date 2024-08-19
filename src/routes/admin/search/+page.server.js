@@ -1,20 +1,36 @@
-import { redirect } from '@sveltejs/kit'
+import postDb from "$lib/db/post.js"
 
-export function load({ locals }) {
-	const user = locals.user
-    if(!user){
-        throw redirect(307, '/login')
-    }
-
-    return {user: user}
+export async function load({ locals }){
+    const user = locals.user
+    const settings = await locals.settings(locals)
+    const title = 'ទំព័រ​ស្វែង​រក'
+    const posts = locals.posts
+    
+    return {user, posts, settings, title}
 }
 
 export const actions = {
-	search: async ({ request, locals }) => {
-		const data = await request.formData()
-        
-        locals.category = data.get('category')
-        locals.q = data.get('q')
-		console.log(locals.q)
-	}
+    search: async ({ locals, request }) => {
+        const data = await request.formData()
+        const categoryKhmer = data.get('category')
+        const q = data.get('q')
+
+        const categories = {
+            'រឿងខ្មែរ': 'Khmer',
+            'រឿងថៃ': 'Thai',
+            'រឿងចិន': 'Chinese',
+            'រឿងកូរ៉េ': 'Korean',
+            'ដើរ​​លេង': 'travel',
+            'ព័ត៌មាន': 'news'
+        }
+
+        const category = categories[categoryKhmer]
+        if(category === "ទាំងអស់"){
+            locals.body = {q}
+        }else{
+            locals.body = {category, q}
+        }
+
+        locals.posts = await postDb.searchPosts(locals, 14)
+    }
 }

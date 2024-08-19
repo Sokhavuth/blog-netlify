@@ -14,7 +14,7 @@ export async function load({ locals }) {
     const items = await postDb.getPosts(locals, settings.dItemLimit)
     const categories = await categoryDB.getAllItems(locals)
 
-    return {user, count, items, categories, info:"ការផ្សាយ", type:"post", pageNumber }
+    return {user, count, settings, items, categories, info:"ការផ្សាយ", type:"post", pageNumber }
 }
 
 export const actions = {

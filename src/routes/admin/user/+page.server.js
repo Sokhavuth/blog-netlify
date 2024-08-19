@@ -12,7 +12,7 @@ export async function load({ locals }){
     const pageNumber = Math.ceil(count/settings.dItemLimit)
     const items = await userDb.getUsers(locals, settings.dItemLimit)
 
-    return {user, count, items, info:"អ្នក​និពន្ធ", type:"user", pageNumber}
+    return {user, count, settings, items, info:"អ្នក​និពន្ធ", type:"user", pageNumber}
 }
 
 export const actions = {

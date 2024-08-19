@@ -16,7 +16,7 @@ export async function load({ locals, params, url }){
     const category = await categoryDB.getCategory(locals)
     const items = await categoryDB.paginate(locals, settings.dItemLimit)
 
-    return {user, count, category, items, info:"ជំពូក", type:"category", pageNumber, navPage}
+    return {user, count, settings, category, items, info:"ជំពូក", type:"category", pageNumber, navPage}
 }
 
 export const actions = {

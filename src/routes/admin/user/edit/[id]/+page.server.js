@@ -17,7 +17,7 @@ export async function load({ locals, params, url }){
     const author = await userDb.getUser(locals)
     const items = await userDb.paginateUsers(locals, settings.dItemLimit)
 
-    return {user, count, author, items, info:"អ្នក​និពន្ធ", type:"user", pageNumber, navPage}
+    return {user, count, settings, author, items, info:"អ្នក​និពន្ធ", type:"user", pageNumber, navPage}
 }
 
 export const actions = {
