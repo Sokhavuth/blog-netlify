@@ -52,22 +52,6 @@
             }else{
                 player.loadVideoById(player.playlist[player.part][0].id)
             }
-        }else if(event.data === YT.PlayerState.PLAYING){
-            if(player.getPlaylist()){
-                if(player.getPlaylistIndex() > 0){
-                    player.part += 1
-                    if(player.part === player.playlist.length){
-                        player.part = 0
-                    }
-
-                    if(player.playlist[player.part][0].type === "YouTubePlaylist"){
-                        player.loadVideoById(initialVideoId)
-                        player.loadPlaylist({list:player.playlist[player.part][0].id,listType:'playlist',index:0})
-                    }else{
-                        player.loadVideoById(player.playlist[player.part][0].id)
-                    }
-                }
-            }
         }
     }
 
