@@ -20,5 +20,7 @@
 <style>
     section{
         background: rgb(241, 198, 198);
+        height: 100%;
+        width: 100%
     }
 </style>
