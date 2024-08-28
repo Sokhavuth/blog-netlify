@@ -141,8 +141,8 @@
                 <p class="movies-label">ភាពយន្ត​ថៃ</p>
             </span>
             <span>
-                <img alt='' on:click={()=>changeCategory(latestTravelVideos, 'វីដេអូ​ដើរលេង​​ចុង​ក្រោយ')} src={data.postsByCategory[4][0].thumb} />
-                <p class="movies-label">ដើរ​លេង</p>
+                <img alt='' on:click={()=>changeCategory(latestTravelVideos, 'វីដេអូ​ល្បែង​កំព្យូទ័រ​​ចុង​ក្រោយ')} src={data.postsByCategory[4][0].thumb} />
+                <p class="movies-label">ល្បែង​កំព្យូទ័រ</p>
             </span>
             <span>
                 <img alt='' on:click={()=>changeCategory(latestKoreanMovies, 'ភាពយន្តកូរ៉េ​​ចុង​ក្រោយ')} src={data.postsByCategory[3][0].thumb} />
