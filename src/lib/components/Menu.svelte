@@ -55,7 +55,7 @@ function myFunction() {
                   </div>
                 </div>
                 <a href="/travel/1" class={`travel ${travel}`}>ដើរ​លេង</a>
-                <a href="/game/1" class={`game ${game}`}>ពិភព​សិប្បនិមិត្ត</a>
+                <a href="/game/1" class={`game ${game}`}>ពិភព​និមិ្មត</a>
                 <a href="/page/66b17b1e944f187d47506cda" class={`contact ${contact}`}>ទំនាក់ទំនង</a>
                 <a href="/page/66b17b48944f187d47506cdc" class={`about ${about}`}>អំពីយើង​ខ្ញុំ</a>
                 <a href="javascript:void(0);" class="icon" on:click={myFunction}>

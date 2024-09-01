@@ -141,8 +141,8 @@
                 <p class="movies-label">ភាពយន្ត​ថៃ</p>
             </span>
             <span>
-                <img alt='' on:click={()=>changeCategory(latestTravelVideos, 'វីដេអូ​ពិភព​សិប្បនិមិត្ត​​ចុង​ក្រោយ')} src={data.postsByCategory[4][0].thumb} />
-                <p class="movies-label">ពិភព​សិប្បនិមិត្ត</p>
+                <img alt='' on:click={()=>changeCategory(latestTravelVideos, 'វីដេអូ​ពិភព​និមិ្មតចុង​ក្រោយ')} src={data.postsByCategory[4][0].thumb} />
+                <p class="movies-label">ពិភព​និមិ្មត</p>
             </span>
             <span>
                 <img alt='' on:click={()=>changeCategory(latestKoreanMovies, 'ភាពយន្តកូរ៉េ​​ចុង​ក្រោយ')} src={data.postsByCategory[3][0].thumb} />
