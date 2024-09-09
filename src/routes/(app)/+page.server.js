@@ -5,7 +5,7 @@ export async function load({ locals }) {
     const settings = await locals.settings(locals)
     const posts = await postDb.getPosts(locals, settings.indexPostLimit)
     const latestPosts = await postDb.getLatestPosts(locals, 20)
-    const categories = ['Khmer', 'Thai', 'Chinese', 'Korean', 'game']
+    const categories = ['Khmer', 'Thai', 'Chinese', 'Korean', 'world']
     const postsByCategory = await postDb.getLatestPostByCategory(locals, categories, 20)
     const pageURL = '/'
     const title = 'ទំព័រដើម'

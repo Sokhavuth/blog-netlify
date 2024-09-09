@@ -141,8 +141,8 @@
                 <p class="movies-label">ភាពយន្ត​ថៃ</p>
             </span>
             <span>
-                <img alt='' on:click={()=>changeCategory(latestTravelVideos, 'វីដេអូ​ពិភព​និមិ្មតចុង​ក្រោយ')} src={data.postsByCategory[4][0].thumb} />
-                <p class="movies-label">ពិភព​និមិ្មត</p>
+                <img alt='' on:click={()=>changeCategory(latestTravelVideos, 'ភាពយន្ត​បរទេសចុង​ក្រោយ')} src={data.postsByCategory[4][0].thumb} />
+                <p class="movies-label world-movie">ភាពយន្ត​បរទេស</p>
             </span>
             <span>
                 <img alt='' on:click={()=>changeCategory(latestKoreanMovies, 'ភាពយន្តកូរ៉េ​​ចុង​ក្រោយ')} src={data.postsByCategory[3][0].thumb} />
@@ -210,6 +210,9 @@
     text-align: center;
     padding: 5px;
     width: 90px;
+}
+.random-video span .world-movie{
+    width: 105px;
 }
 .random-video .latest-video{
     position: absolute;
