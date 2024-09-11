@@ -212,7 +212,7 @@
     width: 90px;
 }
 .random-video span .world-movie{
-    width: 105px;
+    width: 110px;
 }
 .random-video .latest-video{
     position: absolute;
