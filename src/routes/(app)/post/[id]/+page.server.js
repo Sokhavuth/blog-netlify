@@ -10,7 +10,7 @@ export async function load({ locals, params }){
     locals.params.id = post.author
     const author = await userDb.getUser(locals)
     const authorName = author.title
-    const randomPosts = await postDb.getRandomPosts(locals, 5, post)
+    const randomPosts = await postDb.getRandomPosts(locals, 7, post)
     const thumb = post.thumb
     const title = post.title
     
