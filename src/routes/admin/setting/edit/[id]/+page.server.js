@@ -16,7 +16,7 @@ export async function load({ locals, params, url }){
     const setting = await settingDb.getSetting(locals)
     const items = await settingDb.paginateSettings(locals, settings.dItemLimit)
 
-    return {user, count, setting, items, info:"setting ", type:"setting", pageNumber, navPage}
+    return {user, count, settings, setting, items, info:"setting ", type:"setting", pageNumber, navPage}
 }
 
 export const actions = {
