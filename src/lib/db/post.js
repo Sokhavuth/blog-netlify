@@ -36,12 +36,12 @@ class Post{
         let query
         if(req.body.category){
             query = [
-                { title: { contains: req.body.q } },
+                { title: { contains: req.body.q, mode: 'insensitive' } },
                 { categories: { contains: req.body.category } }
             ]
         }else{
             query = [
-                { title: { contains: req.body.q } }
+                { title: { contains: req.body.q, mode: 'insensitive' } }
             ]
         }
         
