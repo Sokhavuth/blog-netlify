@@ -60,7 +60,7 @@
         <div class='post-bottom'>
             <div class="social-media">
                 <FacebookLink
-	                url={`https://khmerweb-blog.netlify.app/post/${post.id}`}
+	                url={`https://khmerweb-live.netlify.app/post/${post.id}`}
 	                hashtag=""
                 />
                 <span class="fb-share-button" data-href={`https://khmerweb-live.netlify.app/post/${post.id}`} data-layout="" data-size=""><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=https://khmerweb-live.netlify.app/post/${post.id}%2F&amp;src=sdkpreparse`} class="fb-xfbml-parse-ignore">Share</a></span>
