@@ -22,7 +22,7 @@
 
     onMount(() => { 
         var disqus_config = function () {
-            this.page.url = `https://khmerweb-blog.netlify.app/post/${post.id}`;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.url = `https://khmerweb-live.netlify.app/post/${post.id}`;  // Replace PAGE_URL with your page's canonical URL variable
             this.page.identifier = `${post.id}`; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
         };
     

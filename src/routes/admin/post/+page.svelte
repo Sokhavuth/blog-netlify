@@ -53,7 +53,7 @@
 
         if(success){
             videos = [video, ...videos]
-            json = JSON.stringify([video, ...videos])
+            json = JSON.stringify(videos)
         }  
     }
 
