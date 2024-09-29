@@ -2,6 +2,7 @@
     import { onMount } from "svelte"
     import Layout from "$lib/components/Layout.svelte"
     import Video from "$lib/components/Video.svelte"
+    import Ad from "$lib/components/Ad.svelte"
     import { FacebookLink } from "svelte-social-links"
     export let data
     $: post = data.post
@@ -36,11 +37,7 @@
 </script>
 
 <Layout {data}>
-<section class="Ad region">
-    <img src="/images/ad.jpg" alt=''/>
-    <img src="/images/ad.jpg" alt=''/>
-</section>
-
+<Ad />
 <section class="Post region">
     <div class="main">
         <h3 class="title">{post.title}</h3>
@@ -91,17 +88,8 @@
 </Layout>
 
 <style is:global>
-.Ad{
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-gap: 10px;
-    padding-top: 10px;
-}
-.Ad img{
-    width: 100%;
-}
 .Post{
-    margin-top: 20px;
+    margin-top: 15px;
     display: grid;
     grid-template-columns: 70% auto;
     grid-gap: 15px;
@@ -127,7 +115,7 @@
     position: relative;
     padding-top: 56.25%;
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 .Post .sidebar a:last-child{
     margin-bottom: 0;
@@ -178,10 +166,6 @@
 }
 
 @media only screen and (max-width:600px){
-    .Ad{
-        grid-template-columns: 100%;
-        padding: 0 10px;
-    }
     .Post{
         grid-template-columns: 100%;
     }

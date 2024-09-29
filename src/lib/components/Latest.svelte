@@ -1,4 +1,5 @@
 <script>
+    import Ad from "$lib/components/Ad.svelte"
     import jq from 'jquery'
     import {onMount} from "svelte"
     export let data
@@ -163,10 +164,7 @@
             </div>
         </div>
     </div>
-    <div class="ad">
-        <img src="/images/ad.jpg" alt='' />
-        <img src="/images/ad.jpg" alt='' />
-    </div>
+    <Ad />
 </section>
 <style>
 .feature-post span img{
@@ -177,7 +175,7 @@
     display: grid;
     grid-template-columns: calc(33.33% - 6.66px) calc(33.33% - 6.66px) calc(33.33% - 6.66px);
     grid-gap: 10px;
-    padding: 10px 0;
+    padding: 10px 0 0;
 }
 .random-video .wrapper{
     grid-column: 1 / span 2;
@@ -247,14 +245,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-}
-.feature-post .ad{
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 10px;
-}
-.feature-post .ad img{
-    width: 100%;
 }
 
 @media only screen and (max-width: 600px){

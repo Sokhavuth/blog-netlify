@@ -1,15 +1,12 @@
 <!--src/components/Pagination.astro-->
 <script>
     import Layout from "$lib/components/Layout.svelte"
+    import Ad from "$lib/components/Ad.svelte"
     export let data
 </script>
 
 <Layout {data}>
-<section class="Ad region">
-    <img src="/images/ad.jpg" alt=""/>
-    <img src="/images/ad.jpg" alt=""/>
-</section>
-
+<Ad />
 <section class="Home region">
     <div class="container">
         {#each data.posts as post}
@@ -44,15 +41,6 @@
 </Layout>
 
 <style>
-.Ad{
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-gap: 10px;
-    padding-top: 10px;
-}
-.Ad img{
-    width: 100%;
-}
 .Home .container{
     display: grid;
     grid-template-columns: repeat(4, calc(100% / 4 - 11.25px));
@@ -94,10 +82,6 @@
     text-align: center;
 }
 @media only screen and (max-width:600px){
-    .Ad{
-        grid-template-columns: 100%;
-        padding: 10px 10px 0;
-    }
     .Home .container{
         grid-template-columns: 100%;
         padding: 30px 10px;
