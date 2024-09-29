@@ -118,8 +118,8 @@
 .Post .main .categories span:nth-child(2){
     float: right;
 }
-.Post .main .author{
-    margin-bottom: 30px;
+.Post .main .content{
+    margin: 20px 0;
 }
 .Post .sidebar a{
     display: block;

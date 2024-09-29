@@ -68,6 +68,9 @@ onMount(() => {
 {/if}
 
 <style>
+    .video{
+        padding-top: 20px;
+    }
     .video .screen div{
         position: relative;
         padding-top: 56.25%;
@@ -83,7 +86,6 @@ onMount(() => {
     .video .playlist{
         max-height: 405px;
         overflow: auto;
-        margin-bottom: 20px;
         border: 1px solid white;
     }
     .video .playlist .part{
