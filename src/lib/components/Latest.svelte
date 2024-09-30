@@ -130,7 +130,6 @@
 </svelte:head>
 
 <section class="main region">
-
     <div class="feature-post">
         <div class="random-video">
             <span>
@@ -256,6 +255,5 @@
         grid-column: 1 / span 1;
         grid-row: 1 / span 1;
     }
-}
-    
+}   
 </style>

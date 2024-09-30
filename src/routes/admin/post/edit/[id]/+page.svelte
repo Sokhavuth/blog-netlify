@@ -6,15 +6,13 @@
     import {activePage} from "$lib/stores/page.js"
     export let data
     let category
-    $: categories = data.post.categories
-    $: json = data.post.videos
+    let categories = data.post.categories
+    let json = data.post.videos
     let type, id, status
     let videos = []
-    $:  if(data.post?.videos){
-            videos = JSON.parse(data.post.videos)
-        }else{
-            videos = []
-        }
+    if(data.post?.videos){
+        videos = JSON.parse(data.post.videos)
+    }
     
     function getCategory(){
         if(categories === ''){
@@ -80,7 +78,7 @@
             <div class="wrapper">
                 <textarea name="content" id="editor">{data.post.content}</textarea>
             </div>
-            <input type="text" value={categories} on:input={e => categories = e.target.value} name="categories" required placeholder="ជំពូក" />
+            <input type="text" bind:value={categories} name="categories" required placeholder="ជំពូក" />
             <div class="frame">
                 <select name="category" bind:value={category} on:change={getCategory} >
                     <option disabled selected>ជ្រើសរើស​យក​ជំពូក</option>
