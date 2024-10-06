@@ -29,9 +29,9 @@ export const actions = {
         const datetime = data.get("datetime")
 
         const validate = (
-            typeof label === 'string' &&
-            typeof thumb === 'string' &&
-            typeof datetime === 'string'
+            typeof label === 'string' && label !== '' &&
+            typeof thumb === 'string' && thumb !== '' &&
+            typeof datetime === 'string' && datetime !== ''
         )
 
         if(validate){

@@ -41,13 +41,13 @@ export const actions = {
         const datetime = data.get("datetime")
 
         const validate = (
-            typeof title === 'string' &&
+            typeof title === 'string' && title !== '' &&
             typeof content === 'string' &&
-            typeof role === 'string' &&
-            typeof email === 'string' &&
-            typeof password === 'string' &&
-            typeof thumb === 'string' &&
-            typeof datetime === 'string'
+            typeof role === 'string' && role !== '' &&
+            typeof email === 'string' && email !== '' &&
+            typeof password === 'string' && password !== '' &&
+            typeof thumb === 'string' && thumb !== '' &&
+            typeof datetime === 'string' && datetime !== ''
         )
         
 	    if(validate){

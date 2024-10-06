@@ -31,9 +31,9 @@ export const actions = {
         const validate = (
             typeof title === 'string' && title !== '' &&
             typeof content === 'string' &&
-            typeof categories === 'string' &&
-            typeof thumb === 'string' &&
-            typeof datetime === 'string' &&
+            typeof categories === 'string' && categories !== '' &&
+            typeof thumb === 'string' && thumb !== '' &&
+            typeof datetime === 'string' && datetime !== '' &&
             typeof videos === 'string'
         )
         

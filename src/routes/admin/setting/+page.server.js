@@ -33,13 +33,13 @@ export const actions = {
         const date = data.get("datetime")
 
         const validate = (
-            typeof title === 'string' &&
-            typeof description === 'string' &&
-            typeof dashboard === 'string' &&
-            typeof frontend === 'string' &&
-            typeof categories === 'string' &&
-            typeof thumb === 'string' &&
-            typeof date === 'string'
+            typeof title === 'string' && title !== '' &&
+            typeof description === 'string' && description !== '' &&
+            typeof dashboard === 'string' && dashboard !== '' &&
+            typeof frontend === 'string' && frontend !== '' &&
+            typeof categories === 'string' && categories !== '' &&
+            typeof thumb === 'string' && thumb !== '' &&
+            typeof date === 'string' && date !== ''
         )
 
         if(validate){
@@ -68,13 +68,13 @@ export const actions = {
         const date = data.get("datetime")
 
         const validate = (
-            typeof title === 'string' &&
-            typeof description === 'string' &&
-            typeof dashboard === 'string' &&
-            typeof frontend === 'string' &&
-            typeof categories === 'string' &&
-            typeof thumb === 'string' &&
-            typeof date === 'string'
+            typeof title === 'string' && title !== '' &&
+            typeof description === 'string' && description !== '' &&
+            typeof dashboard === 'string' && dashboard !== '' &&
+            typeof frontend === 'string' && frontend !== '' &&
+            typeof categories === 'string' && categories !== '' &&
+            typeof thumb === 'string' && thumb !== '' &&
+            typeof date === 'string' && date !== ''
         )
         
 	    if(validate){

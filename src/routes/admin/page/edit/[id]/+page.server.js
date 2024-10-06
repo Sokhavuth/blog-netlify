@@ -38,10 +38,10 @@ export const actions = {
         const datetime = data.get("datetime")
 
         const validate = (
-            typeof title === 'string' &&
+            typeof title === 'string' && title !== '' &&
             typeof content === 'string' &&
-            typeof thumb === 'string' &&
-            typeof datetime === 'string'
+            typeof thumb === 'string' && thumb !== '' &&
+            typeof datetime === 'string' && datetime !== ''
         )
         
 	    if(validate){
