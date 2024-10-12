@@ -24,7 +24,7 @@ export const actions = {
         }
 
         const category = categories[categoryKhmer]
-        if(category === "ទាំងអស់"){
+        if(categoryKhmer === "ទាំងអស់"){
             locals.body = {q}
         }else{
             locals.body = {category, q}

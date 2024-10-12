@@ -144,6 +144,14 @@ class Post{
        
         return results
     }
+
+    async getRandomAll(req, amount){
+        const results = await req.prisma.post.aggregateRaw({
+            pipeline: [{ $match : { categories : { $regex: 'movie' } } }, { $sample:{ size: amount }}]
+        })
+
+        return results
+    }
 }
 
 export default new Post()
