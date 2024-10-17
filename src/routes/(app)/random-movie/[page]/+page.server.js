@@ -9,7 +9,7 @@ export async function load({ locals, params }) {
     const currentPage = parseInt(params.page)
     const lastPage = Math.ceil(count/settings.categoryPostLimit)
     const pageURL = 'movie'
-    const title = 'ឥត​ព្រៀង​ទុក'
+    const title = 'រឿង​ឥត​ព្រៀង​ទុក'
 
     return {posts, count, settings, currentPage, lastPage, pageURL, title}
 }
