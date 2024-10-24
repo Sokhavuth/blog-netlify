@@ -108,6 +108,7 @@
 }
 .Post .main .content{
     margin: 20px 0;
+    font: 15px/1.5 Courgette, HandWriting;
 }
 :global(.Post .main .content img){
     max-width: 100%;
