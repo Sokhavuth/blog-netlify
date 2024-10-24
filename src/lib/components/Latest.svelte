@@ -137,19 +137,19 @@
                 <p class="news-label">ភាពយន្ត​​ខ្មែរ</p>
             </span>
             <span>
-                <img alt='' on:click={()=>changeCategory(latestThaiMovies, 'ភាពយន្តថៃ​​ចុង​ក្រោយ')} src={data.postsByCategory[1][0].thumb} />
+                <img alt='' on:click={()=>changeCategory(latestThaiMovies, 'ភាពយន្តចិន​​​ចុង​ក្រោយ')} src={data.postsByCategory[1][0].thumb} />
                 <p class="movies-label">ភាពយន្ត​ចិន</p>
             </span>
             <span>
-                <img alt='' on:click={()=>changeCategory(latestTravelVideos, 'ភាពយន្ត​បរទេសចុង​ក្រោយ')} src={data.postsByCategory[4][0].thumb} />
+                <img alt='' on:click={()=>changeCategory(latestTravelVideos, 'វីដេអូ​ពិភព​និម្មិត​ចុង​ក្រោយ')} src={data.postsByCategory[4][0].thumb} />
                 <p class="movies-label">ពិភព​និម្មិត</p>
             </span>
             <span>
-                <img alt='' on:click={()=>changeCategory(latestKoreanMovies, 'ភាពយន្តកូរ៉េ​​ចុង​ក្រោយ')} src={data.postsByCategory[3][0].thumb} />
+                <img alt='' on:click={()=>changeCategory(latestKoreanMovies, 'វីដេអូ​កីឡា​​​ចុង​ក្រោយ')} src={data.postsByCategory[3][0].thumb} />
                 <p class="movies-label">កីឡា</p>
             </span>
             <span>
-                <img alt='' on:click={()=>changeCategory(latestChineseMovies, 'ភាពយន្តចិន​​ចុង​ក្រោយ')} src={data.postsByCategory[2][0].thumb} />
+                <img alt='' on:click={()=>changeCategory(latestChineseMovies, 'ភាពយន្តកូរ៉េ​​​ចុង​ក្រោយ')} src={data.postsByCategory[2][0].thumb} />
                 <p class="movies-label">ភាពយន្ត​​កូរ៉េ</p>
             </span>
             <div class="wrapper">
