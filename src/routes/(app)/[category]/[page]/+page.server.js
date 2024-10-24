@@ -14,6 +14,16 @@ export async function load({ locals, params }){
     let pageURL
     if(params.category === 'news'){
         pageURL = 'news'
+    }else if(params.category === 'national'){
+        pageURL = 'news'
+    }else if(params.category === 'global'){
+        pageURL = 'news'
+    }else if(params.category === 'opinion'){
+        pageURL = 'opinion'
+    }else if(params.category === 'doc'){
+        pageURL = 'doc'
+    }else if(params.category === 'sport'){
+        pageURL = 'sport'
     }else if(params.category === 'Khmer'){
         pageURL = 'movie'
     }else if(params.category === 'Thai'){

@@ -5,6 +5,9 @@ let isresponsive = false
 
 let home = ''
 let news = ''
+let opinion = ''
+let doc = ''
+let sport = ''
 let movie = ''
 let travel = ''
 let contact = ''
@@ -16,6 +19,12 @@ if(data.pageURL === '/'){
     home = 'active'
 }else if(data.pageURL === 'news'){
     news = 'active'
+}else if(data.pageURL === 'opinion'){
+  opinion = 'active'
+}else if(data.pageURL === 'doc'){
+    doc = 'active'
+}else if(data.pageURL === 'sport'){
+    sport = 'active'
 }else if(data.pageURL === 'movie'){
     movie = 'active'
 }else if(data.pageURL === 'trvel'){
@@ -41,7 +50,18 @@ function myFunction() {
         <div class="region">
             <div data-sveltekit-reload class="topnav" class:responsive={isresponsive} id="myTopnav">
                 <a href="/" class={`home ${home}`}>ទំព័រ​ដើម</a>
-                <a href="/news/1" class={`news ${news}`}>ព័ត៌មាន</a>
+                <div class={`dropdown ${news}`}>
+                  <button class={`dropbtn `}>ព័ត៌មាន
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                  <div class="dropdown-content">
+                    <a href="/national/1">ក្នុង​ប្រទេស</a>
+                    <a href="/global/1">ក្រៅ​ប្រទេស</a>
+                  </div>
+                </div>
+                <a href="/opinion/1" class={`opinion ${opinion}`}>មតិ​យោបល់</a>
+                <a href="/doc/1" class={`doc ${doc}`}>ឯកសារ</a>
+                <a href="/sport/1" class={`sport ${sport}`}>កីឡា</a>
                 <div class={`dropdown ${movie}`}>
                   <button class={`dropbtn `}>ភាពយន្ត
                     <i class="fa fa-caret-down"></i>
