@@ -87,7 +87,7 @@
 </section>
 </Layout>
 
-<style is:global>
+<style>
 .Post{
     margin-top: 15px;
     display: grid;
@@ -108,6 +108,9 @@
 }
 .Post .main .content{
     margin: 20px 0;
+}
+:global(.Post .main .content img){
+    width: 100%;
 }
 .Post .sidebar a{
     display: block;
