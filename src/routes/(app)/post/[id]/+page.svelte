@@ -110,7 +110,7 @@
     margin: 20px 0;
 }
 :global(.Post .main .content img){
-    width: 100%;
+    max-width: 100%;
 }
 .Post .sidebar a{
     display: block;
