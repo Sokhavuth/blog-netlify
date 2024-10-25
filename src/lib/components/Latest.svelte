@@ -149,8 +149,8 @@
                 <p class="movies-label">កីឡា</p>
             </span>
             <span>
-                <img alt='' on:click={()=>changeCategory(latestChineseMovies, 'ភាពយន្តកូរ៉េ​​​ចុង​ក្រោយ')} src={data.postsByCategory[2][0].thumb} />
-                <p class="movies-label">ភាពយន្ត​​កូរ៉េ</p>
+                <img alt='' on:click={()=>changeCategory(latestChineseMovies, 'ភាពយន្តបរទេស​​​​ចុង​ក្រោយ')} src={data.postsByCategory[2][0].thumb} />
+                <p class="movies-label world-movie">ភាពយន្ត​​បរទេស</p>
             </span>
             <div class="wrapper">
                 <div id={ytPlayerId}></div>
