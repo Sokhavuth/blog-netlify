@@ -7,15 +7,20 @@
     export let data
     $: post = data.post
     const Categories = {
+        news: 'ព័ត៌មាន',
+        national: 'ក្នុង​ប្រទេស',
+        global: "ក្រៅ​ប្រទេស",
+        opinion: "មតិយោបល់",
+        doc: "ឯកសារ",
+        sport: "កីឡា",
+        movie: 'ភាពយន្ត',
         Khmer: 'រឿងខ្មែរ',
         Thai: 'រឿងថៃ',
         Chinese: 'រឿងចិន',
         Korean: 'រឿងកូរ៉េ',
+        world: 'រឿង​​បរទេស',
         travel: 'ដើរ​លេង',
-        news: 'ព័ត៌មាន',
-        movie: 'ភាពយន្ត',
         game: 'ពិភព​និម្មិត',
-        world: 'រឿង​​បរទេស'
     }
 
     $: postCategories = data.post.categories.split(",")
