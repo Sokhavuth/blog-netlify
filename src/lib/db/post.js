@@ -133,9 +133,15 @@ class Post{
     async getRandomPosts(req, amount, post){
         let results
         if(post.categories.includes('news')){
-            results = await req.prisma.post.aggregateRaw({
-                pipeline: [{ $match : { categories:{ $regex: "news" }, _id: {$ne: {$oid: post.id}}}}, { $sort: { date : -1 } }, { $limit: amount }]
-            })
+            if(post.categories.includes('doc')){
+                results = await req.prisma.post.aggregateRaw({
+                    pipeline: [{ $match : { categories:{ $regex: "doc" }, _id: {$ne: {$oid: post.id}}}}, { $sample:{ size: amount }}]
+                })
+            }else{
+                results = await req.prisma.post.aggregateRaw({
+                    pipeline: [{ $match : { categories:{ $regex: "news" }, _id: {$ne: {$oid: post.id}}}}, { $sort: { date : -1 } }, { $limit: amount }]
+                })
+            }
         }else{
             results = await req.prisma.post.aggregateRaw({
                 pipeline: [{ $match : {categories : {$not:{ $regex: "news" }}, _id: {$ne: {$oid: post.id}}} }, { $sample:{ size: amount }}]

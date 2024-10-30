@@ -13,11 +13,11 @@
     }
 
     let latestVideos = parseVideos(data.latestPosts)
-    let latestKhmerMovies = parseVideos(data.postsByCategory[0])
-    let latestThaiMovies = parseVideos(data.postsByCategory[1])
-    let latestChineseMovies = parseVideos(data.postsByCategory[2])
-    let latestKoreanMovies = parseVideos(data.postsByCategory[3])
-    let latestTravelVideos = parseVideos(data.postsByCategory[4])
+    let latestChineseMovies = parseVideos(data.postsByCategory[0])
+    let latestWorldMovies = parseVideos(data.postsByCategory[1])
+    let latestDocVideos = parseVideos(data.postsByCategory[2])
+    let latestSportVideos = parseVideos(data.postsByCategory[3])
+    let latestGameVideos = parseVideos(data.postsByCategory[4])
 
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -133,24 +133,24 @@
     <div class="feature-post">
         <div class="random-video">
             <span>
-                <img alt='' on:click={()=>changeCategory(latestKhmerMovies, '​ភាពយន្ត​ខ្មែរ​ចុង​ក្រោយ')} src={data.postsByCategory[0][0].thumb} />
-                <p class="news-label">ភាពយន្ត​​ខ្មែរ</p>
+                <img alt='' on:click={()=>changeCategory(latestChineseMovies, 'ភាពយន្តចិន​​​ចុង​ក្រោយ')} src={data.postsByCategory[0][0].thumb} />
+                <p class="news-label">ភាពយន្ត​ចិន</p>
             </span>
             <span>
-                <img alt='' on:click={()=>changeCategory(latestThaiMovies, 'ភាពយន្តចិន​​​ចុង​ក្រោយ')} src={data.postsByCategory[1][0].thumb} />
-                <p class="movies-label">ភាពយន្ត​ចិន</p>
+                <img alt='' on:click={()=>changeCategory(latestWorldMovies, 'ភាពយន្តបរទេស​​​​ចុង​ក្រោយ')} src={data.postsByCategory[1][0].thumb} />
+                <p class="movies-label world-movie">ភាពយន្ត​​បរទេស</p>
             </span>
             <span>
-                <img alt='' on:click={()=>changeCategory(latestTravelVideos, 'វីដេអូ​ពិភព​និម្មិត​ចុង​ក្រោយ')} src={data.postsByCategory[4][0].thumb} />
+                <img alt='' on:click={()=>changeCategory(latestGameVideos, '​ពិភព​និម្មិត​ចុង​ក្រោយ')} src={data.postsByCategory[4][0].thumb} />
                 <p class="movies-label">ពិភព​និម្មិត</p>
             </span>
             <span>
-                <img alt='' on:click={()=>changeCategory(latestKoreanMovies, 'វីដេអូ​កីឡា​​​ចុង​ក្រោយ')} src={data.postsByCategory[3][0].thumb} />
+                <img alt='' on:click={()=>changeCategory(latestSportVideos, '​កីឡា​​​ចុង​ក្រោយ')} src={data.postsByCategory[3][0].thumb} />
                 <p class="movies-label">កីឡា</p>
             </span>
             <span>
-                <img alt='' on:click={()=>changeCategory(latestChineseMovies, 'ភាពយន្តបរទេស​​​​ចុង​ក្រោយ')} src={data.postsByCategory[2][0].thumb} />
-                <p class="movies-label world-movie">ភាពយន្ត​​បរទេស</p>
+                <img alt='' on:click={()=>changeCategory(latestDocVideos, 'ឯកសារ​​​​​ចុង​ក្រោយ')} src={data.postsByCategory[2][0].thumb} />
+                <p class="movies-label">ឯកសារ</p>
             </span>
             <div class="wrapper">
                 <div id={ytPlayerId}></div>
