@@ -72,11 +72,6 @@
 .Category .container .wrapper .title{
     padding-top: 0;
 }
-.Category .container .wrapper .title div{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
 .Category .pagination{
     display: block;
     text-align: center;

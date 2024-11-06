@@ -68,11 +68,6 @@
 .Category .container .wrapper .title{
     padding-top: 0;
 }
-.Category .container .wrapper .title div{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
 
 @media only screen and (max-width:600px){
     .Ad{

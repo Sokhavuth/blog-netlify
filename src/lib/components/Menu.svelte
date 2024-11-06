@@ -14,7 +14,6 @@ let contact = ''
 let about = ''
 let game = ''
 
-console.log(movie)
 if(data.pageURL === '/'){
     home = 'active'
 }else if(data.pageURL === 'news'){

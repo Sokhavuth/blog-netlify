@@ -65,11 +65,6 @@
 .Home .container .wrapper .title{
     padding-top: 0;
 }
-.Home .container .wrapper .title div{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
 .Home .navigation{
     text-align: center;
 }
