@@ -137,8 +137,8 @@
                 <p class="news-label">ភាពយន្ត​ចិន</p>
             </span>
             <span>
-                <img alt='' on:click={()=>changeCategory(latestWorldMovies, 'ភាពយន្តបរទេស​​​​ចុង​ក្រោយ')} src={data.postsByCategory[1][0].thumb} />
-                <p class="movies-label world-movie">ភាពយន្ត​​បរទេស</p>
+                <img alt='' on:click={()=>changeCategory(latestWorldMovies, 'ដើរ​លេង​​​​​ចុង​ក្រោយ')} src={data.postsByCategory[1][0].thumb} />
+                <p class="movies-label">ដើរ​លេង</p>
             </span>
             <span>
                 <img alt='' on:click={()=>changeCategory(latestGameVideos, '​ពិភព​និម្មិត​ចុង​ក្រោយ')} src={data.postsByCategory[4][0].thumb} />
