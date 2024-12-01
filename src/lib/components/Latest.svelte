@@ -133,8 +133,8 @@
     <div class="feature-post">
         <div class="random-video">
             <span>
-                <img alt='' on:click={()=>changeCategory(latestChineseMovies, 'ភាពយន្តចិន​​​ចុង​ក្រោយ')} src={data.postsByCategory[0][0].thumb} />
-                <p class="news-label">ភាពយន្ត​ចិន</p>
+                <img alt='' on:click={()=>changeCategory(latestChineseMovies, 'ភាពយន្ត​​​ចុង​ក្រោយ')} src={data.postsByCategory[0][0].thumb} />
+                <p class="news-label">ភាពយន្ត​</p>
             </span>
             <span>
                 <img alt='' on:click={()=>changeCategory(latestWorldMovies, 'ដើរ​លេង​​​​​ចុង​ក្រោយ')} src={data.postsByCategory[1][0].thumb} />
