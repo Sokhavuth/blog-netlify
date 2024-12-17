@@ -2,7 +2,9 @@
 <section class="Footer">
     <footer class="wrapper">
         <p>Copyright &copy;2024 Khmer Web</p>
-        <p>Powered by <a target="_blank" href="https://kit.svelte.dev/">Sveltekit</a></p>
+        <p>Powered by <a target="_blank" href="https://kit.svelte.dev/">Sveltekit</a> & 
+            <a href="https://account.mongodb.com/account/login">MongoDB</a>
+        </p>
     </footer>
 </section>
 
