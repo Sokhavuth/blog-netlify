@@ -208,9 +208,6 @@
     padding: 5px;
     width: 90px;
 }
-.random-video span .world-movie{
-    width: auto;
-}
 .random-video .latest-video{
     position: absolute;
     top: 5px;
