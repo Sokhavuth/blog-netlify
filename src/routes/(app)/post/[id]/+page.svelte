@@ -21,7 +21,9 @@
         world: 'រឿង​​បរទេស',
         travel: 'ដើរ​លេង',
         game: 'ពិភព​និម្មិត',
-        food: 'មុខ​ម្ហូប'
+        food: 'មុខ​ម្ហូប',
+        music: 'តន្ត្រី',
+        distraction: 'ល្បែង​កំសាន្ត'
     }
 
     $: postCategories = data.post.categories.split(",")

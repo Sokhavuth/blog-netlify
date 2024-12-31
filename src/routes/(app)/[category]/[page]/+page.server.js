@@ -11,6 +11,7 @@ export async function load({ locals, params }){
     const category = params.category
     const lastPage = Math.ceil(count/settings.categoryPostLimit)
     const title = category
+
     let pageURL
     if(params.category === 'news'){
         pageURL = 'news'
@@ -38,6 +39,13 @@ export async function load({ locals, params }){
         pageURL = 'travel'
     }else if(params.category === 'game'){
         pageURL = 'game'
+    }else if(params.category === 'food'){
+        pageURL = 'entertainment'
+    }else if(params.category === 'music'){
+        pageURL = 'entertainment'
+    }else if(params.category === 'distraction'){
+        pageURL = 'entertainment'
     }
+
     return {count, settings, posts, category, currentPage, lastPage, pageURL, title}
 }

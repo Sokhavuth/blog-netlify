@@ -18,6 +18,9 @@
     let latestDocVideos = parseVideos(data.postsByCategory[2])
     let latestSportVideos = parseVideos(data.postsByCategory[3])
     let latestGameVideos = parseVideos(data.postsByCategory[4])
+    let latestFoodVideos = parseVideos(data.postsByCategory[5])
+    let latestMusicVideos = parseVideos(data.postsByCategory[6])
+    let latestDistractionVideos = parseVideos(data.postsByCategory[7])
 
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -132,26 +135,38 @@
 <section class="main region">
     <div class="feature-post">
         <div class="random-video">
-            <span>
-                <img alt='' on:click={()=>changeCategory(latestChineseMovies, 'ភាពយន្ត​​​ចុង​ក្រោយ')} src={data.postsByCategory[0][0].thumb} />
+            <button  on:click={()=>changeCategory(latestChineseMovies, 'ភាពយន្ត​​​ចុង​ក្រោយ')}>
+                <img alt='' src={data.postsByCategory[0][0].thumb} />
                 <p class="news-label">ភាពយន្ត​</p>
-            </span>
-            <span>
-                <img alt='' on:click={()=>changeCategory(latestWorldMovies, 'ដើរ​លេង​​​​​ចុង​ក្រោយ')} src={data.postsByCategory[1][0].thumb} />
+            </button>
+            <button on:click={()=>changeCategory(latestWorldMovies, 'ដើរ​លេង​​​​​ចុង​ក្រោយ')}>
+                <img alt='' src={data.postsByCategory[1][0].thumb} />
                 <p class="movies-label">ដើរ​លេង</p>
-            </span>
-            <span>
-                <img alt='' on:click={()=>changeCategory(latestGameVideos, '​ពិភព​និម្មិត​ចុង​ក្រោយ')} src={data.postsByCategory[4][0].thumb} />
+            </button>
+            <button on:click={()=>changeCategory(latestGameVideos, '​ពិភព​និម្មិត​ចុង​ក្រោយ')}>
+                <img alt='' src={data.postsByCategory[4][0].thumb} />
                 <p class="movies-label">ពិភព​និម្មិត</p>
-            </span>
-            <span>
-                <img alt='' on:click={()=>changeCategory(latestSportVideos, '​កីឡា​​​ចុង​ក្រោយ')} src={data.postsByCategory[3][0].thumb} />
+            </button>
+            <button on:click={()=>changeCategory(latestSportVideos, '​កីឡា​​​ចុង​ក្រោយ')}>
+                <img alt='' src={data.postsByCategory[3][0].thumb} />
                 <p class="movies-label">កីឡា</p>
-            </span>
-            <span>
-                <img alt='' on:click={()=>changeCategory(latestDocVideos, 'ឯកសារ​​​​​ចុង​ក្រោយ')} src={data.postsByCategory[2][0].thumb} />
+            </button>
+            <button on:click={()=>changeCategory(latestDocVideos, 'ឯកសារ​​​​​ចុង​ក្រោយ')}>
+                <img alt='' src={data.postsByCategory[2][0].thumb} />
                 <p class="movies-label">ឯកសារ</p>
-            </span>
+            </button>
+            <button on:click={()=>changeCategory(latestFoodVideos, 'មុខ​ម្ហូប​​​​ចុង​ក្រោយ')}>
+                <img alt='' src={data.postsByCategory[5][0].thumb} />
+                <p class="news-label">​មុខ​ម្ហូប</p>
+            </button>
+            <button on:click={()=>changeCategory(latestMusicVideos, 'តន្ត្រី​​​​​ចុង​ក្រោយ')}>
+                <img alt='' src={data.postsByCategory[6][0].thumb} />
+                <p class="news-label">តន្ត្រី</p>
+            </button>
+            <button on:click={()=>changeCategory(latestDistractionVideos, 'ល្បែងកំសាន្ត​​​​ចុង​ក្រោយ')}>
+                <img alt='' src={data.postsByCategory[7][0].thumb} />
+                <p class="news-label">ល្បែងកំសាន្ត​</p>
+            </button>
             <div class="wrapper">
                 <div id={ytPlayerId}></div>
                 <div class="latest-video">វីដេអូ​ចុង​ក្រោយ</div>
@@ -182,29 +197,30 @@
     position: relative;
     padding-top: 53.4%;
 }
-.random-video span{
+.random-video button{
     position: relative;
     width: 100%;
     height: 100%;
     padding-top: 53.4%;
 }
-.random-video span:hover{
+.random-video button:hover{
     cursor: pointer;
 }
-.random-video span img{
+.random-video span img, .random-video button img{
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
 }
-.random-video span p{
+.random-video span p, .random-video button p{
     position: absolute;
     top: 0;
     left: 0;
     background: var(--background-dark);
     color: white;
     text-align: center;
+    font-family: Vidaloka, OdorMeanChey;
     padding: 5px;
     width: 90px;
 }

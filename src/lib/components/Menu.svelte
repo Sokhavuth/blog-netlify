@@ -13,6 +13,7 @@ let travel = ''
 let contact = ''
 let about = ''
 let game = ''
+let entertainment = ''
 
 if(data.pageURL === '/'){
     home = 'active'
@@ -36,6 +37,8 @@ if(data.pageURL === '/'){
     travel = 'active'
 }else if(data.pageURL === 'game'){
     game = 'active'
+}else if(data.pageURL === 'entertainment'){
+  entertainment = 'active'
 }
 
 function myFunction() {
@@ -76,6 +79,16 @@ function myFunction() {
                 </div>
                 <a href="/travel/1" class={`travel ${travel}`}>ដើរ​លេង</a>
                 <a href="/game/1" class={`game ${game}`}>ពិភព​និមិ្មត</a>
+                <div class={`dropdown ${entertainment}`}>
+                  <button class={`dropbtn `}>កំសាន្ត
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                  <div class="dropdown-content">
+                    <a href="/food/1">មុខ​ម្ហូប</a>
+                    <a href="/music/1">តន្ត្រី</a>
+                    <a href="/distraction/1">ល្បែង​កំសាន្ត</a>
+                  </div>
+                </div>
                 <a href="/page/66b17b1e944f187d47506cda" class={`contact ${contact}`}>ទំនាក់ទំនង</a>
                 <a href="/page/66b17b48944f187d47506cdc" class={`about ${about}`}>អំពីយើង​ខ្ញុំ</a>
                 <a href="javascript:void(0);" class="icon" on:click={myFunction}>
