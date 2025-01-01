@@ -92,13 +92,6 @@
     export let initialVideoId = 'cdwal5Kw3Fc';
     
     onMount(()=>{
-        /*
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        */
-
         function load() {
             player = new YT.Player(ytPlayerId, {
                 height: '390',
@@ -196,7 +189,6 @@
 .random-video .wrapper{
     grid-column: 1 / span 2;
     grid-row: 2 / span 2;
-  grid-column-end: 3;
     position: relative;
     padding-top: 53.4%;
 }
@@ -271,6 +263,7 @@
     .random-video .wrapper{
         grid-column: 1 / span 1;
         grid-row: 1 / span 1;
+        padding-top: 51.7%;
     }
 }   
 </style>
