@@ -1,7 +1,7 @@
 <script>
     import Ad from "$lib/components/Ad.svelte"
     import jq from 'jquery'
-    import {onMount} from "svelte"
+    import { onMount } from "svelte"
     export let data
 
     function parseVideos(posts){
@@ -21,6 +21,7 @@
     let latestFoodVideos = parseVideos(data.postsByCategory[5])
     let latestMusicVideos = parseVideos(data.postsByCategory[6])
     let latestDistractionVideos = parseVideos(data.postsByCategory[7])
+    
 
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -136,35 +137,35 @@
     <div class="feature-post">
         <div class="random-video">
             <button  on:click={()=>changeCategory(latestChineseMovies, 'ភាពយន្ត​​​ចុង​ក្រោយ')}>
-                <img alt='' src={data.postsByCategory[0][0].thumb} />
+                <img alt='' src={data.thumbs[0]} />
                 <p class="news-label">ភាពយន្ត​</p>
             </button>
             <button on:click={()=>changeCategory(latestWorldMovies, 'ដើរ​លេង​​​​​ចុង​ក្រោយ')}>
-                <img alt='' src={data.postsByCategory[1][0].thumb} />
+                <img alt='' src={data.thumbs[1]} />
                 <p class="movies-label">ដើរ​លេង</p>
             </button>
             <button on:click={()=>changeCategory(latestGameVideos, '​ពិភព​និម្មិត​ចុង​ក្រោយ')}>
-                <img alt='' src={data.postsByCategory[4][0].thumb} />
+                <img alt='' src={data.thumbs[4]} />
                 <p class="movies-label">ពិភព​និម្មិត</p>
             </button>
             <button on:click={()=>changeCategory(latestSportVideos, '​កីឡា​​​ចុង​ក្រោយ')}>
-                <img alt='' src={data.postsByCategory[3][0].thumb} />
+                <img alt='' src={data.thumbs[3]} />
                 <p class="movies-label">កីឡា</p>
             </button>
             <button on:click={()=>changeCategory(latestDocVideos, 'ឯកសារ​​​​​ចុង​ក្រោយ')}>
-                <img alt='' src={data.postsByCategory[2][0].thumb} />
+                <img alt='' src={data.thumbs[2]} />
                 <p class="movies-label">ឯកសារ</p>
             </button>
             <button on:click={()=>changeCategory(latestFoodVideos, 'មុខ​ម្ហូប​​​​ចុង​ក្រោយ')}>
-                <img alt='' src={data.postsByCategory[5][0].thumb} />
+                <img alt='' src={data.thumbs[5]} />
                 <p class="news-label">​មុខ​ម្ហូប</p>
             </button>
             <button on:click={()=>changeCategory(latestMusicVideos, 'តន្ត្រី​​​​​ចុង​ក្រោយ')}>
-                <img alt='' src={data.postsByCategory[6][0].thumb} />
+                <img alt='' src={data.thumbs[6]} />
                 <p class="news-label">តន្ត្រី</p>
             </button>
             <button on:click={()=>changeCategory(latestDistractionVideos, 'ល្បែងកំសាន្ត​​​​ចុង​ក្រោយ')}>
-                <img alt='' src={data.postsByCategory[7][0].thumb} />
+                <img alt='' src={data.thumbs[7]} />
                 <p class="news-label">ល្បែងកំសាន្ត​</p>
             </button>
             <div class="wrapper">

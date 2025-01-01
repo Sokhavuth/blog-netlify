@@ -120,13 +120,18 @@ class Post{
     async getLatestPostByCategory(req, categories, amount){
         const posts = []
         for(let category of categories){
+            /*
             posts.push(await req.prisma.post.findMany({
                 where: {AND: [{ categories: { contains: category } }, {NOT: {categories: { contains: "unavailable" }}}]},
                 orderBy: [{ date: "desc" }],
                 take: amount,
             }))
+            */
+            posts.push(await req.prisma.post.aggregateRaw({
+                pipeline: [{ $match : { categories: { $regex: category } }}, { $match : { categories: {$not: { $regex: "unavailable" }} }}, { $sample:{ size: amount }}]
+            }))
         }
-    
+
         return posts
     }
 
