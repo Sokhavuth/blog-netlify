@@ -9,18 +9,23 @@ export async function load({ locals, fetch }) {
     const postsByCategory = await postDb.getLatestPostByCategory(locals, categories, 20)
 
     const thumbs = []
+    const noImage = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg17xmBAviX5ISk5zO2YOxXoq82qGwP5-8OCZF-8mfUn8efu_-sNvgSUUDDGJZyJ5K9c0phzjr3nQxX00QeYBfw2sW87wSeimc344opJDrISuadlm9p0ROcL0EyhJtdUHymVKnqU-qNicMrMTGv4_fsOsn2xsoJjYoXxRRi1jfqR3r5PfCKYob6_bfA0Bo/s1600/picture.png"
     async function genThumb(){
         for(let items of (postsByCategory)){
+            let countThumb = 0 
             for(let item of items){
+                countThumb++
                 const url = item.thumb
                 const res = await fetch(url)
                 if(res.status === 200){
                     thumbs.push(url)
                     break
+                }else if(countThumb === items.length){
+                    thumbs.push(noImage)
                 }
             }
         }
-        
+
         return {posts, count, settings, latestPosts, postsByCategory, thumbs, pageURL, title}
     }
     
