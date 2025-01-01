@@ -173,10 +173,11 @@
                 <div class="latest-video">វីដេអូ​ចុង​ក្រោយ</div>
                 <div class="channel-logo">
                 <img src="/images/siteLogo.png" alt=''/>
+                <div class="play-all">
+                    <a on:click={()=>changeCategory(latestVideos, 'វីដេអូ​ចុងក្រោយ')}>លេង​វីដេអូ​ចុង​ក្រោយ</a>
+                </div>
             </div>
-            <div class="play-all">
-                <a on:click={()=>changeCategory(latestVideos, 'វីដេអូ​ចុងក្រោយ')}>លេង​វីដេអូ​ចុង​ក្រោយ</a>
-            </div>
+            
         </div>
     </div>
     <Ad />
@@ -239,16 +240,16 @@
     right: 5px;
     width: 6%;
 }
-.random-video .play-all{
+.random-video .wrapper .play-all{
     position: relative;
     bottom: 10px;
     text-align: center;
     visibility: hidden;
 }
-.random-video .play-all a{
+.random-video .wrapper .play-all a{
     color: orange;
 }
-.random-video .play-all:hover{
+.random-video .wrapper .play-all:hover{
     cursor: pointer;
 }
 .random-video .wrapper:hover .play-all{
