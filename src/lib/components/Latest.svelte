@@ -194,7 +194,8 @@
 }
 .random-video .wrapper{
     grid-column: 1 / span 2;
-    grid-row: 1 / span 2;
+    grid-row: 2 / span 2;
+  grid-column-end: 3;
     position: relative;
     padding-top: 53.4%;
 }
