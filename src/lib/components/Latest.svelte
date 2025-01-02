@@ -127,6 +127,7 @@
 </svelte:head>
 
 <section class="main region">
+    <Ad />
     <div class="feature-post">
         <div class="random-video">
             <button  on:click={()=>changeCategory(latestChineseMovies, 'ភាពយន្ត​​​')}>
