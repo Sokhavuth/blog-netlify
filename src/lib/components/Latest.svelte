@@ -259,7 +259,7 @@
 @media only screen and (max-width: 600px){
     .random-video{
         grid-template-columns: 100%;
-        padding: 15px;
+        padding: 10px;
     }
     .random-video .wrapper{
         grid-column: 1 / span 1;
