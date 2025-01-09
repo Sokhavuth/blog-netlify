@@ -112,27 +112,27 @@
     export let player;
     export let initialVideoId = 'cdwal5Kw3Fc';
     
+    function load() {
+        player = new YT.Player(ytPlayerId, {
+            height: '390',
+            width: '640',
+            videoId: initialVideoId,
+            playerVars: {
+                'playsinline': 1,
+                "enablejsapi": 1,
+                "mute": 1,
+                "autoplay": 1,
+                "rel": 0,
+            },
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange,
+                'onError': onPlayerError
+            }
+        })
+    }
+        
     onMount(()=>{
-        function load() {
-            player = new YT.Player(ytPlayerId, {
-                height: '390',
-                width: '640',
-                videoId: initialVideoId,
-                playerVars: {
-                    'playsinline': 1,
-                    "enablejsapi": 1,
-                    "mute": 1,
-                    "autoplay": 1,
-                    "rel": 0,
-                },
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange,
-                    'onError': onPlayerError
-                }
-            })
-        }
-
         window.YT.ready(function() {
             if (window.YT) {
                 load();
