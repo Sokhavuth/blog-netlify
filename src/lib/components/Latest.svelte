@@ -87,6 +87,34 @@
         }
     }
 
+    function nextPrevious(move){
+        if(move === "next"){
+            player.part += 1
+            if(player.part === player.playlist.length){
+                player.part = 0
+            }
+
+            if(player.playlist[player.part][0].type === "YouTubePlaylist"){
+                player.loadVideoById(initialVideoId)
+                player.loadPlaylist({list:player.playlist[player.part][0].id,listType:'playlist',index:0})
+            }else{
+                player.loadVideoById(player.playlist[player.part][0].id)
+            }
+        }else if(move === "previous"){
+            player.part -= 1
+            if(player.part < 0){
+                player.part = 0
+            }
+
+            if(player.playlist[player.part][0].type === "YouTubePlaylist"){
+                player.loadVideoById(initialVideoId)
+                player.loadPlaylist({list:player.playlist[player.part][0].id,listType:'playlist',index:0})
+            }else{
+                player.loadVideoById(player.playlist[player.part][0].id)
+            }
+        }
+    }
+
     const ytPlayerId = 'youtube-player'
     export let player;
     export let initialVideoId = 'cdwal5Kw3Fc';
@@ -168,7 +196,9 @@
                 <div class="channel-logo">
                 <img src="/images/siteLogo.png" alt=''/>
                 <div class="play-all">
-                    <a on:click={()=>changeCategory(latestVideos, 'វីដេអូ​ចុងក្រោយ')}>លេង​វីដេអូ​ចុង​ក្រោយ</a>
+                    <a on:click={()=>nextPrevious('previous')}>វីដេអូមុន</a>
+                    <a on:click={()=>changeCategory(latestVideos, 'វីដេអូ​ចុងក្រោយ')} class='center'>វីដេអូ​ចុងក្រោយ'</a>
+                    <a on:click={()=>nextPrevious('next')}>វីដេអូបន្ទាប់</a>
                 </div>
             </div>
             
@@ -241,6 +271,9 @@
 }
 .random-video .wrapper .play-all a{
     color: orange;
+}
+.random-video .wrapper .play-all .center{
+    padding: 0 20px;
 }
 .random-video .wrapper .play-all:hover{
     cursor: pointer;
