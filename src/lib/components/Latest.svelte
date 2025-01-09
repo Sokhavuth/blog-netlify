@@ -225,6 +225,7 @@
 }
 .random-video button:hover{
     cursor: pointer;
+    opacity: .7;
 }
 .random-video span img, .random-video button img{
     position: absolute;
