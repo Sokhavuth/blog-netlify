@@ -293,8 +293,5 @@
         grid-row: 1 / span 1;
         padding-top: 51.7%;
     }
-    .random-video .wrapper .play-all{
-        bottom: 120px;
-    }
 }   
 </style>
