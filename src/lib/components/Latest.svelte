@@ -294,7 +294,7 @@
         padding-top: 51.7%;
     }
     .random-video .wrapper .play-all{
-        bottom: 50px;
+        bottom: 120px;
     }
 }   
 </style>
