@@ -167,7 +167,7 @@
                 <img alt='' src={data.thumbs[3]} />
                 <p class="movies-label">កីឡា</p>
             </button>
-            <button on:click={()=>changeCategory(latestDocVideos, 'ឯកសារ​​​​​')}>
+            <button on:click={()=>changeCategory(latestDocVideos, 'កំរង​ឯកសារ​​​​​')}>
                 <img alt='' src={data.thumbs[2]} />
                 <p class="movies-label">កំរង​ឯកសារ</p>
             </button>
