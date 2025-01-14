@@ -169,7 +169,7 @@
             </button>
             <button on:click={()=>changeCategory(latestDocVideos, 'ឯកសារ​​​​​')}>
                 <img alt='' src={data.thumbs[2]} />
-                <p class="movies-label">ឯកសារ</p>
+                <p class="movies-label">កំរង​ឯកសារ</p>
             </button>
             <button on:click={()=>changeCategory(latestFoodVideos, 'មុខ​ម្ហូប​​​​')}>
                 <img alt='' src={data.thumbs[5]} />
