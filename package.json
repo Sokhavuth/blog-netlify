@@ -22,7 +22,7 @@
 		"globals": "^15.0.0",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
-		"prisma": "5.19",
+		"prisma": "^6.2.1",
 		"svelte": "^4.2.7",
 		"svelte-social-links": "^2.0.2",
 		"sveltekit-flash-message": "^2.4.4",
@@ -32,7 +32,7 @@
 	"dependencies": {
 		"@libsql/client": "^0.6.2",
 		"@prisma/adapter-libsql": "^5.17.0",
-		"@prisma/client": "5.19",
+		"@prisma/client": "^6.2.1",
 		"@prisma/extension-accelerate": "^1.1.0",
 		"bcryptjs": "^2.4.3",
 		"ckeditor5": "^42.0.1",

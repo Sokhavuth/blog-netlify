@@ -34,6 +34,7 @@ model Post {
   date String
   videos String
   author String
+  createdAt DateTime?
 }
 
 model Category {

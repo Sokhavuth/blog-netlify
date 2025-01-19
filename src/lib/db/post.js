@@ -6,14 +6,30 @@ class Post{
     }
 
     async createPost(req){
-        const new_post = {
-            title: req.body.title,
-            content: req.body.content,
-            categories: req.body.categories,
-            thumb: req.body.thumb,
-            date: req.body.datetime,
-            videos: req.body.videos,
-            author: req.user.id,
+        let new_post = {}
+
+        if(req.body.categories.includes('global') || req.body.categories.includes('national')){
+            new_post = {
+                title: req.body.title,
+                content: req.body.content,
+                categories: req.body.categories,
+                thumb: req.body.thumb,
+                date: req.body.datetime,
+                videos: req.body.videos,
+                author: req.user.id,
+                createdAt: new Date(),
+            }
+       
+        }else{ 
+            new_post = {
+                title: req.body.title,
+                content: req.body.content,
+                categories: req.body.categories,
+                thumb: req.body.thumb,
+                date: req.body.datetime,
+                videos: req.body.videos,
+                author: req.user.id,
+            }
         }
         
         await req.prisma.post.create({ data: new_post })
@@ -162,6 +178,21 @@ class Post{
         })
 
         return results
+    }
+
+    async createIndexes(req){
+        await req.prisma.$runCommandRaw({
+            createIndexes: 'Post',
+            indexes: [
+              {
+                key: {
+                  createdAt: 1,
+                },
+                name: 'createdAt_ttl_index',
+                expireAfterSeconds: 60*60*24*30*3,
+              },
+            ],
+        })
     }
 }
 
