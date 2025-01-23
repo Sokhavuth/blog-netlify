@@ -175,9 +175,9 @@
                 <img alt='' src={data.thumbs[5]} />
                 <p class="news-label">​មុខ​ម្ហូប</p>
             </button>
-            <button on:click={()=>changeCategory(latestMusicVideos, 'កំរង​តន្ត្រី​​​​​')}>
+            <button on:click={()=>changeCategory(latestMusicVideos, 'របាំ​តន្ត្រី​​​​​')}>
                 <img alt='' src={data.thumbs[6]} />
-                <p class="news-label">កំរង​តន្ត្រី</p>
+                <p class="news-label">របាំ​តន្ត្រី</p>
             </button>
             <button on:click={()=>changeCategory(latestDistractionVideos, 'ល្បែងកំសាន្ត​​​​')}>
                 <img alt='' src={data.thumbs[7]} />

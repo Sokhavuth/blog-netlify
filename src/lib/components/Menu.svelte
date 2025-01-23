@@ -85,7 +85,7 @@ function myFunction() {
                   </button>
                   <div class="dropdown-content">
                     <a href="/food/1">មុខ​ម្ហូប</a>
-                    <a href="/music/1">តន្ត្រី</a>
+                    <a href="/music/1">របាំតន្ត្រី</a>
                     <a href="/distraction/1">ល្បែង​កំសាន្ត</a>
                   </div>
                 </div>
