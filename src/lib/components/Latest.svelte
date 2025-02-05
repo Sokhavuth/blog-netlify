@@ -7,9 +7,7 @@
     function parseVideos(posts){
         let videos = []
         for(let post of posts){
-            if(post.videos.length > 0){
-                videos.push(JSON.parse(post.videos))
-            }
+            videos.push(JSON.parse(post.videos))
         }
         return videos
     }

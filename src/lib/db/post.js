@@ -127,7 +127,7 @@ class Post{
 
     async getLatestPosts(req, amount){    
         return await req.prisma.post.findMany({ 
-            where: {NOT: {categories: { contains: "unavailable" }}},
+            where: { AND: [{NOT: {videos: "" }} , {NOT: {categories: { contains: "unavailable" }}}] },
             take: amount, 
             orderBy: [{ date: "desc" }],
         })
@@ -138,14 +138,15 @@ class Post{
         for(let category of categories){
             /*
             posts.push(await req.prisma.post.findMany({
-                where: {AND: [{ categories: { contains: category } }, {NOT: {categories: { contains: "unavailable" }}}]},
+                where: {AND: [{ categories: { contains: category } }, {NOT: {categories: { contains: "unavailable" }}}, {NOT: {videos: "" }}]},
                 orderBy: [{ date: "desc" }],
                 take: amount,
             }))
             */
             posts.push(await req.prisma.post.aggregateRaw({
-                pipeline: [{ $match : { categories: { $regex: category } }}, { $match : { categories: {$not: { $regex: "unavailable" }} }}, { $sample:{ size: amount }}]
+                pipeline: [{ $match : { $and: [{categories: { $regex: category }}, {videos: { $ne: "" }}, { categories: {$not: { $regex: "unavailable" }} } ] }}, { $sample:{ size: amount }}]
             }))
+            
         }
 
         return posts
