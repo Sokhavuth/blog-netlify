@@ -34,28 +34,40 @@
         if(playlist[0][0].type === "YouTubePlaylist"){
            player.loadPlaylist({list:playlist[0][0].id,listType:'playlist',index:0})
         }else{
+            playlist[0].reverse()
+            playlist[0].reversal = true
             player.loadVideoById(playlist[0][0].id)
         }
     }
 
     function onPlayerReady(event) {
         player.part = 0
+        player.index = 0
         player.playlist = latestVideos 
         loadVideo(latestVideos )
     }
 
     function onPlayerStateChange(event) {       
         if(event.data === YT.PlayerState.ENDED){
-            player.part += 1
-            if(player.part === player.playlist.length){
-                player.part = 0
-            }
+            if(player.index + 1 === player.playlist[player.part].length){
+                player.part += 1
+                if(player.part === player.playlist.length){
+                    player.part = 0
+                }
 
-            if(player.playlist[player.part][0].type === "YouTubePlaylist"){
-                player.loadVideoById(initialVideoId)
-                player.loadPlaylist({list:player.playlist[player.part][0].id,listType:'playlist',index:0})
+                if(player.playlist[player.part][0].type === "YouTubePlaylist"){
+                    player.loadVideoById(initialVideoId)
+                    player.loadPlaylist({list:player.playlist[player.part][0].id,listType:'playlist',index:0})
+                }else{
+                    if(!(player.playlist[player.part].reversal)){
+                        player.playlist[player.part].reverse()
+                        player.playlist[player.part].reversal = true
+                    }
+                    player.loadVideoById(player.playlist[player.part][0].id)
+                }
             }else{
-                player.loadVideoById(player.playlist[player.part][0].id)
+                player.index += 1
+                player.loadVideoById(player.playlist[player.part][player.index].id)
             }
         }
     }
@@ -70,6 +82,10 @@
             player.loadVideoById(initialVideoId)
             player.loadPlaylist({list:player.playlist[player.part][0].id,listType:'playlist',index:0})
         }else{
+            if(!(player.playlist[player.part].reversal)){
+                player.playlist[player.part].reverse()
+                player.playlist[player.part].reversal = true
+            }
             player.loadVideoById(player.playlist[player.part][0].id)
         }
     }
@@ -82,6 +98,10 @@
             player.loadPlaylist({list:playlist[0][0].id,listType:'playlist',index:0})
             jq('.latest-video').html(label)
         }else{
+            if(!(playlist[0].reversal)){
+                playlist[0].reverse()
+                playlist[0].reversal = true
+            }
             player.loadVideoById(playlist[0][0].id)
             jq('.latest-video').html(label)
         }
@@ -104,6 +124,10 @@
             player.loadVideoById(initialVideoId)
             player.loadPlaylist({list:player.playlist[player.part][0].id,listType:'playlist',index:0})
         }else{
+            if(!(player.playlist[player.part].reversal)){
+                player.playlist[player.part].reverse()
+                player.playlist[player.part].reversal = true
+            }
             player.loadVideoById(player.playlist[player.part][0].id)
         }
     }
@@ -135,9 +159,9 @@
     onMount(()=>{
         window.YT.ready(function() {
             if (window.YT) {
-                load();
+                load()
             } else {
-                window.onYouTubeIframeAPIReady = load;
+                window.onYouTubeIframeAPIReady = load
             }
         })
     })
