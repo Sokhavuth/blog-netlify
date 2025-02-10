@@ -49,7 +49,10 @@
 
     function onPlayerStateChange(event) {       
         if(event.data === YT.PlayerState.ENDED){
-            if(player.index + 1 === player.playlist[player.part].length){
+            if(player.index + 1 < player.playlist[player.part].length){
+                player.index += 1
+                player.loadVideoById(player.playlist[player.part][player.index].id)
+            }else{
                 player.part += 1
                 if(player.part === player.playlist.length){
                     player.part = 0
@@ -59,15 +62,13 @@
                     player.loadVideoById(initialVideoId)
                     player.loadPlaylist({list:player.playlist[player.part][0].id,listType:'playlist',index:0})
                 }else{
+                    player.index = 0
                     if(!(player.playlist[player.part].reversal)){
                         player.playlist[player.part].reverse()
                         player.playlist[player.part].reversal = true
                     }
                     player.loadVideoById(player.playlist[player.part][0].id)
                 }
-            }else{
-                player.index += 1
-                player.loadVideoById(player.playlist[player.part][player.index].id)
             }
         }
     }
