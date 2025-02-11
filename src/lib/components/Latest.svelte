@@ -74,20 +74,26 @@
     }
 
     function onPlayerError(event){
-        player.part += 1
-        if(player.part === player.playlist.length){
-            player.part = 0
-        }
-
-        if(player.playlist[player.part][0].type === "YouTubePlaylist"){
-            player.loadVideoById(initialVideoId)
-            player.loadPlaylist({list:player.playlist[player.part][0].id,listType:'playlist',index:0})
+        if(player.index + 1 < player.playlist[player.part].length){
+            player.index += 1
+            player.loadVideoById(player.playlist[player.part][player.index].id)
         }else{
-            if(!(player.playlist[player.part].reversal)){
-                player.playlist[player.part].reverse()
-                player.playlist[player.part].reversal = true
+            player.part += 1
+            if(player.part === player.playlist.length){
+                player.part = 0
             }
-            player.loadVideoById(player.playlist[player.part][0].id)
+
+            if(player.playlist[player.part][0].type === "YouTubePlaylist"){
+                player.loadVideoById(initialVideoId)
+                player.loadPlaylist({list:player.playlist[player.part][0].id,listType:'playlist',index:0})
+            }else{
+                player.index = 0
+                if(!(player.playlist[player.part].reversal)){
+                    player.playlist[player.part].reverse()
+                    player.playlist[player.part].reversal = true
+                }
+                player.loadVideoById(player.playlist[player.part][0].id)
+            }
         }
     }
 
