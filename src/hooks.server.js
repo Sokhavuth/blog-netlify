@@ -2,6 +2,7 @@ import prisma from '$lib/db/prisma.js'
 import jwt from "jsonwebtoken"
 import { SECRET_KEY } from '$env/static/private'
 import settings from "$lib/settings.js"
+import { redirect } from '@sveltejs/kit'
 
 export async function handle({ event, resolve }) {
     event.locals.prisma = prisma
@@ -16,7 +17,7 @@ export async function handle({ event, resolve }) {
                 return await resolve(event)
             }catch(err){
                 console.log(err)
-                return await resolve(event)
+                throw redirect(303, '/login')
             }
         }
     }
