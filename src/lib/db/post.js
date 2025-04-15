@@ -165,8 +165,16 @@ class Post{
                 })
             }
         }else{
+            let category = ''
+            if(post.categories.includes(',')){
+                let str = post.categories.split(',')
+                category = str[0]
+            }else{
+                category = post.categories
+            }
+
             results = await req.prisma.post.aggregateRaw({
-                pipeline: [{ $match : {categories : {$not:{ $regex: "news" }}, _id: {$ne: {$oid: post.id}}} }, { $sample:{ size: amount }}]
+                pipeline: [{ $match : {categories : { $regex: category }, _id: {$ne: {$oid: post.id}}} }, { $sample:{ size: amount }}]
             })
         }
        
