@@ -5,6 +5,8 @@ export async function load({ locals }) {
 	const user = locals.user
     if(!user){throw redirect(307, '/login')}
 
+    throw redirect(307, '/admin/post')
+
     const settings = await locals.settings(locals)
     const posts = await postDb.getPosts(locals, 14)
 
