@@ -189,6 +189,14 @@ class Post{
         return results
     }
 
+    async getRandomPlaylist(req, amount, category){
+        const results = await req.prisma.post.aggregateRaw({
+            pipeline: [{ $match : { categories : { $regex: category } } }, { $sample:{ size: amount }}]
+        })
+
+        return results
+    }
+
     async createIndexes(req){
         await req.prisma.$runCommandRaw({
             createIndexes: 'Post',

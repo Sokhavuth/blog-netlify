@@ -13,15 +13,32 @@
     }
 
     let latestVideos = parseVideos(data.latestPosts)
+    latestVideos.category = 'latest'
     let latestChineseMovies = parseVideos(data.postsByCategory[0])
+    latestChineseMovies.category = 'movie'
     let latestWorldMovies = parseVideos(data.postsByCategory[1])
+    latestWorldMovies.category = 'travel'
     let latestDocVideos = parseVideos(data.postsByCategory[2])
+    latestDocVideos.category = 'doc'
     let latestSportVideos = parseVideos(data.postsByCategory[3])
+    latestSportVideos.category = 'sport'
     let latestGameVideos = parseVideos(data.postsByCategory[4])
+    latestGameVideos.category = 'game'
     let latestFoodVideos = parseVideos(data.postsByCategory[5])
+    latestFoodVideos.category = 'food'
     let latestMusicVideos = parseVideos(data.postsByCategory[6])
+    latestMusicVideos.category = 'music'
     let latestDistractionVideos = parseVideos(data.postsByCategory[7])
+    latestDistractionVideos.category = 'distraction'
     
+
+    async function getRandomPlaylist(category){
+		const response = await fetch(`/post/playlist/${category}`)
+		const newPlaylist_ = await response.json()
+        let newPlaylist = parseVideos(newPlaylist_)
+        newPlaylist.category = category
+        return newPlaylist
+	}
 
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
@@ -47,7 +64,7 @@
         loadVideo(latestVideos )
     }
 
-    function onPlayerStateChange(event) {       
+   async function onPlayerStateChange(event) {    
         if(event.data === YT.PlayerState.ENDED){
             if(player.index + 1 < player.playlist[player.part].length){
                 player.index += 1
@@ -55,7 +72,11 @@
             }else{
                 player.part += 1
                 if(player.part === player.playlist.length){
+                    if(player.playlist.category !== 'latest'){
+                        player.playlist = await getRandomPlaylist(player.playlist.category)
+                    }
                     player.part = 0
+                    player.index = 0
                 }
 
                 if(player.playlist[player.part][0].type === "YouTubePlaylist"){
