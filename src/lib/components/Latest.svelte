@@ -14,10 +14,10 @@
 
     let latestVideos = parseVideos(data.latestPosts)
     latestVideos.category = 'latest'
-    let latestChineseMovies = parseVideos(data.postsByCategory[0])
-    latestChineseMovies.category = 'movie'
-    let latestWorldMovies = parseVideos(data.postsByCategory[1])
-    latestWorldMovies.category = 'travel'
+    let latestMovies = parseVideos(data.postsByCategory[0])
+    latestMovies.category = 'movie'
+    let latestTravelVideos = parseVideos(data.postsByCategory[1])
+    latestTravelVideos.category = 'travel'
     let latestDocVideos = parseVideos(data.postsByCategory[2])
     latestDocVideos.category = 'doc'
     let latestSportVideos = parseVideos(data.postsByCategory[3])
@@ -226,11 +226,11 @@
     <Ad />
     <div class="feature-post">
         <div class="random-video">
-            <button  on:click={()=>changeCategory(latestChineseMovies, 'ភាពយន្ត​​​')}>
+            <button  on:click={()=>changeCategory(latestMovies, 'ភាពយន្ត​​​')}>
                 <img alt='' src={data.thumbs[0]} />
                 <p class="news-label">ភាពយន្ត​</p>
             </button>
-            <button on:click={()=>changeCategory(latestWorldMovies, 'ដើរ​លេង​​​​​')}>
+            <button on:click={()=>changeCategory(latestTravelVideos, 'ដើរ​លេង​​​​​')}>
                 <img alt='' src={data.thumbs[1]} />
                 <p class="movies-label">ដើរ​លេង</p>
             </button>
