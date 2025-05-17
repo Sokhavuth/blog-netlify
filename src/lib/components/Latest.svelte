@@ -15,7 +15,7 @@
     let latestVideos = parseVideos(data.latestPosts)
     latestVideos.category = 'latest'
     let latestMovies = parseVideos(data.postsByCategory[0])
-    latestMovies.category = 'movie'
+    latestMovies.category = "movie"
     let latestTravelVideos = parseVideos(data.postsByCategory[1])
     latestTravelVideos.category = 'travel'
     let latestDocVideos = parseVideos(data.postsByCategory[2])
@@ -62,6 +62,8 @@
         player.index = 0
         player.playlist = latestVideos 
         loadVideo(latestVideos )
+        data.latestPosts = null
+        data.postsByCategory = null
     }
 
    async function onPlayerStateChange(event) {    
@@ -71,9 +73,12 @@
                 player.loadVideoById(player.playlist[player.part][player.index].id)
             }else{
                 player.part += 1
-                if(player.part === player.playlist.length){
+                if(player.part + 1 === player.playlist.length){
+                    player.newPlaylist = await getRandomPlaylist(player.playlist.category)
+                }else if(player.part === player.playlist.length){
                     if(player.playlist.category !== 'latest'){
-                        player.playlist = await getRandomPlaylist(player.playlist.category)
+                        //player.playlist = await getRandomPlaylist(player.playlist.category)
+                        player.playlist = player.newPlaylist
                     }
                     player.part = 0
                 }

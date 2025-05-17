@@ -146,7 +146,6 @@ class Post{
             posts.push(await req.prisma.post.aggregateRaw({
                 pipeline: [{ $match : { $and: [{categories: { $regex: category }}, {videos: { $ne: "" }}, { categories: {$not: { $regex: "unavailable" }} } ] }}, { $sample:{ size: amount }}]
             }))
-            
         }
 
         return posts
