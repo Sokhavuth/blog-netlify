@@ -73,11 +73,9 @@
                 player.loadVideoById(player.playlist[player.part][player.index].id)
             }else{
                 player.part += 1
-                if(player.part + 1 === player.playlist.length){
-                    player.newPlaylist = await getRandomPlaylist(player.playlist.category)
-                }else if(player.part === player.playlist.length){
+                if(player.part === player.playlist.length){
                     if(player.playlist.category !== 'latest'){
-                        player.playlist = await player.newPlaylist
+                        player.playlist = await getRandomPlaylist(player.playlist.category)
                     }
                     player.part = 0
                 }
