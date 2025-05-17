@@ -77,8 +77,7 @@
                     player.newPlaylist = await getRandomPlaylist(player.playlist.category)
                 }else if(player.part === player.playlist.length){
                     if(player.playlist.category !== 'latest'){
-                        //player.playlist = await getRandomPlaylist(player.playlist.category)
-                        player.playlist = player.newPlaylist
+                        player.playlist = await player.newPlaylist
                     }
                     player.part = 0
                 }
