@@ -75,7 +75,8 @@
                 player.part += 1
                 if(player.part === player.playlist.length){
                     if(player.playlist.category !== 'latest'){
-                        player.playlist = await getRandomPlaylist(player.playlist.category)
+                        player.playlist = player.nextPlaylist 
+                        player.nextPlaylist = await getRandomPlaylist(player.playlist.category)
                     }
                     player.part = 0
                 }
@@ -119,9 +120,10 @@
         }
     }
 
-    function changeCategory(playlist, label) {
+   async function changeCategory(playlist, label) {
         player.part = 0
         player.playlist = playlist
+        player.nextPlaylist = await getRandomPlaylist(player.playlist.category)
         if(playlist[player.part][0].type === "YouTubePlaylist"){
             player.loadVideoById(initialVideoId)
             player.loadPlaylist({list:playlist[0][0].id,listType:'playlist',index:0})
