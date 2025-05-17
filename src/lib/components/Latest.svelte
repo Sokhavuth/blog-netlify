@@ -266,7 +266,7 @@
                 <img src="/images/siteLogo.png" alt=''/>
                 <div class="play-all">
                     <a on:click={()=>nextPrevious('previous')}>វីដេអូមុន</a>
-                    <a on:click={()=>changeCategory(latestVideos, 'វីដេអូ​ចុងក្រោយ')} class='center'>វីដេអូ​ចុងក្រោយ'</a>
+                    <a on:click={()=>changeCategory(latestVideos, 'វីដេអូ​ចុងក្រោយ')} class='center'>វីដេអូ​ចុងក្រោយ</a>
                     <a on:click={()=>nextPrevious('next')}>វីដេអូបន្ទាប់</a>
                 </div>
             </div>
