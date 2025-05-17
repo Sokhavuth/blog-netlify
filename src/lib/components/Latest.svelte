@@ -76,7 +76,6 @@
                         player.playlist = await getRandomPlaylist(player.playlist.category)
                     }
                     player.part = 0
-                    player.index = 0
                 }
 
                 if(player.playlist[player.part][0].type === "YouTubePlaylist"){
@@ -94,7 +93,7 @@
         }
     }
 
-    function onPlayerError(event){
+   function onPlayerError(event){
         if(player.index + 1 < player.playlist[player.part].length){
             player.index += 1
             player.loadVideoById(player.playlist[player.part][player.index].id)
