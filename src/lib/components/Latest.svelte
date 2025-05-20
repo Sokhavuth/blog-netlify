@@ -31,6 +31,8 @@
     let latestDistractionVideos = parseVideos(data.postsByCategory[7])
     latestDistractionVideos.category = 'distraction'
     
+    data.latestPosts = null
+    data.postsByCategory = null
 
     async function getRandomPlaylist(category){
 		const response = await fetch(`/post/playlist/${category}`)
@@ -62,8 +64,6 @@
         player.index = 0
         player.playlist = latestVideos 
         loadVideo(latestVideos )
-        data.latestPosts = null
-        data.postsByCategory = null
     }
 
    async function onPlayerStateChange(event) {    
