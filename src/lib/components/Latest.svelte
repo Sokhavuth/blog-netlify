@@ -6,9 +6,12 @@
 
     function parseVideos(posts){
         let videos = []
+        let thumbs = []
         for(let post of posts){
             videos.push(JSON.parse(post.videos))
+            thumbs.push(post.thumb)
         }
+        videos.thumbs = thumbs
         return videos
     }
 
@@ -34,8 +37,14 @@
     data.latestPosts = null
     data.postsByCategory = null
 
-    async function getRandomPlaylist(category){
-		const response = await fetch(`/post/playlist/${category}`)
+    async function getRandomPlaylist(category, thumbs){
+		const response = await fetch(`/post/playlist/${category}`, {
+			method: 'POST',
+			body: JSON.stringify({ thumbs }),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		})
 		const newPlaylist_ = await response.json()
         let newPlaylist = parseVideos(newPlaylist_)
         newPlaylist.category = category
@@ -76,7 +85,7 @@
                 if(player.part === player.playlist.length){
                     if(player.playlist.category !== 'latest'){
                         player.loadVideoById('NcQQVbioeZk')
-                        player.playlist = await getRandomPlaylist(player.playlist.category)
+                        player.playlist = await getRandomPlaylist(player.playlist.category, player.playlist.thumbs)
                     }
                     player.part = 0
                 }

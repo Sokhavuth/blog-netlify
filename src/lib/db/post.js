@@ -188,9 +188,9 @@ class Post{
         return results
     }
 
-    async getRandomPlaylist(req, amount, category){
+    async getRandomPlaylist(req, amount, category, thumbs){
         const results = await req.prisma.post.aggregateRaw({
-            pipeline: [{ $match : { categories : { $regex: category } } }, { $sample:{ size: amount }}]
+            pipeline: [{ $match : { categories : { $regex: category }, thumb: {$nin: thumbs} } }, { $sample:{ size: amount }}]
         })
 
         return results
