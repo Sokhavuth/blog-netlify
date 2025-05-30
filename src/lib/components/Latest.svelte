@@ -4,7 +4,7 @@
     import { onMount } from "svelte"
     export let data
     export let player
-    const posts = data.latestPosts
+    let posts = data.latestPosts
     const pageAmount = Math.ceil(data.count/data.settings.categoryPostLimit)
 
     function parseVideos(posts){
@@ -36,9 +36,6 @@
     latestMusicVideos.category = 'music'
     let latestDistractionVideos = parseVideos(data.postsByCategory[7])
     latestDistractionVideos.category = 'distraction'
-    
-    data.latestPosts = null
-    data.postsByCategory = null
 
     async function getRandomPlaylist(category, thumbs){
 		const response = await fetch(`/post/playlist/${category}`, {
@@ -49,6 +46,7 @@
 			}
 		})
 		const newPlaylist_ = await response.json()
+        posts = newPlaylist_
         let newPlaylist = parseVideos(newPlaylist_)
         newPlaylist.category = category
         return newPlaylist
@@ -132,20 +130,24 @@
         }
     }
 
-    function changeCategory(playlist, label, part=0) {
+    function changeCategory(playlist, label, obj=0, part=0) {
+        if(obj){
+            posts = obj
+            posts.label = label
+        }
+        if(playlist){player.playlist = playlist}
         player.part = part
-        player.playlist = playlist
         player.unMute()
-        if(playlist[player.part][0].type === "YouTubePlaylist"){
+        if(player.playlist[player.part][0].type === "YouTubePlaylist"){
             player.loadVideoById(initialVideoId)
-            player.loadPlaylist({list:playlist[part][0].id,listType:'playlist',index:0})
+            player.loadPlaylist({list:player.playlist[part][0].id,listType:'playlist',index:0})
             jq('.latest-video').html(label)
         }else{
-            if(!(playlist[0].reversal)){
-                playlist[0].reverse()
-                playlist[0].reversal = true
+            if(!(player.playlist[0].reversal)){
+                player.playlist[0].reverse()
+                player.playlist[0].reversal = true
             }
-            player.loadVideoById(playlist[part][0].id)
+            player.loadVideoById(player.playlist[part][0].id)
             jq('.latest-video').html(label)
         }
     }
@@ -240,35 +242,35 @@
     <Ad />
     <div class="feature-post">
         <div class="random-video">
-            <button  on:click={()=>changeCategory(latestMovies, 'ភាពយន្ត​​​')}>
+            <button  on:click={()=>changeCategory(latestMovies, 'ភាពយន្ត​​​', data.postsByCategory[0])}>
                 <img alt='' src={data.thumbs[0]} />
                 <p class="news-label">ភាពយន្ត​</p>
             </button>
-            <button on:click={()=>changeCategory(latestTravelVideos, 'ដើរ​លេង​​​​​')}>
+            <button on:click={()=>changeCategory(latestTravelVideos, 'ដើរ​លេង​​​​​', data.postsByCategory[1])}>
                 <img alt='' src={data.thumbs[1]} />
                 <p class="movies-label">ដើរ​លេង</p>
             </button>
-            <button on:click={()=>changeCategory(latestGameVideos, '​ពិភព​និម្មិត​')}>
+            <button on:click={()=>changeCategory(latestGameVideos, '​ពិភព​និម្មិត​', data.postsByCategory[4])}>
                 <img alt='' src={data.thumbs[4]} />
                 <p class="movies-label">ពិភព​និម្មិត</p>
             </button>
-            <button on:click={()=>changeCategory(latestSportVideos, '​កីឡា​​​')}>
+            <button on:click={()=>changeCategory(latestSportVideos, '​កីឡា​​​', data.postsByCategory[3])}>
                 <img alt='' src={data.thumbs[3]} />
                 <p class="movies-label">កីឡា</p>
             </button>
-            <button on:click={()=>changeCategory(latestDocVideos, 'កំរង​ឯកសារ​​​​​')}>
+            <button on:click={()=>changeCategory(latestDocVideos, 'កំរង​ឯកសារ​​​​​', data.postsByCategory[2])}>
                 <img alt='' src={data.thumbs[2]} />
                 <p class="movies-label">កំរង​ឯកសារ</p>
             </button>
-            <button on:click={()=>changeCategory(latestFoodVideos, 'មុខ​ម្ហូប​​​​')}>
+            <button on:click={()=>changeCategory(latestFoodVideos, 'មុខ​ម្ហូប​​​​', data.postsByCategory[5])}>
                 <img alt='' src={data.thumbs[5]} />
                 <p class="news-label">​មុខ​ម្ហូប</p>
             </button>
-            <button on:click={()=>changeCategory(latestMusicVideos, 'របាំ​តន្ត្រី​​​​​')}>
+            <button on:click={()=>changeCategory(latestMusicVideos, 'របាំ​តន្ត្រី​​​​​', data.postsByCategory[6])}>
                 <img alt='' src={data.thumbs[6]} />
                 <p class="news-label">របាំ​តន្ត្រី</p>
             </button>
-            <button on:click={()=>changeCategory(latestDistractionVideos, 'ល្បែងកំសាន្ត​​​​')}>
+            <button on:click={()=>changeCategory(latestDistractionVideos, 'ល្បែងកំសាន្ត​​​​', data.postsByCategory[7])}>
                 <img alt='' src={data.thumbs[7]} />
                 <p class="news-label">ល្បែងកំសាន្ត​</p>
             </button>
@@ -279,7 +281,7 @@
                 <img src="/images/siteLogo.png" alt=''/>
                 <div class="play-all">
                     <a on:click={()=>nextPrevious('previous')}>វីដេអូមុន</a>
-                    <a on:click={()=>changeCategory(latestVideos, 'វីដេអូ​ចុងក្រោយ')} class='center'>វីដេអូ​ចុងក្រោយ</a>
+                    <a on:click={()=>changeCategory(latestVideos, 'វីដេអូ​ចុងក្រោយ', data.latestPosts)} class='center'>វីដេអូ​ចុងក្រោយ</a>
                     <a on:click={()=>nextPrevious('next')}>វីដេអូបន្ទាប់</a>
                 </div>
             </div>
@@ -293,7 +295,7 @@
     <div class="container">
         {#each posts as post, index}
             <div class="wrapper">
-                <button class='news' on:click={()=>changeCategory(latestVideos, 'វីដេអូ​ចុងក្រោយ', index)}>
+                <button class='news' on:click={()=>changeCategory(false, posts.label, false, index)}>
                     <img src={post.thumb} alt=''/>
                     {#if post.videos.length}
                     <img class="play-icon" src="/images/play.png" alt=''/>
