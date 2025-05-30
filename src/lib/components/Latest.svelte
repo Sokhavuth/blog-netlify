@@ -3,6 +3,9 @@
     import jq from 'jquery'
     import { onMount } from "svelte"
     export let data
+    export let player
+    const posts = data.posts
+    const pageAmount = Math.ceil(data.count/data.settings.categoryPostLimit)
 
     function parseVideos(posts){
         let videos = []
@@ -129,8 +132,8 @@
         }
     }
 
-   function changeCategory(playlist, label) {
-        player.part = 0
+    function changeCategory(playlist, label, part=0) {
+        player.part = part
         player.playlist = playlist
         if(playlist[player.part][0].type === "YouTubePlaylist"){
             player.loadVideoById(initialVideoId)
@@ -141,7 +144,7 @@
                 playlist[0].reverse()
                 playlist[0].reversal = true
             }
-            player.loadVideoById(playlist[0][0].id)
+            player.loadVideoById(playlist[part][0].id)
             jq('.latest-video').html(label)
         }
     }
@@ -195,7 +198,6 @@
     }
 
     const ytPlayerId = 'youtube-player'
-    export let player;
     export let initialVideoId = 'cdwal5Kw3Fc';
     
     function load() {
@@ -285,6 +287,36 @@
     </div>
     <Ad />
 </section>
+
+<section class="Home region">
+    <div class="container">
+        {#each posts as post, index}
+            <div class="wrapper">
+                
+                <button class='news' on:click={()=>changeCategory(latestVideos, 'វីដេអូ​ចុងក្រោយ', index)}>
+                    <img src={post.thumb} alt=''/>
+                    {#if post.videos.length}
+                    <img class="play-icon" src="/images/play.png" alt=''/>
+                    {/if}
+                </button>
+                <div class="date">{(new Date(post.date)).toLocaleDateString('it-IT')}</div>
+                    <a class="title" href={`/post/${post.id}`}>
+                    <div >{post.title}</div>
+                </a>
+            </div>
+        {/each}
+    </div>
+    <div class="navigation">
+        <span>ទំព័រ </span>
+        <select on:change={(event)=>{document.location = `/${event.target.value}`}}>
+            {#each [...Array(pageAmount).keys()] as pageNumber}
+                <option>{pageNumber+1}</option>
+            {/each}
+        </select>
+        <span> នៃ {pageAmount}</span>
+    </div>
+</section>
+
 <style>
 .feature-post span img{
     width: 100%;
@@ -369,6 +401,46 @@
     height: 100%;
 }
 
+.Home .container{
+    display: grid;
+    grid-template-columns: repeat(4, calc(100% / 4 - 11.25px));
+    grid-gap: 30px 15px;
+    padding: 30px 0;
+}
+.Home .container .wrapper .news{
+    position: relative;
+    padding-top: 56.25%;
+    overflow: hidden;
+    width: 100%;
+    display: block;
+    border: none;
+}
+.Home button:hover{
+    cursor: pointer;
+    opacity: .7;
+}
+.Home .container .wrapper .news img{
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    top: 0;
+    left: 0;
+}
+.Home .container .wrapper .news .play-icon{
+    width: auto;
+    min-height: auto;
+    width: 15%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+.Home .container .wrapper .title{
+    padding-top: 0;
+}
+.Home .navigation{
+    text-align: center;
+}
+
 @media only screen and (max-width: 600px){
     .random-video{
         grid-template-columns: 100%;
@@ -378,6 +450,10 @@
         grid-column: 1 / span 1;
         grid-row: 1 / span 1;
         padding-top: 51.7%;
+    }
+    .Home .container{
+        grid-template-columns: 100%;
+        padding: 30px 10px;
     }
 }   
 </style>

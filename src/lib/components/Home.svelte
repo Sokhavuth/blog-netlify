@@ -3,18 +3,19 @@
     export let data
     const posts = data.posts
     const pageAmount = Math.ceil(data.count/data.settings.categoryPostLimit)
+
 </script>
 
 <section class="Home region">
     <div class="container">
         {#each posts as post}
             <div class="wrapper">
-                <a href={`/post/${post.id}`}>
+                <button on:click={()=>changeCategory(latestVideos, 'មុខ​ម្ហូប​​​​')}>
                     <img src={post.thumb} alt=''/>
                     {#if post.videos.length}
                     <img class="play-icon" src="/images/play.png" alt=''/>
                     {/if}
-                </a>
+                </button>
                 <div class="date">{(new Date(post.date)).toLocaleDateString('it-IT')}</div>
                     <a class="title" href={`/post/${post.id}`}>
                     <div >{post.title}</div>
@@ -40,21 +41,21 @@
     grid-gap: 30px 15px;
     padding: 30px 0;
 }
-.Home .container .wrapper a{
+.Home .container .wrapper button{
     position: relative;
     padding-top: 56.25%;
     overflow: hidden;
     width: 100%;
     display: block;
 }
-.Home .container .wrapper a img{
+.Home .container .wrapper button img{
     position: absolute;
     width: 100%;
     min-height: 100%;
     top: 0;
     left: 0;
 }
-.Home .container .wrapper a .play-icon{
+.Home .container .wrapper button .play-icon{
     width: auto;
     min-height: auto;
     width: 15%;
@@ -68,6 +69,7 @@
 .Home .navigation{
     text-align: center;
 }
+
 @media only screen and (max-width:600px){
     .Home .container{
         grid-template-columns: 100%;
