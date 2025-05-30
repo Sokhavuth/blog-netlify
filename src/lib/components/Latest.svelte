@@ -137,7 +137,7 @@
         player.playlist = playlist
         if(playlist[player.part][0].type === "YouTubePlaylist"){
             player.loadVideoById(initialVideoId)
-            player.loadPlaylist({list:playlist[0][0].id,listType:'playlist',index:0})
+            player.loadPlaylist({list:playlist[part][0].id,listType:'playlist',index:0})
             jq('.latest-video').html(label)
         }else{
             if(!(playlist[0].reversal)){
@@ -292,7 +292,6 @@
     <div class="container">
         {#each posts as post, index}
             <div class="wrapper">
-                
                 <button class='news' on:click={()=>changeCategory(latestVideos, 'វីដេអូ​ចុងក្រោយ', index)}>
                     <img src={post.thumb} alt=''/>
                     {#if post.videos.length}
