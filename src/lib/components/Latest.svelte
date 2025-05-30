@@ -135,6 +135,7 @@
     function changeCategory(playlist, label, part=0) {
         player.part = part
         player.playlist = playlist
+        player.unMute()
         if(playlist[player.part][0].type === "YouTubePlaylist"){
             player.loadVideoById(initialVideoId)
             player.loadPlaylist({list:playlist[part][0].id,listType:'playlist',index:0})
