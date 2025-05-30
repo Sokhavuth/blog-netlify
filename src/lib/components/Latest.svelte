@@ -4,7 +4,7 @@
     import { onMount } from "svelte"
     export let data
     export let player
-    const posts = data.posts
+    const posts = data.latestPosts
     const pageAmount = Math.ceil(data.count/data.settings.categoryPostLimit)
 
     function parseVideos(posts){
