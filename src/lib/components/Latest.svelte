@@ -5,6 +5,7 @@
     export let data
     export let player
     let posts = data.latestPosts
+    const border = 'solid 2px green'
     const pageAmount = Math.ceil(data.count/data.settings.categoryPostLimit)
 
     function parseVideos(posts){
@@ -67,6 +68,8 @@
             playlist[0].reversal = true
             player.loadVideoById(playlist[0][0].id)
         }
+        jq('.Home .container .wrapper:nth-child(1)').css({'border': border})
+        jq('.Home .container .wrapper:nth-child(1) p').css({'display':'block'})
     }
 
     function onPlayerReady(event) {
@@ -82,6 +85,8 @@
                 player.index += 1
                 player.loadVideoById(player.playlist[player.part][player.index].id)
             }else{
+                jq(`.Home .container .wrapper:nth-child(${player.part+1})`).css('border','none')
+                jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'none'})
                 player.part += 1
                 if(player.part === player.playlist.length){
                     if(player.playlist.category !== 'latest'){
@@ -102,17 +107,25 @@
                     }
                     player.loadVideoById(player.playlist[player.part][0].id)
                 }
+                jq(`.Home .container .wrapper:nth-child(${player.part+1})`).css('border', border)
+                jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'block'})
             }
         }
     }
 
-   function onPlayerError(event){
+   async function onPlayerError(event){
         if(player.index + 1 < player.playlist[player.part].length){
             player.index += 1
             player.loadVideoById(player.playlist[player.part][player.index].id)
         }else{
+            jq(`.Home .container .wrapper:nth-child(${player.part+1})`).css('border','none')
+            jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'none'})
             player.part += 1
             if(player.part === player.playlist.length){
+                if(player.playlist.category !== 'latest'){
+                    player.loadVideoById('NcQQVbioeZk')
+                    player.playlist = await getRandomPlaylist(player.playlist.category, player.playlist.thumbs)
+                }
                 player.part = 0
             }
 
@@ -127,6 +140,8 @@
                 }
                 player.loadVideoById(player.playlist[player.part][0].id)
             }
+            jq(`.Home .container .wrapper:nth-child(${player.part+1})`).css('border', border)
+            jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'block'})
         }
     }
 
@@ -136,6 +151,8 @@
             posts.label = label
         }
         if(playlist){player.playlist = playlist}
+        jq(`.Home .container .wrapper:nth-child(${player.part+1})`).css('border','none')
+        jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'none'})
         player.part = part
         player.unMute()
         if(player.playlist[player.part][0].type === "YouTubePlaylist"){
@@ -150,6 +167,8 @@
             player.loadVideoById(player.playlist[part][0].id)
             jq('.latest-video').html(label)
         }
+        jq(`.Home .container .wrapper:nth-child(${player.part+1})`).css('border', border)
+        jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'block'})
     }
 
     function nextPrevious(move){
@@ -158,6 +177,8 @@
                 player.index += 1
                 player.loadVideoById(player.playlist[player.part][player.index].id)
             }else{
+                jq(`.Home .container .wrapper:nth-child(${player.part+1})`).css('border','none')
+                jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'none'})
                 player.part += 1
                 if(player.part === player.playlist.length){
                     player.part = 0
@@ -174,15 +195,19 @@
                     }
                     player.loadVideoById(player.playlist[player.part][0].id)
                 }
+                jq(`.Home .container .wrapper:nth-child(${player.part+1})`).css('border', border)
+                jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'block'})
             }
         }else if(move === "previous"){
             if(player.index > 0){
                 player.index -= 1
                 player.loadVideoById(player.playlist[player.part][player.index].id)
             }else{
+                jq(`.Home .container .wrapper:nth-child(${player.part+1})`).css('border','none')
+                jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'none'})
                 player.part -= 1
                 if(player.part < 0){
-                    player.part = 0
+                    player.part = player.playlist.length - 1
                 }
 
                 if(player.playlist[player.part][0].type === "YouTubePlaylist"){
@@ -196,6 +221,8 @@
                     }
                     player.loadVideoById(player.playlist[player.part][0].id)
                 }
+                jq(`.Home .container .wrapper:nth-child(${player.part+1})`).css('border', border)
+                jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'block'})
             }
         }
     }
@@ -295,11 +322,12 @@
     <div class="container">
         {#each posts as post, index}
             <div class="wrapper">
-                <button class='news' on:click={()=>changeCategory(false, posts.label, false, index)}>
+                <button id={`${index}`} class='news' on:click={()=>changeCategory(false, posts.label, false, index)}>
                     <img src={post.thumb} alt=''/>
                     {#if post.videos.length}
                     <img class="play-icon" src="/images/play.png" alt=''/>
                     {/if}
+                    <p>កំពុង​លេង...</p>
                 </button>
                 <div class="date">{(new Date(post.date)).toLocaleDateString('it-IT')}</div>
                     <a class="title" href={`/post/${post.id}`}>
@@ -435,6 +463,15 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%)
+}
+.Home .container .wrapper .news p{
+    position: absolute;
+    padding: 2px 5px;
+    top: 0;
+    left: 0;
+    color: yellow;
+    font-family: Vidaloka, OdorMeanChey;
+    display: none
 }
 .Home .container .wrapper .title{
     padding-top: 0;
