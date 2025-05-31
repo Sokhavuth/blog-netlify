@@ -69,7 +69,7 @@
             playlist[0].reversal = true
             player.loadVideoById(playlist[0][0].id)
         }
-        jq('.Home .container .wrapper:nth-child(1) .thumb').css({'filter':dark})
+        jq('.Home .container .wrapper:nth-child(1) img').css({'filter':dark})
         jq('.Home .container .wrapper:nth-child(1) p').css({'display':'block'})
     }
 
@@ -86,7 +86,7 @@
                 player.index += 1
                 player.loadVideoById(player.playlist[player.part][player.index].id)
             }else{
-                jq(`.Home .container .wrapper:nth-child(${player.part+1}) .thumb`).css({'filter':normal})
+                jq(`.Home .container .wrapper:nth-child(${player.part+1}) img`).css({'filter':normal})
                 jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'none'})
                 player.part += 1
                 if(player.part === player.playlist.length){
@@ -108,7 +108,7 @@
                     }
                     player.loadVideoById(player.playlist[player.part][0].id)
                 }
-                jq(`.Home .container .wrapper:nth-child(${player.part+1}) .thumb`).css({'filter':dark})
+                jq(`.Home .container .wrapper:nth-child(${player.part+1}) img`).css({'filter':dark})
                 jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'block'})
             }
         }
@@ -119,7 +119,7 @@
             player.index += 1
             player.loadVideoById(player.playlist[player.part][player.index].id)
         }else{
-            jq(`.Home .container .wrapper:nth-child(${player.part+1}) .thumb`).css({'filter':normal})
+            jq(`.Home .container .wrapper:nth-child(${player.part+1}) img`).css({'filter':normal})
             jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'none'})
             player.part += 1
             if(player.part === player.playlist.length){
@@ -141,7 +141,7 @@
                 }
                 player.loadVideoById(player.playlist[player.part][0].id)
             }
-            jq(`.Home .container .wrapper:nth-child(${player.part+1}) .thumb`).css({'filter':dark})
+            jq(`.Home .container .wrapper:nth-child(${player.part+1}) img`).css({'filter':dark})
             jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'block'})
         }
     }
@@ -152,7 +152,7 @@
             posts.label = label
         }
         if(playlist){player.playlist = playlist}
-        jq(`.Home .container .wrapper:nth-child(${player.part+1}) .thumb`).css({'filter':normal})
+        jq(`.Home .container .wrapper:nth-child(${player.part+1}) img`).css({'filter':normal})
         jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'none'})
         player.part = part
         player.unMute()
@@ -168,7 +168,7 @@
             player.loadVideoById(player.playlist[player.part][0].id)
             jq('.latest-video').html(label)
         }
-        jq(`.Home .container .wrapper:nth-child(${player.part+1}) .thumb`).css({'filter':dark})
+        jq(`.Home .container .wrapper:nth-child(${player.part+1}) img`).css({'filter':dark})
         jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'block'})
     }
 
@@ -178,7 +178,7 @@
                 player.index += 1
                 player.loadVideoById(player.playlist[player.part][player.index].id)
             }else{
-                jq(`.Home .container .wrapper:nth-child(${player.part+1}) .thumb`).css({'filter':normal})
+                jq(`.Home .container .wrapper:nth-child(${player.part+1}) img`).css({'filter':normal})
                 jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'none'})
                 player.part += 1
                 if(player.part === player.playlist.length){
@@ -196,7 +196,7 @@
                     }
                     player.loadVideoById(player.playlist[player.part][0].id)
                 }
-                jq(`.Home .container .wrapper:nth-child(${player.part+1}) .thumb`).css({'filter':dark})
+                jq(`.Home .container .wrapper:nth-child(${player.part+1}) img`).css({'filter':dark})
                 jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'block'})
             }
         }else if(move === "previous"){
@@ -204,7 +204,7 @@
                 player.index -= 1
                 player.loadVideoById(player.playlist[player.part][player.index].id)
             }else{
-                jq(`.Home .container .wrapper:nth-child(${player.part+1}) .thumb`).css({'filter':normal})
+                jq(`.Home .container .wrapper:nth-child(${player.part+1}) img`).css({'filter':normal})
                 jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'none'})
                 player.part -= 1
                 if(player.part < 0){
@@ -222,7 +222,7 @@
                     }
                     player.loadVideoById(player.playlist[player.part][0].id)
                 }
-                jq(`.Home .container .wrapper:nth-child(${player.part+1}) .thumb`).css({'filter':dark})
+                jq(`.Home .container .wrapper:nth-child(${player.part+1}) img`).css({'filter':dark})
                 jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'block'})
             }
         }
@@ -324,7 +324,7 @@
         {#each posts as post, index}
             <div class="wrapper">
                 <button class='news' on:click={()=>changeCategory(false, posts.label, false, index)}>
-                    <img class="thumb" src={post.thumb} alt=''/>
+                    <img src={post.thumb} alt=''/>
                     {#if post.videos.length}
                     <img class="play-icon" src="/images/play.png" alt=''/>
                     {/if}
@@ -470,7 +470,7 @@
     top: 0;
     left: 0;
     padding: 2px 5px;
-    color: yellow;
+    color: orange;
     font-family: Vidaloka, OdorMeanChey;
     display: none
 }
