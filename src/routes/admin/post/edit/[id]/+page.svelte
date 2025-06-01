@@ -37,6 +37,8 @@
             }
 
             json = JSON.stringify(newVideos)
+        }else{
+            json = ''
         }
     }
 
@@ -64,11 +66,7 @@
         let index = parseInt(e.target.innerHTML)
         videos.splice(videos.length - index, 1)
         videos = [...videos]
-        if(videos.length === 0){
-            json = ''
-        }else{
-            json = JSON.stringify(videos)
-        }
+        json = JSON.stringify(videos)
     }
 
 </script>

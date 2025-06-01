@@ -34,6 +34,8 @@
             }
 
             json = JSON.stringify(newVideos)
+        }else{
+            json = ''
         }
     }
 

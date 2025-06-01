@@ -8,7 +8,7 @@ class Post{
     async createPost(req){
         let new_post = {}
 
-        if(req.body.categories.includes('global') || req.body.categories.includes('national')){
+        if(req.body.categories.includes('news')){
             new_post = {
                 title: req.body.title,
                 content: req.body.content,
@@ -127,7 +127,7 @@ class Post{
 
     async getLatestPosts(req, amount){    
         return await req.prisma.post.findMany({ 
-            where: { AND: [{NOT: {videos: "" }} , {NOT: {categories: { contains: "unavailable" }}}] },
+            where: { AND: [{NOT: {videos: "" }} , {NOT: {categories: { contains: "unavailable" }}}, {categories: { contains: "news" }}] },
             take: amount, 
             orderBy: [{ date: "desc" }],
         })

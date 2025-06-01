@@ -158,7 +158,7 @@
         player.unMute()
         if(player.playlist[player.part][0].type === "YouTubePlaylist"){
             player.loadVideoById(initialVideoId)
-            player.loadPlaylist({list:player.playlist[part][0].id,listType:'playlist',index:0})
+            player.loadPlaylist({list:player.playlist[player.part][0].id,listType:'playlist',index:0})
             jq('.latest-video').html(label)
         }else{
             if(!(player.playlist[player.part].reversal)){
@@ -304,12 +304,12 @@
             </button>
             <div class="wrapper">
                 <div id={ytPlayerId}></div>
-                <div class="latest-video">វីដេអូ​ចុង​ក្រោយ</div>
+                <div class="latest-video">វីដេអូ​ព័ត៌មាន</div>
                 <div class="channel-logo">
                 <img src="/images/siteLogo.png" alt=''/>
                 <div class="play-all">
                     <a on:click={()=>nextPrevious('previous')}>វីដេអូមុន</a>
-                    <a on:click={()=>changeCategory(latestVideos, 'វីដេអូ​ចុងក្រោយ', data.latestPosts)} class='center'>វីដេអូ​ចុងក្រោយ</a>
+                    <a on:click={()=>changeCategory(latestVideos, 'វីដេអូ​ព័ត៌មាន', data.latestPosts)} class='center'>វីដេអូ​ព័ត៌មាន</a>
                     <a on:click={()=>nextPrevious('next')}>វីដេអូបន្ទាប់</a>
                 </div>
             </div>
