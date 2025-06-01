@@ -304,12 +304,12 @@
             </button>
             <div class="wrapper">
                 <div id={ytPlayerId}></div>
-                <div class="latest-video">វីដេអូ​ព័ត៌មាន</div>
+                <div class="latest-video">ព័ត៌មាន</div>
                 <div class="channel-logo">
                 <img src="/images/siteLogo.png" alt=''/>
                 <div class="play-all">
                     <a on:click={()=>nextPrevious('previous')}>វីដេអូមុន</a>
-                    <a on:click={()=>changeCategory(latestVideos, 'វីដេអូ​ព័ត៌មាន', data.latestPosts)} class='center'>វីដេអូ​ព័ត៌មាន</a>
+                    <a on:click={()=>changeCategory(latestVideos, '​ព័ត៌មាន', data.latestPosts)} class='center'>ព័ត៌មាន</a>
                     <a on:click={()=>nextPrevious('next')}>វីដេអូបន្ទាប់</a>
                 </div>
             </div>
