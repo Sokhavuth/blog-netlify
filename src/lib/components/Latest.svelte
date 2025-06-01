@@ -328,7 +328,7 @@
                     {#if post.videos.length}
                     <img class="play-icon" src="/images/play.png" alt=''/>
                     {/if}
-                    <p>កំពុង​លេង...</p>
+                    <p>កំពុង​ផ្សាយ...</p>
                 </button>
                 <div class="date">{(new Date(post.date)).toLocaleDateString('it-IT')}</div>
                     <a class="title" href={`/post/${post.id}`}>
