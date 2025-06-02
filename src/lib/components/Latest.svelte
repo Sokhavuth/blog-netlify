@@ -322,8 +322,8 @@
 <section class="Home region">
     <div class="container">
         {#each posts as post, index}
-            <div class="wrapper">
-                <button class='news' on:click={()=>changeCategory(false, posts.label, false, index)}>
+            <div class="wrapper" on:click={()=>changeCategory(false, posts.label, false, index)}>
+                <button class='news'>
                     <img src={post.thumb} alt=''/>
                     {#if post.videos.length}
                     <img class="play-icon" src="/images/play.png" alt=''/>
@@ -331,9 +331,7 @@
                     <p>កំពុង​លេង...</p>
                 </button>
                 <div class="date">{(new Date(post.date)).toLocaleDateString('it-IT')}</div>
-                    <a class="title" href={`/post/${post.id}`}>
-                    <div >{post.title}</div>
-                </a>
+                    <a class="title">{post.title}</a>
             </div>
         {/each}
     </div>
@@ -446,7 +444,8 @@
     display: block;
     border: none;
 }
-.Home button:hover{
+.Home button:hover, 
+.Home .container .wrapper .title:hover{
     cursor: pointer;
     opacity: .7;
 }
