@@ -23,7 +23,7 @@
     let latestVideos = parseVideos(data.latestPosts)
     latestVideos.category = 'latest'
     let latestMovies = parseVideos(data.postsByCategory[0])
-    latestMovies.category = "movie"
+    latestMovies.category = 'movie'
     let latestTravelVideos = parseVideos(data.postsByCategory[1])
     latestTravelVideos.category = 'travel'
     let latestDocVideos = parseVideos(data.postsByCategory[2])
@@ -92,7 +92,7 @@
                 if(player.part === player.playlist.length){
                     if(player.playlist.category !== 'latest'){
                         player.loadVideoById('NcQQVbioeZk')
-                        player.playlist = await getRandomPlaylist(player.playlist.category, player.playlist.thumbs)
+                        player.playlist = await getRandomPlaylist(player.playlist.category, player.playlist.thumbs) 
                     }
                     player.part = 0
                 }
@@ -108,6 +108,7 @@
                     }
                     player.loadVideoById(player.playlist[player.part][0].id)
                 }
+        
                 jq(`.Home .container .wrapper:nth-child(${player.part+1}) img`).css({'filter':dark})
                 jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'block'})
             }
@@ -331,7 +332,7 @@
                     <p>កំពុង​លេង...</p>
                 </button>
                 <div class="date">{(new Date(post.date)).toLocaleDateString('it-IT')}</div>
-                    <a class="title">{post.title}</a>
+                <a class="title">{post.title}</a>
             </div>
         {/each}
     </div>

@@ -143,9 +143,11 @@ class Post{
                 take: amount,
             }))
             */
-            posts.push(await req.prisma.post.aggregateRaw({
+            let playlist = await req.prisma.post.aggregateRaw({
                 pipeline: [{ $match : { $and: [{categories: { $regex: category }}, {videos: { $ne: "" }}, { categories: {$not: { $regex: "unavailable" }} } ] }}, { $sample:{ size: amount }}]
-            }))
+            })
+
+            posts.push(playlist)
         }
 
         return posts
@@ -190,7 +192,7 @@ class Post{
 
     async getRandomPlaylist(req, amount, category, thumbs){
         const results = await req.prisma.post.aggregateRaw({
-            pipeline: [{ $match : { categories : { $regex: category }, thumb: {$nin: thumbs}, videos: { $ne: "" } } }, { $sample:{ size: amount }}]
+            pipeline: [{ $match : { categories : { $regex: category, $not: { $regex: "unavailable" } } , thumb: {$nin: thumbs}, videos: { $ne: "" } } }, { $sample:{ size: amount }}]
         })
 
         return results
