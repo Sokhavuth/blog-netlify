@@ -100,10 +100,9 @@ class Post{
     async deletePosts(prisma){
         const posts = await prisma.post.findMany()
         for(let post of posts){
-            let url = post.thumb
-            const res = await fetch(url)
+            const res = await fetch(post.thumb)
             if(res.status !== 200){
-                await prisma.post.delete({ where: {thumb: url} })
+                await prisma.post.delete({ where: {thumb: post.thumb} })
             }
         }
     }
