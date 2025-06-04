@@ -102,8 +102,9 @@ class Post{
         for(let post of posts){
             let url = post.thumb
             const res = await fetch(url)
+            console.log(res.status)
             if(res.status !== 200){
-                prisma.post.delete({ where: {thumb: url} })
+                //prisma.post.delete({ where: {thumb: url} })
             }
         }
     }
