@@ -146,7 +146,7 @@ class Post{
             let playlist = await req.prisma.post.aggregateRaw({
                 pipeline: [{ $match : { $and: [{categories: { $regex: category }}, {videos: { $ne: "" }}, { categories: {$not: { $regex: "unavailable" }} } ] }}, { $sample:{ size: amount }}]
             })
-
+            
             posts.push(playlist)
         }
 

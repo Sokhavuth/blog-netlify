@@ -3,7 +3,7 @@
     import jq from 'jquery'
     import { onMount } from "svelte"
     export let data
-    export let player
+    let player
     let posts = data.latestPosts
     const dark = 'brightness(20%)'
     const normal = 'brightness(100%)'
@@ -148,11 +148,9 @@
     }
 
     function changeCategory(playlist, label, obj=0, part=0) {
-        if(obj){
-            posts = obj
-            posts.label = label
-        }
+        if(obj){posts = obj}
         if(playlist){player.playlist = playlist}
+        if(label){player.label = label}
         jq(`.Home .container .wrapper:nth-child(${player.part+1}) img`).css({'filter':normal})
         jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'none'})
         player.part = part
@@ -160,14 +158,14 @@
         if(player.playlist[player.part][0].type === "YouTubePlaylist"){
             player.loadVideoById(initialVideoId)
             player.loadPlaylist({list:player.playlist[player.part][0].id,listType:'playlist',index:0})
-            jq('.latest-video').html(label)
+            jq('.latest-video').html(player.label)
         }else{
             if(!(player.playlist[player.part].reversal)){
                 player.playlist[player.part].reverse()
                 player.playlist[player.part].reversal = true
             }
             player.loadVideoById(player.playlist[player.part][0].id)
-            jq('.latest-video').html(label)
+            jq('.latest-video').html(player.label)
         }
         jq(`.Home .container .wrapper:nth-child(${player.part+1}) img`).css({'filter':dark})
         jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'block'})
@@ -323,7 +321,7 @@
 <section class="Home region">
     <div class="container">
         {#each posts as post, index}
-            <div class="wrapper" on:click={()=>changeCategory(false, posts.label, false, index)}>
+            <div class="wrapper" on:click={()=>changeCategory(false, false, false, index)}>
                 <button class='news'>
                     <img src={post.thumb} alt=''/>
                     {#if post.videos.length}
