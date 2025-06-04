@@ -5,7 +5,7 @@ export default async (req) => {
     fetch("/.netlify/functions/delete-posts-background", { method: "POST" })
     console.log("Received event! Next invocation at:", next_run)
 }
-
+//daily
 export const config = {
     schedule: "@hourly"
 }
