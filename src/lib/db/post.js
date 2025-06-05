@@ -98,7 +98,6 @@ class Post{
     }
 
     async deletePosts(req, thumbs){
-        //const posts = await req.prisma.post.findMany()
         await req.prisma.post.deleteMany({ where: {thumb: {in: thumbs} }})
     }
 
