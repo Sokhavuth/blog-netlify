@@ -13,7 +13,7 @@ export default async (event, context) => {
             thumbs.push(url)
         }
     }
-    console.log(thumbs)
+    console.log(thumbs.length)
     //await postDb.deletePosts(req, thumbs)
     console.log("background function invoked")
 }
