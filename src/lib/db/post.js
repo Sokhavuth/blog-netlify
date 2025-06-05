@@ -97,15 +97,9 @@ class Post{
         await req.prisma.post.delete({ where: {id: req.params.id } })
     }
 
-    async deletePosts(prisma){
-        const posts = await prisma.post.findMany()
-        for(let post of posts){
-            let url = post.thumb
-            const res = await fetch(url)
-            if(res.status !== 200){
-                await prisma.post.delete({ where: {thumb: url} })
-            }
-        }
+    async deletePosts(req, thumbs){
+        //const posts = await req.prisma.post.findMany()
+        await req.prisma.post.deleteMany({ where: {thumb: {in: thumbs} }})
     }
 
     async paginatePosts(req, amount){
