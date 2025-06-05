@@ -36,16 +36,17 @@ class Post{
     }
 
     async getPosts(req, amount){
+        let posts = []
         if(amount === "all"){
-            return await req.prisma.post.findMany({ 
+            posts =  await req.prisma.post.findMany()
+        }else{
+            posts = await req.prisma.post.findMany({ 
+                take: amount, 
                 orderBy: [{ date: "desc" }, { id: "desc" }],
             })
         }
-        
-        return await req.prisma.post.findMany({ 
-            take: amount, 
-            orderBy: [{ date: "desc" }, { id: "desc" }],
-        })
+
+        return posts
     }
 
     async searchPosts(req, amount){
