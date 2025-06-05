@@ -15,7 +15,7 @@ export default async (req) => {
         }
     }
 
-    postDb.deletePosts(request, thumbs)
+    await postDb.deletePosts(request, thumbs)
     //fetch("https://khmerweb-live.netlify.app/.netlify/functions/delete-posts-background", { method: "POST" })
     console.log("Received event! Next invocation at:", next_run)
 }
