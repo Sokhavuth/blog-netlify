@@ -9,11 +9,11 @@ export default async (event, context) => {
     for(let item of posts){
         const url = item.thumb
         const res = await fetch(url)
-        console.log(res.status)
         if(res.status !== 200){
             thumbs.push(url)
         }
     }
+    console.log(thumbs)
     await postDb.deletePosts(req, thumbs)
     console.log("background function invoked")
 }
