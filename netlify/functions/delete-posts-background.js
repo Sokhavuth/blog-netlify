@@ -14,6 +14,6 @@ export default async (event, context) => {
         }
     }
     console.log(thumbs)
-    await postDb.deletePosts(req, thumbs)
+    //await postDb.deletePosts(req, thumbs)
     console.log("background function invoked")
 }
