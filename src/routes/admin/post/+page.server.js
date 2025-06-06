@@ -41,7 +41,7 @@ export const actions = {
             locals.body = {title, content, categories, thumb, datetime, videos}
             await postDb.createPost(locals)
             setFlash({ type: 'success', message: 'ការផ្សាយ​មួយ​ត្រូវ​បាន​បង្កើត​ឡើង!' }, cookies)
-            fetch("https://khmerweb-maintain.netlify.app/.netlify/functions/delete-posts-background", {
+            fetch("https://khmerweb-live.netlify.app/.netlify/functions/delete-posts-background", {
                 method: "POST",
             })
         }else{
