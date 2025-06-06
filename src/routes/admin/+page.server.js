@@ -4,9 +4,7 @@ import { redirect } from '@sveltejs/kit'
 export async function load({ locals }) {
 	const user = locals.user
     if(!user){throw redirect(307, '/login')}
-    fetch("https://khmerweb-maintain.netlify.app/.netlify/functions/delete-posts-background", {
-        method: "POST",
-    })
+    
     throw redirect(307, '/admin/post')
     //const settings = await locals.settings(locals)
     //const posts = await postDb.getPosts(locals, 14)
