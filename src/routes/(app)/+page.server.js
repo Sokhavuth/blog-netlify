@@ -17,7 +17,7 @@ export async function load({ locals, fetch }) {
                 countThumb++
                 const url = item.thumb
                 const res = await fetch(url)
-                if(res.status === 200){
+                if(res.ok){
                     thumbs.push(url)
                     break
                 }else if(countThumb === items.length){
