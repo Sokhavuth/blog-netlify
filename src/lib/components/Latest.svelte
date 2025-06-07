@@ -463,6 +463,11 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
 .Home .container .wrapper .news p{
     position: absolute;
     top: 0;
@@ -470,7 +475,8 @@
     padding: 2px 5px;
     color: orange;
     font-family: Vidaloka, OdorMeanChey;
-    display: none
+    display: none;
+    animation: blink 1s steps(2) infinite;
 }
 .Home .container .wrapper .title{
     padding-top: 0;
