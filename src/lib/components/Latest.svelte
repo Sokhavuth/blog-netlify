@@ -7,6 +7,7 @@
     let posts = data.latestPosts
     const dark = 'brightness(20%)'
     const normal = 'brightness(100%)'
+    const laodingVideo = 'NcQQVbioeZk'
     const pageAmount = Math.ceil(data.count/data.settings.categoryPostLimit)
 
     function parseVideos(posts){
@@ -54,6 +55,30 @@
         return newPlaylist
 	}
 
+    async function newPlaylist(){
+        if(player.playlist.category !== 'latest'){
+            player.loadVideoById(laodingVideo)
+            player.playlist = await getRandomPlaylist(player.playlist.category, player.playlist.thumbs) 
+        }
+        jq(`.Home .container .wrapper:nth-child(${player.part+1}) img`).css({'filter':normal})
+        jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'none'})
+        player.part = 0
+        if(player.playlist[player.part][0].type === "YouTubePlaylist"){
+            player.loadVideoById(initialVideoId)
+            player.loadPlaylist({list:player.playlist[player.part][0].id,listType:'playlist',index:0})
+        }else{
+            player.index = 0
+            if(!(player.playlist[player.part].reversal)){
+                player.playlist[player.part].reverse()
+                player.playlist[player.part].reversal = true
+            }
+            player.loadVideoById(player.playlist[player.part][0].id)
+        }
+        
+        jq(`.Home .container .wrapper:nth-child(${player.part+1}) img`).css({'filter':dark})
+        jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'block'})
+    }
+
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1))
@@ -91,7 +116,7 @@
                 player.part += 1
                 if(player.part === player.playlist.length){
                     if(player.playlist.category !== 'latest'){
-                        player.loadVideoById('NcQQVbioeZk')
+                        player.loadVideoById(laodingVideo)
                         player.playlist = await getRandomPlaylist(player.playlist.category, player.playlist.thumbs) 
                     }
                     player.part = 0
@@ -307,8 +332,9 @@
                 <div class="channel-logo">
                 <img src="/images/siteLogo.png" alt=''/>
                 <div class="play-all">
-                    <a on:click={()=>nextPrevious('previous')}>វីដេអូមុន</a>
                     <a on:click={()=>changeCategory(latestVideos, '​ព័ត៌មាន', data.latestPosts)} class='center'>ព័ត៌មាន</a>
+                    <a on:click={()=>nextPrevious('previous')}>វីដេអូមុន</a>
+                    <a on:click={newPlaylist} class='new-playlist'>កំរង​វីដេអូ​ថ្មី</a>
                     <a on:click={()=>nextPrevious('next')}>វីដេអូបន្ទាប់</a>
                 </div>
             </div>
@@ -412,7 +438,8 @@
 .random-video .wrapper .play-all a{
     color: orange;
 }
-.random-video .wrapper .play-all .center{
+.random-video .wrapper .play-all .center,
+.random-video .wrapper .play-all .new-playlist{
     padding: 0 20px;
 }
 .random-video .wrapper .play-all:hover{
