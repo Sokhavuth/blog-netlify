@@ -7,6 +7,7 @@
     let siteTitle = data.settings.siteTitle
     let pageURL = data.pageURL
     let thumb = data.thumb
+    data = null
 </script>
 
 <Header {title} {siteTitle} />
