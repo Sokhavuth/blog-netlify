@@ -1,6 +1,6 @@
 <!--src/layouts/Menu.astro-->
 <script>
-export let data
+export let pageURL
 let isresponsive = false
 
 let home = ''
@@ -15,29 +15,29 @@ let about = ''
 let game = ''
 let entertainment = ''
 
-if(data.pageURL === '/'){
+if(pageURL === '/'){
     home = 'active'
-}else if(data.pageURL === 'news'){
+}else if(pageURL === 'news'){
     news = 'active'
-}else if(data.pageURL === 'opinion'){
+}else if(pageURL === 'opinion'){
   opinion = 'active'
-}else if(data.pageURL === 'doc'){
+}else if(pageURL === 'doc'){
     doc = 'active'
-}else if(data.pageURL === 'sport'){
+}else if(pageURL === 'sport'){
     sport = 'active'
-}else if(data.pageURL === 'movie'){
+}else if(pageURL === 'movie'){
     movie = 'active'
-}else if(data.pageURL === 'trvel'){
+}else if(pageURL === 'trvel'){
     travel = 'active'
-}else if(data.pageURL === 'contact'){
+}else if(pageURL === 'contact'){
     contact = 'active'
-}else if(data.pageURL === 'about'){
+}else if(pageURL === 'about'){
     about = 'active'
-}else if(data.pageURL === 'travel'){
+}else if(pageURL === 'travel'){
     travel = 'active'
-}else if(data.pageURL === 'game'){
+}else if(pageURL === 'game'){
     game = 'active'
-}else if(data.pageURL === 'entertainment'){
+}else if(pageURL === 'entertainment'){
   entertainment = 'active'
 }
 

@@ -1,17 +1,17 @@
 <!--src/layouts/Header.astro-->
 <script>
-    export let data
+    export let title, siteTitle
 </script>
 
 <svelte:head>
-    <title>{data.title}</title>
+    <title>{title}</title>
 </svelte:head>
 
 <section class="header">
     <header class='wrapper region'>
         <div class='logo'>
             <a href='/'><img src='/images/siteLogo.png' alt='' /></a>
-            <a href='/'>{data.settings.siteTitle}</a>
+            <a href='/'>{siteTitle}</a>
         </div>
         <form class='search' action="/search?/search" method="post">
             <select name='category'>
