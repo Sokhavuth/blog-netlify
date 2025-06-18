@@ -71,7 +71,7 @@
                 <Telegram class="share-button" text={title} {url} />
                 <X class="share-button" text="{title}" {url} hashtags="github,svelte" via="username" related="other,users" />
                 <LinkedIn class="share-button" {url} />
-                <WhatsApp class="share-button" text="{title} {url}" />
+                <Reddit class="share-button" {title} {url} />
                 <Line class="share-button" {url} />
             </div>
             {#if data.user}
