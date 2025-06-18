@@ -3,9 +3,12 @@
     import Layout from "$lib/components/Layout.svelte"
     import Video from "$lib/components/Video.svelte"
     import Ad from "$lib/components/Ad.svelte"
-    import { FacebookLink } from "svelte-social-links"
     export let data
     $: post = data.post
+    import { Email, HackerNews, Reddit, LinkedIn, Pinterest, Telegram, Tumblr, Vk, WhatsApp, Xing, Facebook, X, Line } from 'svelte-share-buttons-component'
+	const url = `https://khmerweb-live.netlify.app/post/${data.post.id}`
+	const title = 'Svelte Share Buttons Component';
+	const desc = 'Svelte based social media share buttons component with no tracking.'
     const Categories = {
         news: 'ព័ត៌មាន',
         national: 'ក្នុង​ប្រទេស',
@@ -64,11 +67,13 @@
         </div>
         <div class='post-bottom'>
             <div class="social-media">
-                <FacebookLink
-	                url={`https://khmerweb-live.netlify.app/post/${post.id}`}
-	                hashtag=""
-                />
-                <span class="fb-share-button" data-href={`https://khmerweb-live.netlify.app/post/${post.id}`} data-layout="" data-size=""><a target="_blank" href={`https://www.facebook.com/sharer/sharer.php?u=https://khmerweb-live.netlify.app/post/${post.id}%2F&amp;src=sdkpreparse`} class="fb-xfbml-parse-ignore">Share</a></span>
+                <Email subject="{title}" body="{desc} {url}" />
+                <Facebook class="share-button" quote="{title}" {url} />
+                <Telegram class="share-button" text={title} {url} />
+                <X class="share-button" text="{title}" {url} hashtags="github,svelte" via="username" related="other,users" />
+                <LinkedIn class="share-button" {url} />
+                <WhatsApp class="share-button" text="{title} {url}" />
+                <Line class="share-button" {url} />
             </div>
             {#if data.user}
             <div class='edit'>
@@ -161,7 +166,7 @@
 }
 .Post .main .post-bottom{
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 50% 50%;
 }
 .Post .main .post-bottom .edit{
     text-align: right; 
@@ -170,11 +175,7 @@
     width: 30px;
 }
 .Post .main .social-media{
-    width: 50px;
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 5px;
-    align-items: center;
+    display: inline-block;
 }
 
 @media only screen and (max-width:600px){
