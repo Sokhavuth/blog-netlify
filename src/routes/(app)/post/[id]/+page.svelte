@@ -67,7 +67,6 @@
         </div>
         <div class='post-bottom'>
             <div class="social-media">
-                <Email subject="{title}" body="{desc} {url}" />
                 <Facebook class="share-button" quote="{title}" {url} />
                 <Telegram class="share-button" text={title} {url} />
                 <X class="share-button" text="{title}" {url} hashtags="github,svelte" via="username" related="other,users" />
