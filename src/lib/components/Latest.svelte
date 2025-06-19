@@ -40,6 +40,41 @@
     let latestDistractionVideos = parseVideos(data.postsByCategory[7])
     latestDistractionVideos.category = 'distraction'
 
+    let rawPlaylist = {
+        latest: data.latestPosts,
+        movie: data.postsByCategory[0],
+        travel: data.postsByCategory[1],
+        doc: data.postsByCategory[2],
+        sport: data.postsByCategory[3],
+        game: data.postsByCategory[4],
+        food: data.postsByCategory[5],
+        music: data.postsByCategory[6],
+        distraction: data.postsByCategory[7]
+    }
+
+    let videoPlaylists = {
+        latest: latestVideos,
+        movie: latestMovies,
+        travel: latestTravelVideos,
+        doc: latestDocVideos,
+        sport: latestSportVideos,
+        game: latestGameVideos,
+        food: latestFoodVideos,
+        music: latestMusicVideos,
+        distraction: latestDistractionVideos
+    }
+
+    let playlistThumbs = {
+        movie: data.thumbs[0],
+        travel: data.thumbs[1],
+        doc: data.thumbs[2],
+        sport: data.thumbs[3],
+        game: data.thumbs[4],
+        food: data.thumbs[5],
+        music: data.thumbs[6],
+        distraction: data.thumbs[7]
+    }
+
     async function getRandomPlaylist(category, thumbs){
 		const response = await fetch(`/post/playlist/${category}`, {
 			method: 'POST',
@@ -50,8 +85,11 @@
 		})
 		const newPlaylist_ = await response.json()
         posts = newPlaylist_
+        rawPlaylist[category] = newPlaylist_
+        playlistThumbs[category] = newPlaylist_[0].thumb
         let newPlaylist = parseVideos(newPlaylist_)
         newPlaylist.category = category
+        videoPlaylists[category] = newPlaylist
         return newPlaylist
 	}
 
@@ -102,6 +140,7 @@
     function onPlayerReady(event) {
         player.part = 0
         player.index = 0
+        player.thumb = 1
         player.playlist = latestVideos 
         loadVideo(latestVideos )
     }
@@ -173,10 +212,21 @@
         }
     }
 
-    function changeCategory(playlist, label, obj=0, part=0) {
+    function changeCategory(playlist, label, obj=0, thumb=0, part=0, ) {
+        if(playlist.category === 'latest'){
+            jq(`.random-video button:nth-child(${player.thumb}) img`).css({'filter':normal})
+            jq(`.random-video button:nth-child(${player.thumb}) .playing`).css({'display':'none'})
+        }
         if(obj){posts = obj}
         if(playlist){player.playlist = playlist}
         if(label){player.label = label}
+        if(thumb){
+            jq(`.random-video button:nth-child(${player.thumb}) img`).css({'filter':normal})
+            jq(`.random-video button:nth-child(${player.thumb}) .playing`).css({'display':'none'})
+            player.thumb = thumb
+            jq(`.random-video button:nth-child(${player.thumb}) img`).css({'filter':dark})
+            jq(`.random-video button:nth-child(${player.thumb}) .playing`).css({'display':'block'})
+        }
         jq(`.Home .container .wrapper:nth-child(${player.part+1}) img`).css({'filter':normal})
         jq(`.Home .container .wrapper:nth-child(${player.part+1}) p`).css({'display':'none'})
         player.part = part
@@ -285,6 +335,7 @@
             }
         })
     })
+
 </script>
 
 <svelte:head>
@@ -295,37 +346,45 @@
     <Ad />
     <div class="feature-post">
         <div class="random-video">
-            <button  on:click={()=>changeCategory(latestMovies, 'ភាពយន្ត​​​', data.postsByCategory[0])}>
-                <img alt='' src={data.thumbs[0]} />
+            <button  on:click={()=>changeCategory(videoPlaylists.movie, 'ភាពយន្ត​​​', rawPlaylist.movie, 1)}>
+                <img alt='' src={playlistThumbs.movie} />
                 <p class="news-label">ភាពយន្ត​</p>
+                <span class='playing'>កំពុង​លេង...</span>
             </button>
-            <button on:click={()=>changeCategory(latestTravelVideos, 'ដើរ​លេង​​​​​', data.postsByCategory[1])}>
-                <img alt='' src={data.thumbs[1]} />
+            <button on:click={()=>changeCategory(videoPlaylists.travel, 'ដើរ​លេង​​​​​', rawPlaylist.travel, 2)}>
+                <img alt='' src={playlistThumbs.travel} />
                 <p class="movies-label">ដើរ​លេង</p>
+                <span class='playing'>កំពុង​លេង...</span>
             </button>
-            <button on:click={()=>changeCategory(latestGameVideos, '​ពិភព​និម្មិត​', data.postsByCategory[4])}>
-                <img alt='' src={data.thumbs[4]} />
+            <button on:click={()=>changeCategory(videoPlaylists.game, '​ពិភព​និម្មិត​', rawPlaylist.game, 3)}>
+                <img alt='' src={playlistThumbs.game} />
                 <p class="movies-label">ពិភព​និម្មិត</p>
+                <span class='playing'>កំពុង​លេង...</span>
             </button>
-            <button on:click={()=>changeCategory(latestSportVideos, '​កីឡា​​​', data.postsByCategory[3])}>
-                <img alt='' src={data.thumbs[3]} />
+            <button on:click={()=>changeCategory(videoPlaylists.sport, '​កីឡា​​​', rawPlaylist.sport, 4)}>
+                <img alt='' src={playlistThumbs.sport} />
                 <p class="movies-label">កីឡា</p>
+                <span class='playing'>កំពុង​លេង...</span>
             </button>
-            <button on:click={()=>changeCategory(latestDocVideos, 'កំរង​ឯកសារ​​​​​', data.postsByCategory[2])}>
-                <img alt='' src={data.thumbs[2]} />
+            <button on:click={()=>changeCategory(videoPlaylists.doc, 'កំរង​ឯកសារ​​​​​', rawPlaylist.doc, 5)}>
+                <img alt='' src={playlistThumbs.doc} />
                 <p class="movies-label">កំរង​ឯកសារ</p>
+                <span class='playing'>កំពុង​លេង...</span>
             </button>
-            <button on:click={()=>changeCategory(latestFoodVideos, 'មុខ​ម្ហូប​​​​', data.postsByCategory[5])}>
-                <img alt='' src={data.thumbs[5]} />
+            <button on:click={()=>changeCategory(videoPlaylists.food, 'មុខ​ម្ហូប​​​​', rawPlaylist.food, 6)}>
+                <img alt='' src={playlistThumbs.food} />
                 <p class="news-label">​មុខ​ម្ហូប</p>
+                <span class='playing'>កំពុង​លេង...</span>
             </button>
-            <button on:click={()=>changeCategory(latestMusicVideos, 'របាំ​តន្ត្រី​​​​​', data.postsByCategory[6])}>
-                <img alt='' src={data.thumbs[6]} />
+            <button on:click={()=>changeCategory(videoPlaylists.music, 'របាំ​តន្ត្រី​​​​​', rawPlaylist.music, 7)}>
+                <img alt='' src={playlistThumbs.music} />
                 <p class="news-label">របាំ​តន្ត្រី</p>
+                <span class='playing'>កំពុង​លេង...</span>
             </button>
-            <button on:click={()=>changeCategory(latestDistractionVideos, 'ល្បែងកំសាន្ត​​​​', data.postsByCategory[7])}>
-                <img alt='' src={data.thumbs[7]} />
+            <button on:click={()=>changeCategory(videoPlaylists.distraction, 'ល្បែងកំសាន្ត​​​​', rawPlaylist.distraction, 8)}>
+                <img alt='' src={playlistThumbs.distraction} />
                 <p class="news-label">ល្បែងកំសាន្ត​</p>
+                <span class='playing'>កំពុង​លេង...</span>
             </button>
             <div class="wrapper">
                 <div id={ytPlayerId}></div>
@@ -348,7 +407,7 @@
 <section class="Home region">
     <div class="container">
         {#each posts as post, index}
-            <div class="wrapper" on:click={()=>changeCategory(false, false, false, index)}>
+            <div class="wrapper" on:click={()=>changeCategory(false, false, false, false, index)}>
                 <button class='news'>
                     <img src={post.thumb} alt=''/>
                     {#if post.videos.length}
@@ -417,6 +476,20 @@
     font-family: Vidaloka, OdorMeanChey;
     padding: 5px;
     width: 90px;
+}
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.random-video button .playing{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Vidaloka, OdorMeanChey;
+    color: orange;
+    display: none;
 }
 .random-video .latest-video{
     position: absolute;
@@ -490,11 +563,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-@keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
 }
 .Home .container .wrapper .news p{
     position: absolute;
