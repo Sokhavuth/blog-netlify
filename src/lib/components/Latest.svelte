@@ -512,7 +512,9 @@
 .random-video .wrapper .play-all a{
     color: orange;
 }
-.random-video .wrapper .play-all .center,
+.random-video .wrapper .play-all .center{
+    padding-right: 20px;
+}
 .random-video .wrapper .play-all .new-playlist{
     padding: 0 20px;
 }
