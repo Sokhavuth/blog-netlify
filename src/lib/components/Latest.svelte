@@ -213,13 +213,13 @@
     }
 
     function changeCategory(playlist, label, obj=0, thumb=0, part=0, ) {
-        if(playlist.category === 'latest'){
-            jq(`.random-video button:nth-child(${player.thumb}) img`).css({'filter':normal})
-            jq(`.random-video button:nth-child(${player.thumb}) .playing`).css({'display':'none'})
-        }
         if(obj){posts = obj}
         if(playlist){player.playlist = playlist}
         if(label){player.label = label}
+        if(player.playlist.category === 'latest'){
+            jq(`.random-video button:nth-child(${player.thumb}) img`).css({'filter':normal})
+            jq(`.random-video button:nth-child(${player.thumb}) .playing`).css({'display':'none'})
+        }
         if(thumb){
             jq(`.random-video button:nth-child(${player.thumb}) img`).css({'filter':normal})
             jq(`.random-video button:nth-child(${player.thumb}) .playing`).css({'display':'none'})
