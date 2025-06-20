@@ -141,6 +141,7 @@
         player.part = 0
         player.index = 0
         player.thumb = 1
+        player.label = 'ព័ត៌មាន'
         player.playlist = latestVideos 
         loadVideo(latestVideos )
     }
