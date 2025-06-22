@@ -96,7 +96,7 @@
     async function newPlaylist(){
         player.unMute()
         if(player.playlist.category !== 'latest'){
-            player.loadVideoById(laodingVideo)
+            //player.loadVideoById(laodingVideo)
             player.playlist = await getRandomPlaylist(player.playlist.category, player.playlist.thumbs) 
         }
         jq(`.Home .container .wrapper:nth-child(${player.part+1}) img`).css({'filter':normal})
