@@ -395,7 +395,7 @@
                 <div class="play-all">
                     <a on:click={()=>changeCategory(latestVideos, '​ព័ត៌មាន', data.latestPosts)} class='center'>ព័ត៌មាន</a>
                     <a on:click={()=>nextPrevious('previous')}>វីដេអូមុន</a>
-                    <a on:click={newPlaylist} class='new-playlist'>កំរង​វីដេអូថ្មី​</a>
+                    <a on:click={newPlaylist} class='new-playlist'>ដូរ​កំរង​វីដេអូ​</a>
                     <a on:click={()=>nextPrevious('next')}>វីដេអូបន្ទាប់</a>
                 </div>
             </div>
